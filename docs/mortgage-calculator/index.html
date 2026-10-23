@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgage Calculator with Taxes, Insurance &amp; PMI (PITI)</title>
+<meta name="description" content="Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA. See total interest, payoff date and a yearly amortization schedule.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/mortgage-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Mortgage Calculator with Taxes, Insurance &amp; PMI (PITI)">
+<meta property="og:description" content="Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA. See total interest, payoff date and a yearly amortization schedule.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/mortgage-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage Calculator", "item": "https://www.smarttoolsy.tech/mortgage-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Mortgage Calculator", "url": "https://www.smarttoolsy.tech/mortgage-calculator", "description": "Estimate your monthly mortgage payment including property tax, homeowners insurance, PMI and HOA. See total interest, payoff date and a yearly amortization schedule.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="mortgage-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Calculators › <span>Mortgage Calculator</span></nav>
+<div class="tool-head"><h1>Mortgage Calculator</h1><p>Monthly payment with taxes, insurance, PMI and HOA.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Mortgage Calculator">
+<div class="row">
+ <div class="field"><label for="mg-price">Home price ($)</label><input id="mg-price" type="number" min="0" step="1000" value="400000"></div>
+ <div class="field"><label for="mg-down">Down payment</label><div class="split"><input id="mg-down" type="number" min="0" step="1" value="20" aria-label="Down payment amount"><select id="mg-down-u" aria-label="Down payment unit"><option value="pct">%</option><option value="usd">$</option></select></div></div>
+ <div class="field"><label for="mg-rate">Interest rate (%)</label><input id="mg-rate" type="number" min="0" step="0.01" value="6.5"></div>
+ <div class="field"><label for="mg-term">Loan term</label><select id="mg-term"><option value="30" selected>30 years</option><option value="20">20 years</option><option value="15">15 years</option><option value="10">10 years</option></select></div>
+</div>
+<details class="more" open><summary class="lbl">Taxes, insurance and fees</summary>
+<div class="row">
+ <div class="field"><label for="mg-tax">Property tax (% of price per year)</label><input id="mg-tax" type="number" min="0" step="0.01" value="1.1"></div>
+ <div class="field"><label for="mg-ins">Home insurance ($ per year)</label><input id="mg-ins" type="number" min="0" step="50" value="1800"></div>
+ <div class="field"><label for="mg-pmi">PMI (% of loan per year)</label><input id="mg-pmi" type="number" min="0" step="0.05" value="0.6"></div>
+ <div class="field"><label for="mg-hoa">HOA ($ per month)</label><input id="mg-hoa" type="number" min="0" step="10" value="0"></div>
+</div>
+<div class="row">
+ <div class="field"><label for="mg-start">First payment</label><input id="mg-start" type="month"></div>
+ <div class="field"><label for="mg-extra">Extra principal ($ per month)</label><input id="mg-extra" type="number" min="0" step="25" value="0"></div>
+</div>
+</details>
+<div class="result" id="mg-out" aria-live="polite"></div>
+<details id="mg-sched-wrap" hidden style="margin-top:14px"><summary class="lbl" style="cursor:pointer">Yearly amortization schedule</summary><div id="mg-sched" style="overflow-x:auto"></div></details>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>This mortgage calculator estimates your full monthly house payment, not just the loan. It adds property tax, homeowners insurance, private mortgage insurance (PMI) and HOA dues to principal and interest, so you see the number that will actually leave your bank account each month. It also shows the total interest over the life of the loan, your payoff date, when PMI should drop off, and how extra payments can save you years of interest.</p>
+
+<h2>How to use the mortgage calculator</h2>
+<ol>
+<li>Enter the home price and your down payment, either as a percentage or a dollar amount.</li>
+<li>Enter the interest rate you have been quoted and choose the loan term.</li>
+<li>Adjust property tax, insurance and HOA to match the homes you are looking at. Listing pages and county tax websites show local figures.</li>
+<li>Optionally add an extra monthly principal payment to see how much sooner you could be mortgage-free.</li>
+</ol>
+<p>The results update as you type. Open the yearly schedule to see how your balance falls over time.</p>
+
+<h2>What makes up a mortgage payment (PITI)</h2>
+<p>Lenders often describe a house payment as <strong>PITI</strong>:</p>
+<ul>
+<li><strong>Principal</strong> – the part that pays down what you borrowed.</li>
+<li><strong>Interest</strong> – what the lender charges for the loan.</li>
+<li><strong>Taxes</strong> – property tax, usually collected monthly into an escrow account and paid to your county once or twice a year.</li>
+<li><strong>Insurance</strong> – homeowners insurance, also usually paid through escrow.</li>
+</ul>
+<p>On top of PITI, many buyers also pay PMI and HOA dues. This calculator includes all of them.</p>
+
+<h2>The mortgage payment formula</h2>
+<p>Principal and interest for a fixed-rate mortgage are calculated with the standard amortization formula:</p>
+<div class="formula">M = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</div>
+<p><strong>P</strong> is the loan amount, <strong>r</strong> is the monthly interest rate (annual rate ÷ 12 ÷ 100) and <strong>n</strong> is the number of monthly payments (360 for a 30-year loan). For example, a $320,000 loan at 6.5% for 30 years gives a principal-and-interest payment of about $2,023 a month. Early in the loan most of that goes to interest; by the final years almost all of it goes to principal.</p>
+
+<h2>What is PMI and when does it go away?</h2>
+<p>On a conventional loan, lenders usually require private mortgage insurance when your down payment is less than 20% of the home’s price. PMI protects the lender, not you, and commonly costs somewhere around 0.3% to 1.5% of the loan amount per year, depending on your credit score and down payment.</p>
+<p>Under the US Homeowners Protection Act, you can ask your lender to cancel PMI once your balance reaches 80% of the home’s original value, and it must end automatically when the balance is scheduled to reach 78%. The calculator shows the month that 78% point is reached on your schedule. FHA loans work differently and use their own mortgage insurance premium, which this calculator does not model.</p>
+
+<h2>15-year vs 30-year mortgage</h2>
+<p>A 30-year term gives the lowest monthly payment, which makes a home more affordable month to month. A 15-year term has a higher payment but usually a lower interest rate, and you pay far less interest overall because the balance is repaid twice as fast. Try both terms above with the rates you are quoted: the difference in total interest is often more than the price of a car.</p>
+
+<h2>How much house can I afford?</h2>
+<p>A common guideline is the <strong>28/36 rule</strong>: keep your total housing payment at or below 28% of your gross monthly income, and all monthly debt payments (housing, car, student loans, credit cards) at or below 36%. If your household earns $9,000 a month before tax, that suggests a housing payment of up to about $2,520. Lenders may approve more than this, but staying within the guideline leaves room for savings, repairs and emergencies.</p>
+
+<h2>Ways to lower your mortgage cost</h2>
+<ul>
+<li><strong>Improve your credit score</strong> before applying; better scores usually mean lower rates and cheaper PMI.</li>
+<li><strong>Compare at least three lenders.</strong> Rates and fees vary, and a quarter of a percentage point adds up over decades.</li>
+<li><strong>Put down 20% if you can</strong> to avoid PMI altogether.</li>
+<li><strong>Pay a little extra principal.</strong> Use the extra payment box to see the effect; even $100 a month can shave years off a 30-year loan.</li>
+<li><strong>Shop for insurance</strong> each year and appeal your property tax assessment if it looks too high.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Does this include closing costs?</summary><p>No. Closing costs are paid once at purchase, typically a few percent of the loan amount, and do not change the monthly payment unless you roll them into the loan.</p></details>
+<details><summary>What interest rate should I enter?</summary><p>Use a rate quoted by a lender for your credit profile, or today’s average rate from a reputable source as a starting estimate. Rates change daily, so update the number when you get real quotes.</p></details>
+<details><summary>Is this for fixed-rate or adjustable-rate mortgages?</summary><p>It calculates a fixed-rate loan. For an adjustable-rate mortgage (ARM), the result is accurate only for the initial fixed period.</p></details>
+<details><summary>Why is my lender’s payment slightly different?</summary><p>Lenders round differently, may require an escrow cushion, and use exact tax and insurance bills. Treat this result as a close estimate.</p></details>
+</div>
+<p><em>This calculator provides estimates for planning only and is not financial advice. Confirm figures with your lender.</em></p>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/age-calculator/">Age Calculator</a></li><li><a href="/bmi-calculator/">BMI Calculator</a></li><li><a href="/percentage-calculator/">Percentage Calculator</a></li><li><a href="/loan-calculator/">Loan &amp; EMI Calculator</a></li><li><a href="/discount-calculator/">Discount Calculator</a></li><li><a href="/date-difference-calculator/">Date Difference Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

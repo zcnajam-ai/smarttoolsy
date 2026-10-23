@@ -111,8 +111,8 @@ input[type="color"] { padding: 3px; border: 1px solid var(--line); border-radius
 .panel + .panel { margin-top: 16px; }
 .field { margin-bottom: 14px; }
 .field label, .lbl { display: block; font-weight: 700; margin-bottom: 6px; font-size: .97rem; }
-.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-input[type="text"], input[type="number"], input[type="date"], input[type="datetime-local"], input[type="search"], select, textarea {
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+input[type="text"], input[type="number"], input[type="date"], input[type="month"], input[type="datetime-local"], input[type="search"], select, textarea {
   width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
   border-radius: var(--radius-sm); padding: 10px 12px;
 }
@@ -144,6 +144,36 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--primary); o
 .faq details p { margin: 8px 0 0; color: var(--muted); }
 .formula { background: var(--surface); border-left: 4px solid var(--mark); padding: 10px 14px; font-family: var(--font-code); font-size: .95rem; overflow-x: auto; }
 
+/* File drop zone + file lists (PDF tools) */
+.drop { display: block; position: relative; border: 2px dashed var(--line); border-radius: var(--radius-lg); background: var(--bg); padding: 28px 16px; text-align: center; cursor: pointer; }
+.drop:hover, .drop.over { border-color: var(--primary); background: var(--primary-soft); }
+.drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+.drop:focus-within { outline: 3px solid var(--mark); outline-offset: 2px; }
+.drop-title { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--primary); }
+.drop-sub { display: block; color: var(--muted); font-size: .95rem; margin-top: 4px; }
+.file-list { list-style: none; padding: 0; margin: 14px 0 0; }
+.file-list:empty { display: none; }
+.file-list li { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); margin-bottom: 6px; }
+.file-list .fname { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-list .fmeta { color: var(--muted); font-size: .88rem; white-space: nowrap; }
+.icon-btn { font: inherit; border: 1px solid var(--line); background: var(--bg); color: var(--ink); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; flex: none; }
+.icon-btn:disabled { opacity: .35; cursor: default; }
+.dl-list { list-style: none; padding: 0; margin: 10px 0 0; }
+.dl-list li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
+.thumbs figure { margin: 0; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 8px; background: var(--surface); text-align: center; }
+.thumbs img { display: block; width: 100%; height: 160px; object-fit: contain; background: #fff; }
+.thumbs figcaption { font-size: .9rem; margin-top: 6px; }
+.split { display: flex; gap: 6px; }
+.split input { flex: 1; min-width: 0; }
+.split select { width: 70px; flex: none; }
+details.more { margin-top: 4px; }
+details.more > summary { cursor: pointer; margin-bottom: 10px; }
+.breakdown { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.breakdown td { padding: 6px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.breakdown td:last-child { text-align: right; font-weight: 700; }
+.bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 12px; }
+.bar span { display: block; height: 100%; }
 .sched th, .sched td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .sched th:first-child, .sched td:first-child { text-align: left; }
 .side { position: sticky; top: 16px; }

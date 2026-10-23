@@ -449,5 +449,310 @@
     on('im-fmt', 'change', run);
   };
 
+  /* ================= PDF helpers ================= */
+  function kb(b) { return b >= 1048576 ? fmt(b / 1048576, 2) + ' MB' : fmt(b / 1024, 1) + ' KB'; }
+  function readBytes(f) { return f.arrayBuffer().then(function (b) { return new Uint8Array(b); }); }
+  function pdfUrl(bytes) { return URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' })); }
+  function baseName(n) { return n.replace(/\.[^.]+$/, ''); }
+  function setupDrop(input) { // highlight the label while dragging files over it
+    var lab = input.closest('.drop'); if (!lab) return;
+    ['dragenter', 'dragover'].forEach(function (ev) { lab.addEventListener(ev, function () { lab.classList.add('over'); }); });
+    ['dragleave', 'drop'].forEach(function (ev) { lab.addEventListener(ev, function () { lab.classList.remove('over'); }); });
+  }
+  // Parse "1-3, 5, 8-" into [[0,1,2],[4],[7..n-1]] (0-based). Empty = all pages.
+  function parseRanges(s, n) {
+    s = (s || '').trim(); if (!s) { var all = []; for (var i = 0; i < n; i++) all.push(i); return [all]; }
+    return s.split(/[,;]+/).map(function (part) {
+      part = part.trim(); if (!part) return null;
+      var m = part.match(/^(\d*)\s*[-–]\s*(\d*)$/), a, b;
+      if (m) { a = m[1] ? +m[1] : 1; b = m[2] ? +m[2] : n; }
+      else if (/^\d+$/.test(part)) { a = b = +part; }
+      else throw new Error('“' + part + '” is not a page or range. Use numbers like 2 or 4-7.');
+      if (a < 1 || b < 1 || a > n || b > n) throw new Error('Page ' + (a > n || a < 1 ? a : b) + ' does not exist. This PDF has ' + n + ' page' + (n === 1 ? '' : 's') + '.');
+      var r = []; if (a <= b) for (i = a; i <= b; i++) r.push(i - 1); else for (i = a; i >= b; i--) r.push(i - 1);
+      return r;
+    }).filter(Boolean);
+  }
+  function renderFileList(listEl, items, onChange, meta) {
+    listEl.innerHTML = '';
+    items.forEach(function (it, i) {
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="fname"></span><span class="fmeta"></span>' +
+        '<button class="icon-btn" type="button" data-a="up" aria-label="Move up">↑</button>' +
+        '<button class="icon-btn" type="button" data-a="down" aria-label="Move down">↓</button>' +
+        '<button class="icon-btn" type="button" data-a="rm" aria-label="Remove">✕</button>';
+      li.querySelector('.fname').textContent = (i + 1) + '. ' + it.file.name;
+      li.querySelector('.fmeta').textContent = meta(it);
+      li.querySelector('[data-a=up]').disabled = i === 0;
+      li.querySelector('[data-a=down]').disabled = i === items.length - 1;
+      li.addEventListener('click', function (e) {
+        var a = e.target.getAttribute('data-a'); if (!a) return;
+        if (a === 'rm') items.splice(i, 1);
+        else { var j = a === 'up' ? i - 1 : i + 1, t = items[i]; items[i] = items[j]; items[j] = t; }
+        onChange();
+      });
+      listEl.appendChild(li);
+    });
+  }
+  function pdfLoadError(name, e) {
+    var msg = String(e && e.message || e);
+    if (/encrypt/i.test(msg)) return name + ' is password-protected. Unlock it in your PDF reader first.';
+    return name + ' could not be read as a PDF. It may be damaged.';
+  }
+
+  /* ---------- Merge PDF ---------- */
+  T['merge-pdf'] = function () {
+    var items = [], url = null, inp = $('mp-file'); setupDrop(inp);
+    function refresh() {
+      renderFileList($('mp-list'), items, refresh, function (it) { return kb(it.file.size); });
+      $('mp-go').disabled = items.length < 2;
+      $('mp-msg').textContent = items.length === 1 ? 'Add at least one more PDF to merge.' : '';
+      $('mp-dl-wrap').hidden = true;
+    }
+    inp.addEventListener('change', function () {
+      Array.prototype.forEach.call(inp.files, function (f) { items.push({ file: f }); });
+      inp.value = ''; refresh();
+    });
+    on('mp-clear', 'click', function () { items = []; refresh(); });
+    on('mp-go', 'click', function () {
+      var btn = $('mp-go'); btn.disabled = true; $('mp-dl-wrap').hidden = true; $('mp-msg').textContent = 'Merging…';
+      PDFLib.PDFDocument.create().then(function (out) {
+        var chain = Promise.resolve(), pages = 0;
+        items.forEach(function (it) {
+          chain = chain.then(function () { return readBytes(it.file); })
+            .then(function (b) { return PDFLib.PDFDocument.load(b).catch(function (e) { throw new Error(pdfLoadError(it.file.name, e)); }); })
+            .then(function (src) { return out.copyPages(src, src.getPageIndices()); })
+            .then(function (ps) { ps.forEach(function (p) { out.addPage(p); }); pages += ps.length; });
+        });
+        return chain.then(function () { return out.save(); }).then(function (bytes) {
+          if (url) URL.revokeObjectURL(url); url = pdfUrl(bytes);
+          $('mp-dl').href = url; $('mp-dl-wrap').hidden = false;
+          $('mp-msg').textContent = 'Done: ' + pages + ' pages, ' + kb(bytes.length) + '.';
+        });
+      }).catch(function (e) { $('mp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; })
+        .then(function () { btn.disabled = items.length < 2; });
+    });
+  };
+
+  /* ---------- Split PDF ---------- */
+  T['split-pdf'] = function () {
+    var src = null, name = 'document', inp = $('sp-file'), urls = []; setupDrop(inp);
+    inp.addEventListener('change', function () {
+      var f = inp.files[0]; if (!f) return;
+      $('sp-out').innerHTML = ''; $('sp-msg').textContent = ''; $('sp-opts').hidden = true; name = baseName(f.name);
+      readBytes(f).then(function (b) { return PDFLib.PDFDocument.load(b); }).then(function (d) {
+        src = d; $('sp-info').textContent = f.name + ' — ' + d.getPageCount() + ' page' + (d.getPageCount() === 1 ? '' : 's') + '.';
+        $('sp-opts').hidden = false;
+      }).catch(function (e) { src = null; $('sp-info').innerHTML = '<span class="err">' + esc(pdfLoadError(f.name, e)) + '</span>'; });
+    });
+    on('sp-go', 'click', function () {
+      if (!src) return;
+      var n = src.getPageCount(), mode = document.querySelector('input[name="sp-mode"]:checked').value, groups, list = $('sp-out');
+      try { groups = parseRanges($('sp-ranges').value, n); } catch (e) { $('sp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; return; }
+      if (mode === 'one') groups = [[].concat.apply([], groups)];
+      else if (mode === 'pages') groups = [].concat.apply([], groups).map(function (p) { return [p]; });
+      urls.forEach(URL.revokeObjectURL); urls = []; list.innerHTML = ''; $('sp-msg').textContent = 'Working…';
+      var chain = Promise.resolve();
+      groups.forEach(function (g) {
+        chain = chain.then(function () { return PDFLib.PDFDocument.create(); }).then(function (out) {
+          return out.copyPages(src, g).then(function (ps) { ps.forEach(function (p) { out.addPage(p); }); return out.save(); });
+        }).then(function (bytes) {
+          var u = pdfUrl(bytes); urls.push(u);
+          var label = g.length === 1 ? 'page-' + (g[0] + 1) : 'pages-' + (g[0] + 1) + '-' + (g[g.length - 1] + 1);
+          var li = document.createElement('li'), a = document.createElement('a');
+          a.href = u; a.download = name + '-' + label + '.pdf'; a.textContent = 'Download ' + a.download;
+          li.appendChild(a); li.appendChild(document.createTextNode(' — ' + g.length + ' page' + (g.length === 1 ? '' : 's') + ', ' + kb(bytes.length)));
+          list.appendChild(li);
+        });
+      });
+      chain.then(function () { $('sp-msg').textContent = groups.length === 1 ? 'Your PDF is ready.' : groups.length + ' PDFs are ready.'; })
+        .catch(function (e) { $('sp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; });
+    });
+  };
+
+  /* ---------- JPG to PDF ---------- */
+  T['jpg-to-pdf'] = function () {
+    var items = [], url = null, inp = $('jp-file'); setupDrop(inp);
+    var SIZES = { a4: [595.28, 841.89], letter: [612, 792] };
+    function refresh() {
+      renderFileList($('jp-list'), items, refresh, function (it) { return kb(it.file.size); });
+      $('jp-go').disabled = !items.length; $('jp-dl-wrap').hidden = true; $('jp-msg').textContent = '';
+    }
+    function jpegOrientation(b) { // EXIF orientation tag, 1 if absent
+      if (b[0] !== 0xFF || b[1] !== 0xD8) return 1;
+      var i = 2;
+      while (i + 4 < b.length) {
+        if (b[i] !== 0xFF) return 1;
+        var mk = b[i + 1], len = (b[i + 2] << 8) | b[i + 3];
+        if (mk === 0xE1 && b[i + 4] === 0x45 && b[i + 5] === 0x78 && b[i + 6] === 0x69 && b[i + 7] === 0x66) {
+          var t = i + 10, le = b[t] === 0x49, r16 = function (o) { return le ? b[o] | (b[o + 1] << 8) : (b[o] << 8) | b[o + 1]; };
+          var r32 = function (o) { return le ? (b[o] | (b[o + 1] << 8) | (b[o + 2] << 16) | (b[o + 3] << 24)) >>> 0 : ((b[o] << 24) | (b[o + 1] << 16) | (b[o + 2] << 8) | b[o + 3]) >>> 0; };
+          var ifd = t + r32(t + 4), cnt = r16(ifd);
+          for (var k = 0; k < cnt; k++) { var e = ifd + 2 + k * 12; if (r16(e) === 0x0112) return r16(e + 8); }
+          return 1;
+        }
+        if (mk === 0xDA) return 1;
+        i += 2 + len;
+      }
+      return 1;
+    }
+    function viaCanvas(file) { // decode with the browser (applies EXIF rotation), re-encode as JPEG
+      return new Promise(function (res, rej) {
+        var img = new Image(), u = URL.createObjectURL(file);
+        img.onload = function () {
+          var c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+          var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(u);
+          c.toBlob(function (bl) { bl ? bl.arrayBuffer().then(function (ab) { res(new Uint8Array(ab)); }) : rej(new Error('Could not convert ' + file.name)); }, 'image/jpeg', 0.92);
+        };
+        img.onerror = function () { rej(new Error(file.name + ' could not be opened as an image.')); };
+        img.src = u;
+      });
+    }
+    inp.addEventListener('change', function () {
+      Array.prototype.forEach.call(inp.files, function (f) { items.push({ file: f }); }); inp.value = ''; refresh();
+    });
+    on('jp-clear', 'click', function () { items = []; refresh(); });
+    on('jp-go', 'click', function () {
+      var btn = $('jp-go'), size = $('jp-size').value, orient = $('jp-orient').value, margin = +$('jp-margin').value;
+      btn.disabled = true; $('jp-dl-wrap').hidden = true; $('jp-msg').textContent = 'Creating PDF…';
+      PDFLib.PDFDocument.create().then(function (doc) {
+        var chain = Promise.resolve();
+        items.forEach(function (it) {
+          chain = chain.then(function () { return readBytes(it.file); }).then(function (b) {
+            var isJpg = b[0] === 0xFF && b[1] === 0xD8, isPng = b[0] === 0x89 && b[1] === 0x50;
+            if (isJpg && jpegOrientation(b) === 1) return doc.embedJpg(b);
+            if (isPng) return doc.embedPng(b);
+            return viaCanvas(it.file).then(function (j) { return doc.embedJpg(j); });
+          }).then(function (img) {
+            var iw = img.width * 0.75, ih = img.height * 0.75, pw, ph; // 96 px = 72 pt
+            if (size === 'fit') { pw = iw + 2 * margin; ph = ih + 2 * margin; }
+            else {
+              pw = SIZES[size][0]; ph = SIZES[size][1];
+              var land = orient === 'landscape' || (orient === 'auto' && iw > ih);
+              if (land) { var t = pw; pw = ph; ph = t; }
+            }
+            var s = Math.min((pw - 2 * margin) / iw, (ph - 2 * margin) / ih, size === 'fit' ? 1 : Infinity);
+            var w = iw * s, h = ih * s, page = doc.addPage([pw, ph]);
+            page.drawImage(img, { x: (pw - w) / 2, y: (ph - h) / 2, width: w, height: h });
+          }).catch(function (e) { throw new Error(/could not/i.test(e.message) ? e.message : it.file.name + ' could not be added: ' + e.message); });
+        });
+        return chain.then(function () { return doc.save(); }).then(function (bytes) {
+          if (url) URL.revokeObjectURL(url); url = pdfUrl(bytes);
+          $('jp-dl').href = url; $('jp-dl-wrap').hidden = false;
+          $('jp-msg').textContent = 'Done: ' + items.length + ' page' + (items.length === 1 ? '' : 's') + ', ' + kb(bytes.length) + '.';
+        });
+      }).catch(function (e) { $('jp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; })
+        .then(function () { btn.disabled = !items.length; });
+    });
+  };
+
+  /* ---------- PDF to JPG ---------- */
+  T['pdf-to-jpg'] = function () {
+    var BASE = '/assets/vendor/pdfjs/', lib = null, doc = null, name = 'page', inp = $('pj-file'), urls = []; setupDrop(inp);
+    function getLib() {
+      if (lib) return Promise.resolve(lib);
+      return import(BASE + 'pdf.min.mjs').then(function (m) { m.GlobalWorkerOptions.workerSrc = BASE + 'pdf.worker.min.mjs'; lib = m; return m; });
+    }
+    inp.addEventListener('change', function () {
+      var f = inp.files[0]; if (!f) return;
+      $('pj-go').disabled = true; $('pj-out').innerHTML = ''; $('pj-msg').textContent = 'Opening ' + f.name + '…'; name = baseName(f.name);
+      Promise.all([getLib(), readBytes(f)]).then(function (r) {
+        return r[0].getDocument({ data: r[1], cMapUrl: BASE + 'cmaps/', cMapPacked: true, standardFontDataUrl: BASE + 'standard_fonts/', wasmUrl: BASE + 'wasm/' }).promise;
+      }).then(function (d) {
+        if (doc) doc.destroy(); doc = d; $('pj-go').disabled = false;
+        $('pj-msg').textContent = f.name + ' — ' + d.numPages + ' page' + (d.numPages === 1 ? '' : 's') + '. Choose options and convert.';
+      }).catch(function (e) {
+        doc = null; $('pj-msg').innerHTML = '<span class="err">' + esc(/password/i.test(e && e.name + e.message) ? f.name + ' is password-protected. Unlock it in your PDF reader first.' : f.name + ' could not be opened as a PDF.') + '</span>';
+      });
+    });
+    on('pj-go', 'click', function () {
+      if (!doc) return;
+      var pages; try { pages = [].concat.apply([], parseRanges($('pj-pages').value, doc.numPages)); } catch (e) { $('pj-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; return; }
+      var type = $('pj-fmt').value, dpi = +$('pj-dpi').value, ext = type === 'image/png' ? 'png' : 'jpg', out = $('pj-out'), btn = $('pj-go');
+      urls.forEach(URL.revokeObjectURL); urls = []; out.innerHTML = ''; btn.disabled = true;
+      var chain = Promise.resolve(), done = 0;
+      pages.forEach(function (p) {
+        chain = chain.then(function () { $('pj-msg').textContent = 'Converting page ' + (p + 1) + ' (' + (done + 1) + ' of ' + pages.length + ')…'; return doc.getPage(p + 1); })
+          .then(function (page) {
+            var vp1 = page.getViewport({ scale: 1 }), scale = dpi / 72;
+            var maxPx = 16e6; if (vp1.width * vp1.height * scale * scale > maxPx) scale = Math.sqrt(maxPx / (vp1.width * vp1.height));
+            var vp = page.getViewport({ scale: scale }), c = document.createElement('canvas');
+            c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+            return page.render({ canvas: c, viewport: vp, background: '#ffffff' }).promise.then(function () {
+              return new Promise(function (res) { c.toBlob(res, type, 0.9); });
+            }).then(function (blob) {
+              var u = URL.createObjectURL(blob); urls.push(u); done++;
+              var fig = document.createElement('figure');
+              fig.innerHTML = '<img alt=""><figcaption><a></a><br><span class="fmeta"></span></figcaption>';
+              fig.querySelector('img').src = u; fig.querySelector('img').alt = 'Page ' + (p + 1);
+              var a = fig.querySelector('a'); a.href = u; a.download = name + '-page-' + (p + 1) + '.' + ext; a.textContent = 'Download page ' + (p + 1);
+              fig.querySelector('.fmeta').textContent = c.width + ' × ' + c.height + ' px, ' + kb(blob.size);
+              out.appendChild(fig); page.cleanup();
+            });
+          });
+      });
+      chain.then(function () { $('pj-msg').textContent = done + ' image' + (done === 1 ? '' : 's') + ' ready. Use each “Download” link to save.'; })
+        .catch(function (e) { $('pj-msg').innerHTML = '<span class="err">Conversion failed: ' + esc(e.message) + '</span>'; })
+        .then(function () { btn.disabled = false; });
+    });
+  };
+
+  /* ---------- Mortgage ---------- */
+  T['mortgage-calculator'] = function () {
+    var IDS = ['mg-price', 'mg-down', 'mg-down-u', 'mg-rate', 'mg-term', 'mg-tax', 'mg-ins', 'mg-pmi', 'mg-hoa', 'mg-start', 'mg-extra'];
+    var d = new Date(); d.setMonth(d.getMonth() + 1);
+    $('mg-start').value = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2);
+    var lastUnit = 'pct';
+    on('mg-down-u', 'change', function () { // convert the value so the down payment stays the same
+      var price = +$('mg-price').value || 0, v = +$('mg-down').value || 0, u = $('mg-down-u').value;
+      if (u !== lastUnit && price) $('mg-down').value = u === 'usd' ? Math.round(price * v / 100) : +(v / price * 100).toFixed(2);
+      lastUnit = u; run();
+    });
+    function money(x, d) { return '$' + fmt(x, d === undefined ? 0 : d); }
+    function amort(P, r, M, extra, limit) { // returns schedule summary
+      var bal = P, months = 0, interest = 0, yearly = [], y = { p: 0, i: 0 }, pmiEnd = null;
+      while (bal > 0.005 && months < 1200) {
+        var int = bal * r, prin = Math.min(bal, M - int + extra); bal -= prin; months++; interest += int; y.p += prin; y.i += int;
+        if (pmiEnd === null && limit !== null && bal <= limit) pmiEnd = months;
+        if (months % 12 === 0 || bal <= 0.005) { yearly.push({ p: y.p, i: y.i, b: Math.max(0, bal) }); y = { p: 0, i: 0 }; }
+      }
+      return { months: months, interest: interest, yearly: yearly, pmiEnd: pmiEnd };
+    }
+    function monthName(start, add) { var p = start.split('-'), dt = new Date(+p[0], +p[1] - 1 + add, 1); return dt.toLocaleString('en-US', { month: 'short', year: 'numeric' }); }
+    function run() {
+      var price = +$('mg-price').value, dv = +$('mg-down').value || 0, down = $('mg-down-u').value === 'pct' ? price * dv / 100 : dv;
+      var rate = +$('mg-rate').value, years = +$('mg-term').value, out = $('mg-out');
+      var tax = (+$('mg-tax').value || 0) / 100 * price / 12, ins = (+$('mg-ins').value || 0) / 12, hoa = +$('mg-hoa').value || 0, extra = +$('mg-extra').value || 0;
+      if (!(price > 0) || !(rate >= 0) || down < 0) { out.innerHTML = '<span class="err">Enter a home price, down payment and interest rate.</span>'; $('mg-sched-wrap').hidden = true; return; }
+      if (down >= price) { out.innerHTML = '<span class="err">The down payment covers the whole price, so no mortgage is needed.</span>'; $('mg-sched-wrap').hidden = true; return; }
+      var P = price - down, n = years * 12, r = rate / 1200, M = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      var needPmi = down / price < 0.2, pmi = needPmi ? (+$('mg-pmi').value || 0) / 100 * P / 12 : 0;
+      var base = amort(P, r, M, 0, needPmi ? 0.78 * price : null), plan = extra > 0 ? amort(P, r, M, extra, needPmi ? 0.78 * price : null) : base;
+      var total = M + tax + ins + pmi + hoa, start = $('mg-start').value || $('mg-start').min;
+      var parts = [['Principal & interest', M, '#2F5BEA'], ['Property tax', tax, '#F2B33D'], ['Home insurance', ins, '#1F8A5B'], ['PMI', pmi, '#C0392B'], ['HOA', hoa, '#8E7CC3']].filter(function (x) { return x[1] > 0; });
+      var html = '<span class="lbl">Estimated monthly payment</span><div class="big">' + money(total) + '</div>';
+      html += '<div class="bar" aria-hidden="true">' + parts.map(function (x) { return '<span style="width:' + (x[1] / total * 100) + '%;background:' + x[2] + '"></span>'; }).join('') + '</div>';
+      html += '<table class="breakdown"><tbody>' + parts.map(function (x) { return '<tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:' + x[2] + ';margin-right:8px"></span>' + x[0] + '</td><td>' + money(x[1]) + '</td></tr>'; }).join('') + '</tbody></table>';
+      html += '<div class="stats"><div class="stat"><b>' + money(P) + '</b><span>Loan amount (' + fmt(down / price * 100, 1) + '% down)</span></div>' +
+        '<div class="stat"><b>' + money(plan.interest) + '</b><span>Total interest</span></div>' +
+        '<div class="stat"><b>' + monthName(start, plan.months - 1) + '</b><span>Payoff date</span></div></div>';
+      var notes = [];
+      if (needPmi && pmi > 0) notes.push(base.pmiEnd ? 'PMI should end automatically around <strong>' + monthName(start, plan.pmiEnd - 1) + '</strong>, when the balance reaches 78% of the home’s price.' : 'PMI applies because the down payment is under 20%.');
+      if (!needPmi) notes.push('No PMI: your down payment is at least 20%.');
+      if (extra > 0) {
+        var saved = base.interest - plan.interest, mo = base.months - plan.months;
+        notes.push('Paying ' + money(extra) + ' extra each month saves about <strong>' + money(saved) + '</strong> in interest and pays the loan off <strong>' + Math.floor(mo / 12) + ' years ' + (mo % 12) + ' months</strong> sooner.');
+      }
+      html += notes.map(function (t) { return '<p style="margin:10px 0 0">' + t + '</p>'; }).join('');
+      out.innerHTML = html;
+      $('mg-sched').innerHTML = '<table class="sched" style="width:100%;border-collapse:collapse;margin-top:8px"><thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>' +
+        plan.yearly.map(function (y, i) { return '<tr><td>' + (i + 1) + '</td><td>' + money(y.p) + '</td><td>' + money(y.i) + '</td><td>' + money(y.b) + '</td></tr>'; }).join('') + '</tbody></table>';
+      $('mg-sched-wrap').hidden = false;
+    }
+    IDS.forEach(function (id) { if (id !== 'mg-down-u') { on(id, 'input', run); on(id, 'change', run); } });
+    run();
+  };
+
   if (T[tool]) T[tool]();
 })();

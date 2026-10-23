@@ -9,6 +9,7 @@ from datetime import date
 sys.path.insert(0, os.path.dirname(__file__))
 from tools_a import TOOLS_A
 from tools_b import TOOLS_B
+from tools_c import TOOLS_C
 from articles import ARTICLES
 
 # ------------------------------------------------------------------ CONFIG
@@ -32,10 +33,12 @@ SLASH_RE = re.compile(r'((?:href|content)="(?:' + re.escape(CONFIG["SITE_URL"]) 
 def slashify(text):
     """GitHub Pages serves folders at /path/ — link there directly to avoid a redirect hop."""
     return SLASH_RE.sub(lambda m: m.group(1) + m.group(2) + '/"', text)
-TOOLS = TOOLS_A + TOOLS_B
+
+
+TOOLS = TOOLS_A + TOOLS_B + TOOLS_C
 BY_SLUG = {t["slug"]: t for t in TOOLS}
-CATS = [("text", "Text tools"), ("calc", "Calculators"), ("convert", "Converters"),
-        ("generate", "Generators"), ("dev", "Developer tools"), ("image", "Image tools")]
+CATS = [("pdf", "PDF tools"), ("calc", "Calculators"), ("text", "Text tools"), ("image", "Image tools"),
+        ("convert", "Converters"), ("generate", "Generators"), ("dev", "Developer tools")]
 CAT_NAME = dict(CATS)
 C = CONFIG
 e = html.escape
@@ -144,7 +147,7 @@ def build_home():
 <main id="main">
 <section class="finder"><div class="wrap">
 <h1>Free tools for everyday jobs</h1>
-<p class="finder-lede">Count words, compress a photo, make a QR code or work out a loan payment. Every tool runs in your browser, so nothing you type is uploaded.</p>
+<p class="finder-lede">Merge a PDF, count words, compress a photo, make a QR code or work out a mortgage payment. Every tool runs in your browser, so your files and numbers are never uploaded.</p>
 <div class="finder-box" role="search">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 <input id="finder" type="search" placeholder="What do you need to do? Try “qr”, “age” or “compress”" aria-label="Search tools" autocomplete="off">
@@ -188,7 +191,8 @@ def build_tool(t):
     if guides:
         guide_html = '<h2 style="margin-top:24px">Related guides</h2><ul>' + "".join(
             f'<li><a href="/blog/{a["slug"]}">{e(a["title"])}</a></li>' for a in guides) + "</ul>"
-    extra_js = '<script src="/assets/qr.js"></script>' if t["slug"] == "qr-code-generator" else ""
+    scripts = list(t.get("scripts", [])) + (["/assets/qr.js"] if t["slug"] == "qr-code-generator" else [])
+    extra_js = "".join(f'<script src="{s}"></script>' for s in scripts)
     page = head(t["title"], t["desc"], path, ld) + f"""
 <body data-tool="{t['slug']}">
 {header()}
