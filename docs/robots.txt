@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smarttoolsy.com/sitemap.xml
+Sitemap: https://smarttoolsy.tech/sitemap.xml
