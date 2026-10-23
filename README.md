@@ -20,16 +20,13 @@ Rebuild after any change:
 python3 src/build.py
 ```
 
-## Go live (GitHub Pages + domain on Vercel)
+## Hosting (Vercel, connected to this GitHub repo)
 
-1. Repo → Settings → General → Danger Zone → **Change visibility → Public** (free Pages needs a public repo).
-2. Repo → Settings → **Pages** → Source: *Deploy from a branch* → Branch `main`, folder **`/docs`** → Save.
-   The custom domain is read from `docs/CNAME` (set from `SITE_URL` in `CONFIG`).
-3. Vercel → Domains → your domain → **DNS Records**, add:
-   - `A` record, name `@`, values `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (four records)
-   - `CNAME` record, name `www`, value `zcnajam-ai.github.io`
-4. Back in Settings → Pages, wait for the DNS check to pass, then tick **Enforce HTTPS**.
-5. Create the email inbox you set as `CONTACT_EMAIL` (Zoho Mail free plan, or Google Workspace).
+- Vercel project `smarttoolsy` deploys every push to `main`. `vercel.json` tells it to serve the prebuilt `docs/` folder.
+- Domain `smarttoolsy.tech` is registered in Vercel, so no DNS records are needed:
+  Vercel → smarttoolsy project → Settings → Domains → add `smarttoolsy.tech` (and `www.smarttoolsy.tech` redirecting to it).
+- Do not also enable GitHub Pages or add GitHub A records; one host only.
+- Create the email inbox you set as `CONTACT_EMAIL` (Zoho Mail free plan, or Google Workspace).
 
 After any change: `python3 src/build.py`, then commit and push (including `docs/`).
 
