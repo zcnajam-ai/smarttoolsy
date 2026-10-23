@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "installCommand": "echo skip",
+  "buildCommand": "echo prebuilt",
+  "outputDirectory": "docs",
+  "trailingSlash": true,
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
+  ]
+}
