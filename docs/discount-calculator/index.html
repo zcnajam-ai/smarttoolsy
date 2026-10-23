@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discount Calculator – Sale Price &amp; Savings</title>
+<meta name="description" content="Find the sale price after a percentage discount, how much you save, and the final price with sales tax. Supports double discounts.">
+<link rel="canonical" href="https://smarttoolsy.com/discount-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Discount Calculator – Sale Price &amp; Savings">
+<meta property="og:description" content="Find the sale price after a percentage discount, how much you save, and the final price with sales tax. Supports double discounts.">
+<meta property="og:url" content="https://smarttoolsy.com/discount-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://smarttoolsy.com/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://smarttoolsy.com/"}, {"@type": "ListItem", "position": 3, "name": "Discount Calculator", "item": "https://smarttoolsy.com/discount-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Discount Calculator", "url": "https://smarttoolsy.com/discount-calculator", "description": "Find the sale price after a percentage discount, how much you save, and the final price with sales tax. Supports double discounts.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="discount-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Calculators › <span>Discount Calculator</span></nav>
+<div class="tool-head"><h1>Discount Calculator</h1><p>Sale price after discount, savings and price with tax.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Discount Calculator">
+<div class="row">
+ <div class="field"><label for="ds-p">Original price</label><input id="ds-p" type="number" min="0" step="0.01" value="80"></div>
+ <div class="field"><label for="ds-d">Discount (%)</label><input id="ds-d" type="number" min="0" max="100" step="0.1" value="25"></div>
+ <div class="field"><label for="ds-d2">Extra discount (%)</label><input id="ds-d2" type="number" min="0" max="100" step="0.1" value="0"></div>
+ <div class="field"><label for="ds-t">Sales tax (%)</label><input id="ds-t" type="number" min="0" step="0.01" value="0"></div>
+</div>
+<div class="stats" aria-live="polite">
+ <div class="stat"><b id="ds-final">—</b><span>You pay</span></div>
+ <div class="stat"><b id="ds-save">—</b><span>You save</span></div>
+ <div class="stat"><b id="ds-eff">—</b><span>Total discount</span></div>
+</div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>Shopping a sale? The discount calculator shows the price you will actually pay, how much money you save, and the combined effect of stacked discounts such as “30% off plus an extra 10% at checkout”. Add your local sales tax to see the final total at the till.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Enter the original price and the discount percentage.</li>
+<li>If there is a second discount, enter it in “Extra discount”. Leave it at 0 otherwise.</li>
+<li>Add sales tax if it is charged on top of the sale price.</li>
+</ol>
+<h2>How stacked discounts work</h2>
+<p>Two discounts are not added together. The second one applies to the already reduced price. So 30% off followed by an extra 10% off is a total discount of 37%, not 40%:</p>
+<div class="formula">Final = Price × (1 − d1/100) × (1 − d2/100) × (1 + tax/100)</div>
+<p>On a 100 item: 100 × 0.70 = 70, then 70 × 0.90 = 63. You save 37.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Is tax calculated before or after the discount?</summary><p>In most places, including US states, sales tax is charged on the discounted price, which is how this calculator works.</p></details>
+<details><summary>How do I find the original price from a sale price?</summary><p>Divide the sale price by (1 − discount/100). A 60 item that is 25% off was originally 60 ÷ 0.75 = 80.</p></details>
+</div>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/age-calculator/">Age Calculator</a></li><li><a href="/bmi-calculator/">BMI Calculator</a></li><li><a href="/percentage-calculator/">Percentage Calculator</a></li><li><a href="/loan-calculator/">Loan &amp; EMI Calculator</a></li><li><a href="/date-difference-calculator/">Date Difference Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li></ul><h2 style="margin-top:24px">Related guides</h2><ul><li><a href="/blog/percentage-tricks-mental-math/">How to Calculate Percentages in Your Head: 6 Quick Tricks</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

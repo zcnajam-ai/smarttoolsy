@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMI Calculator – Body Mass Index for Adults (kg/cm or lb/ft)</title>
+<meta name="description" content="Calculate your Body Mass Index with metric or imperial units. See your BMI category and the healthy weight range for your height.">
+<link rel="canonical" href="https://smarttoolsy.com/bmi-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="BMI Calculator – Body Mass Index for Adults (kg/cm or lb/ft)">
+<meta property="og:description" content="Calculate your Body Mass Index with metric or imperial units. See your BMI category and the healthy weight range for your height.">
+<meta property="og:url" content="https://smarttoolsy.com/bmi-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://smarttoolsy.com/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://smarttoolsy.com/"}, {"@type": "ListItem", "position": 3, "name": "BMI Calculator", "item": "https://smarttoolsy.com/bmi-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "BMI Calculator", "url": "https://smarttoolsy.com/bmi-calculator", "description": "Calculate your Body Mass Index with metric or imperial units. See your BMI category and the healthy weight range for your height.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="bmi-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Calculators › <span>BMI Calculator</span></nav>
+<div class="tool-head"><h1>BMI Calculator</h1><p>Work out body mass index in metric or imperial units.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="BMI Calculator">
+<div class="field"><span class="lbl">Units</span>
+<label class="check" style="display:inline-flex;margin-right:16px"><input type="radio" name="bm-u" value="m" checked> Metric (kg, cm)</label>
+<label class="check" style="display:inline-flex"><input type="radio" name="bm-u" value="i"> Imperial (lb, ft, in)</label></div>
+<div class="row" id="bm-metric">
+ <div class="field"><label for="bm-kg">Weight (kg)</label><input id="bm-kg" type="number" min="1" step="0.1" placeholder="70"></div>
+ <div class="field"><label for="bm-cm">Height (cm)</label><input id="bm-cm" type="number" min="30" step="0.1" placeholder="175"></div>
+</div>
+<div class="row" id="bm-imp" hidden>
+ <div class="field"><label for="bm-lb">Weight (lb)</label><input id="bm-lb" type="number" min="1" step="0.1" placeholder="154"></div>
+ <div class="field"><label for="bm-ft">Height (ft)</label><input id="bm-ft" type="number" min="1" step="1" placeholder="5"></div>
+ <div class="field"><label for="bm-in">Height (in)</label><input id="bm-in" type="number" min="0" step="0.1" placeholder="9"></div>
+</div>
+<div class="btns"><button class="btn" id="bm-go" type="button">Calculate BMI</button></div>
+<div class="result" id="bm-out" aria-live="polite"></div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>Body Mass Index (BMI) is a quick screening number that compares weight with height. This calculator works with kilograms and centimetres or pounds, feet and inches, tells you which standard adult category your result falls into, and shows the weight range that counts as “healthy” for your height.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Choose metric or imperial units.</li>
+<li>Enter your weight and height.</li>
+<li>Click “Calculate BMI” to see your number, category and healthy range.</li>
+</ol>
+<h2>The BMI formula</h2>
+<div class="formula">BMI = weight (kg) ÷ height (m)²<br>BMI = 703 × weight (lb) ÷ height (in)²</div>
+<p>For example, someone who weighs 70 kg and is 1.75 m tall has a BMI of 70 ÷ (1.75 × 1.75) = 22.9.</p>
+<h2>Adult BMI categories</h2>
+<ul>
+<li>Below 18.5 – underweight</li>
+<li>18.5 to 24.9 – healthy weight</li>
+<li>25 to 29.9 – overweight</li>
+<li>30 and above – obesity</li>
+</ul>
+<p>These are the World Health Organization ranges for adults aged 18 and over. Some health services use lower cut-offs for people of South Asian, Chinese and other Asian backgrounds, because health risks start to rise at a lower BMI.</p>
+<h2>What BMI does not tell you</h2>
+<p>BMI does not separate muscle from fat, so athletes can score as “overweight” while being very fit. It also ignores where fat is stored, age and sex. Treat it as a starting point and speak to a doctor or qualified health professional about your own health.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Can children use this calculator?</summary><p>No. Children and teenagers need BMI-for-age percentiles, which compare them with others of the same age and sex. Ask a pediatrician for that check.</p></details>
+<details><summary>Is BMI accurate during pregnancy?</summary><p>No. Weight gain in pregnancy is expected, so BMI is not a useful measure at that time.</p></details>
+</div>
+<p><em>This calculator is for general information only and is not medical advice.</em></p>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/age-calculator/">Age Calculator</a></li><li><a href="/percentage-calculator/">Percentage Calculator</a></li><li><a href="/loan-calculator/">Loan &amp; EMI Calculator</a></li><li><a href="/discount-calculator/">Discount Calculator</a></li><li><a href="/date-difference-calculator/">Date Difference Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

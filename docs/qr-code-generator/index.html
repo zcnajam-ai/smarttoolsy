@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free QR Code Generator – URL, Text, Wi-Fi (PNG Download)</title>
+<meta name="description" content="Create QR codes for websites, text, email, phone numbers and Wi-Fi networks. Choose size and colors and download as PNG. No sign-up, no expiry.">
+<link rel="canonical" href="https://smarttoolsy.com/qr-code-generator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Free QR Code Generator – URL, Text, Wi-Fi (PNG Download)">
+<meta property="og:description" content="Create QR codes for websites, text, email, phone numbers and Wi-Fi networks. Choose size and colors and download as PNG. No sign-up, no expiry.">
+<meta property="og:url" content="https://smarttoolsy.com/qr-code-generator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://smarttoolsy.com/"}, {"@type": "ListItem", "position": 2, "name": "Generators", "item": "https://smarttoolsy.com/"}, {"@type": "ListItem", "position": 3, "name": "QR Code Generator", "item": "https://smarttoolsy.com/qr-code-generator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "QR Code Generator", "url": "https://smarttoolsy.com/qr-code-generator", "description": "Create QR codes for websites, text, email, phone numbers and Wi-Fi networks. Choose size and colors and download as PNG. No sign-up, no expiry.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="qr-code-generator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Generators › <span>QR Code Generator</span></nav>
+<div class="tool-head"><h1>QR Code Generator</h1><p>QR codes for links, text and Wi-Fi, downloadable as PNG.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="QR Code Generator">
+<div class="field"><label for="qr-type">QR code for</label>
+<select id="qr-type"><option value="url">Website link</option><option value="text">Plain text</option><option value="wifi">Wi-Fi network</option><option value="tel">Phone number</option><option value="email">Email address</option></select></div>
+<div id="qr-f-main" class="field"><label for="qr-in" id="qr-in-lbl">Website link</label><input id="qr-in" type="text" value="https://example.com"></div>
+<div id="qr-f-wifi" class="row" hidden>
+ <div class="field"><label for="qr-ssid">Network name (SSID)</label><input id="qr-ssid" type="text"></div>
+ <div class="field"><label for="qr-pass">Password</label><input id="qr-pass" type="text"></div>
+ <div class="field"><label for="qr-enc">Security</label><select id="qr-enc"><option>WPA</option><option>WEP</option><option value="nopass">None</option></select></div>
+</div>
+<div class="row">
+ <div class="field"><label for="qr-size">Size (px)</label><select id="qr-size"><option>256</option><option selected>512</option><option>1024</option></select></div>
+ <div class="field"><label for="qr-fg">Color</label><input id="qr-fg" type="color" value="#1b2540" style="width:100%;height:42px"></div>
+ <div class="field"><label for="qr-bg">Background</label><input id="qr-bg" type="color" value="#ffffff" style="width:100%;height:42px"></div>
+</div>
+<div style="text-align:center;margin-top:10px"><canvas id="qr-canvas" width="512" height="512" style="width:240px;height:240px;border:1px solid var(--line);border-radius:8px"></canvas></div>
+<p id="qr-err" class="err" aria-live="polite"></p>
+<div class="btns" style="justify-content:center"><button class="btn" id="qr-dl" type="button">Download PNG</button></div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>Make a QR code for a website, a message, a phone number, an email address or your Wi-Fi network. The code updates as you type, and you can download it as a sharp PNG image for printing on menus, flyers, business cards or packaging. Codes made here are static: they contain the data directly, never expire and do not route through any tracking service.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Choose what the QR code is for.</li>
+<li>Fill in the link, text or Wi-Fi details.</li>
+<li>Pick a size and colors, then click “Download PNG”.</li>
+<li>Scan it with your phone camera to test before you print.</li>
+</ol>
+<h2>Tips for QR codes that scan every time</h2>
+<ul>
+<li><strong>Keep strong contrast.</strong> A dark code on a light background works best. Some phone cameras cannot read light codes on dark backgrounds.</li>
+<li><strong>Print big enough.</strong> A common rule is that the code should be at least one tenth of the distance it will be scanned from. For a poster read from 2 metres, aim for 20 cm.</li>
+<li><strong>Leave a quiet zone.</strong> Keep a clear margin around the code free of text or graphics. The generator adds one automatically.</li>
+<li><strong>Shorter data, simpler code.</strong> Long URLs make dense codes that are harder to scan when printed small.</li>
+</ul>
+<h2>How Wi-Fi QR codes work</h2>
+<p>A Wi-Fi code stores the network name, password and security type in a standard format. When guests scan it, Android and iPhone cameras offer to join the network without typing the password.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Do these QR codes expire?</summary><p>No. The information is stored inside the image itself, so the code works for as long as the link or details inside it are valid.</p></details>
+<details><summary>Can I use them commercially?</summary><p>Yes. QR codes you create here are free to use on anything, including printed products and packaging.</p></details>
+<details><summary>Can I change the link after printing?</summary><p>No, static codes cannot be edited. If you need to change the destination later, point the code to a page on your own website that you can update or redirect.</p></details>
+</div>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/password-generator/">Password Generator</a></li><li><a href="/random-number-generator/">Random Number Generator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li><li><a href="/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li><li><a href="/text-cleaner/">Text Cleaner</a></li><li><a href="/slug-generator/">URL Slug Generator</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/qr.js"></script><script src="/assets/tools.js"></script>
+</body></html>

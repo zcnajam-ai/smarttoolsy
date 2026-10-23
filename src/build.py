@@ -3,7 +3,7 @@
 
 Edit CONFIG below, then run:  python3 src/build.py
 """
-import html, json, os, shutil, sys
+import html, json, os, re, shutil, sys
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -25,7 +25,13 @@ CONFIG = dict(
 # --------------------------------------------------------------------------
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DIST = os.path.join(ROOT, "dist")
+DIST = os.path.join(ROOT, "docs")   # GitHub Pages serves this folder (Settings → Pages → main /docs)
+SLASH_RE = re.compile(r'((?:href|content)="(?:' + re.escape(CONFIG["SITE_URL"]) + r')?)(/[A-Za-z0-9\-/]*[A-Za-z0-9])"')
+
+
+def slashify(text):
+    """GitHub Pages serves folders at /path/ — link there directly to avoid a redirect hop."""
+    return SLASH_RE.sub(lambda m: m.group(1) + m.group(2) + '/"', text)
 TOOLS = TOOLS_A + TOOLS_B
 BY_SLUG = {t["slug"]: t for t in TOOLS}
 CATS = [("text", "Text tools"), ("calc", "Calculators"), ("convert", "Converters"),
@@ -103,7 +109,7 @@ def write(path, content):
     full = os.path.join(DIST, path.strip("/"), "index.html") if not path.endswith(".html") else os.path.join(DIST, path.strip("/"))
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
-        f.write(content)
+        f.write(slashify(content))
 
 
 def org_ld():
@@ -339,17 +345,19 @@ def build_misc():
 <body>{header()}<main id="main" class="wrap"><div class="page"><h1>Page not found</h1>
 <p>The page you were looking for has moved or never existed. Find what you need on the <a href="/">tools home page</a>.</p></div></main>{footer()}</body></html>"""
     with open(os.path.join(DIST, "404.html"), "w", encoding="utf-8") as f:
-        f.write(page)
-    urls = ["/"] + ["/" + t["slug"] for t in TOOLS] + ["/blog"] + ["/blog/" + a["slug"] for a in ARTICLES] + \
+        f.write(slashify(page))
+    urls =["/"] + ["/" + t["slug"] for t in TOOLS] + ["/blog"] + ["/blog/" + a["slug"] for a in ARTICLES] + \
            ["/about", "/contact", "/privacy-policy", "/terms", "/disclaimer"]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
-        f"  <url><loc>{C['SITE_URL']}{u if u != '/' else '/'}</loc><lastmod>{C['UPDATED']}</lastmod></url>\n" for u in urls) + "</urlset>\n"
+        f"  <url><loc>{C['SITE_URL']}{u if u == '/' else u + '/'}</loc><lastmod>{C['UPDATED']}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     open(os.path.join(DIST, "sitemap.xml"), "w").write(sm)
     open(os.path.join(DIST, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {C['SITE_URL']}/sitemap.xml\n")
     pub = C["ADSENSE_CLIENT"].replace("ca-", "") if C["ADSENSE_CLIENT"] else ""
     if pub:
         open(os.path.join(DIST, "ads.txt"), "w").write(f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
     open(os.path.join(DIST, "favicon.svg"), "w").write(FAVICON)
+    open(os.path.join(DIST, ".nojekyll"), "w").write("")
+    open(os.path.join(DIST, "CNAME"), "w").write(C["SITE_URL"].split("://", 1)[1] + "\n")
     return urls
 
 

@@ -12,7 +12,7 @@ Plain static HTML/CSS/JS — no database, no server, free to host on Vercel.
 | `src/tools_a.py`, `src/tools_b.py` | Each tool's form and its article content (how-to, formula, FAQ). |
 | `src/articles.py` | Blog/guide articles. Add new ones here. |
 | `static/assets/` | CSS, shared JS, all tool logic (`tools.js`) and the built-in QR encoder (`qr.js`). |
-| `dist/` | The finished website. This folder is what you upload/deploy. |
+| `docs/` | The finished website, served by GitHub Pages. Always rebuild and commit it after changes. |
 
 Rebuild after any change:
 
@@ -20,13 +20,18 @@ Rebuild after any change:
 python3 src/build.py
 ```
 
-## Go live (Vercel)
+## Go live (GitHub Pages + domain on Vercel)
 
-1. Buy the domain (e.g. `smarttoolsy.com`, about $11/year) from Vercel, Namecheap or any registrar.
-2. Put this project in a GitHub repo, import it in Vercel, set **Output Directory** to `dist`
-   (no build command needed — or set build command to `python3 src/build.py`).
-3. Add the domain in Vercel → Project → Settings → Domains.
-4. Create the email inbox you set as `CONTACT_EMAIL` (Zoho Mail free plan, or Google Workspace).
+1. Repo → Settings → General → Danger Zone → **Change visibility → Public** (free Pages needs a public repo).
+2. Repo → Settings → **Pages** → Source: *Deploy from a branch* → Branch `main`, folder **`/docs`** → Save.
+   The custom domain is read from `docs/CNAME` (set from `SITE_URL` in `CONFIG`).
+3. Vercel → Domains → your domain → **DNS Records**, add:
+   - `A` record, name `@`, values `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (four records)
+   - `CNAME` record, name `www`, value `zcnajam-ai.github.io`
+4. Back in Settings → Pages, wait for the DNS check to pass, then tick **Enforce HTTPS**.
+5. Create the email inbox you set as `CONTACT_EMAIL` (Zoho Mail free plan, or Google Workspace).
+
+After any change: `python3 src/build.py`, then commit and push (including `docs/`).
 
 ## Google Search Console (do this on day 1)
 
