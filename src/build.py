@@ -14,7 +14,7 @@ from articles import ARTICLES
 # ------------------------------------------------------------------ CONFIG
 CONFIG = dict(
     SITE_NAME="SmartToolsy",
-    SITE_URL="https://smarttoolsy.tech",      # no trailing slash
+    SITE_URL="https://www.smarttoolsy.tech",      # no trailing slash
     CONTACT_EMAIL="contact@smarttoolsy.tech",  # create this inbox before applying to AdSense
     OWNER="SmartToolsy",                       # your name or business name for the About/Terms pages
     COUNTRY="Pakistan",                        # governing-law country in Terms
