@@ -571,14 +571,8 @@
   };
 
   /* ---------- JPG to PDF ---------- */
-  T['jpg-to-pdf'] = function () {
-    var items = [], url = null, inp = $('jp-file'); setupDrop(inp);
-    var SIZES = { a4: [595.28, 841.89], letter: [612, 792] };
-    function refresh() {
-      renderFileList($('jp-list'), items, refresh, function (it) { return kb(it.file.size); });
-      $('jp-go').disabled = !items.length; $('jp-dl-wrap').hidden = true; $('jp-msg').textContent = '';
-    }
-    function jpegOrientation(b) { // EXIF orientation tag, 1 if absent
+  /* Shared: embed an image file into a pdf-lib document, honouring EXIF rotation */
+  function jpegOrientation(b) { // EXIF orientation tag, 1 if absent
       if (b[0] !== 0xFF || b[1] !== 0xD8) return 1;
       var i = 2;
       while (i + 4 < b.length) {
@@ -609,6 +603,36 @@
         img.src = u;
       });
     }
+  function embedImageFile(doc, file) {
+    return readBytes(file).then(function (b) {
+      var isJpg = b[0] === 0xFF && b[1] === 0xD8, isPng = b[0] === 0x89 && b[1] === 0x50;
+      if (isJpg && jpegOrientation(b) === 1) return doc.embedJpg(b);
+      if (isPng) return doc.embedPng(b);
+      return viaCanvas(file).then(function (j) { return doc.embedJpg(j); });
+    });
+  }
+  // Place an embedded image centred on a new page. size: 'fit' | [w,h]; orient: auto|portrait|landscape
+  function addImagePage(doc, img, size, orient, margin, index) {
+    var iw = img.width * 0.75, ih = img.height * 0.75, pw, ph; // 96 px = 72 pt
+    if (size === 'fit') { pw = iw + 2 * margin; ph = ih + 2 * margin; }
+    else {
+      pw = size[0]; ph = size[1];
+      var land = orient === 'landscape' || (orient === 'auto' && iw > ih);
+      if (land !== pw > ph) { var t = pw; pw = ph; ph = t; }
+    }
+    var s = Math.min((pw - 2 * margin) / iw, (ph - 2 * margin) / ih, size === 'fit' ? 1 : Infinity);
+    var w = iw * s, h = ih * s, page = index === undefined ? doc.addPage([pw, ph]) : doc.insertPage(index, [pw, ph]);
+    page.drawImage(img, { x: (pw - w) / 2, y: (ph - h) / 2, width: w, height: h });
+    return page;
+  }
+
+  T['jpg-to-pdf'] = function () {
+    var items = [], url = null, inp = $('jp-file'); setupDrop(inp);
+    var SIZES = { a4: [595.28, 841.89], letter: [612, 792] };
+    function refresh() {
+      renderFileList($('jp-list'), items, refresh, function (it) { return kb(it.file.size); });
+      $('jp-go').disabled = !items.length; $('jp-dl-wrap').hidden = true; $('jp-msg').textContent = '';
+    }
     inp.addEventListener('change', function () {
       Array.prototype.forEach.call(inp.files, function (f) { items.push({ file: f }); }); inp.value = ''; refresh();
     });
@@ -619,22 +643,8 @@
       PDFLib.PDFDocument.create().then(function (doc) {
         var chain = Promise.resolve();
         items.forEach(function (it) {
-          chain = chain.then(function () { return readBytes(it.file); }).then(function (b) {
-            var isJpg = b[0] === 0xFF && b[1] === 0xD8, isPng = b[0] === 0x89 && b[1] === 0x50;
-            if (isJpg && jpegOrientation(b) === 1) return doc.embedJpg(b);
-            if (isPng) return doc.embedPng(b);
-            return viaCanvas(it.file).then(function (j) { return doc.embedJpg(j); });
-          }).then(function (img) {
-            var iw = img.width * 0.75, ih = img.height * 0.75, pw, ph; // 96 px = 72 pt
-            if (size === 'fit') { pw = iw + 2 * margin; ph = ih + 2 * margin; }
-            else {
-              pw = SIZES[size][0]; ph = SIZES[size][1];
-              var land = orient === 'landscape' || (orient === 'auto' && iw > ih);
-              if (land) { var t = pw; pw = ph; ph = t; }
-            }
-            var s = Math.min((pw - 2 * margin) / iw, (ph - 2 * margin) / ih, size === 'fit' ? 1 : Infinity);
-            var w = iw * s, h = ih * s, page = doc.addPage([pw, ph]);
-            page.drawImage(img, { x: (pw - w) / 2, y: (ph - h) / 2, width: w, height: h });
+          chain = chain.then(function () { return embedImageFile(doc, it.file); }).then(function (img) {
+            addImagePage(doc, img, size === 'fit' ? 'fit' : SIZES[size], orient, margin);
           }).catch(function (e) { throw new Error(/could not/i.test(e.message) ? e.message : it.file.name + ' could not be added: ' + e.message); });
         });
         return chain.then(function () { return doc.save(); }).then(function (bytes) {
@@ -752,6 +762,227 @@
     }
     IDS.forEach(function (id) { if (id !== 'mg-down-u') { on(id, 'input', run); on(id, 'change', run); } });
     run();
+  };
+
+  /* ---------- shared pdf.js loader ---------- */
+  var PDFJS_BASE = '/assets/vendor/pdfjs/', pdfjsLib = null;
+  function loadPdfjs() {
+    if (pdfjsLib) return Promise.resolve(pdfjsLib);
+    return import(PDFJS_BASE + 'pdf.min.mjs').then(function (m) { m.GlobalWorkerOptions.workerSrc = PDFJS_BASE + 'pdf.worker.min.mjs'; pdfjsLib = m; return m; });
+  }
+  function openPdfjs(bytes) {
+    return loadPdfjs().then(function (lib) {
+      return lib.getDocument({ data: bytes.slice(0), cMapUrl: PDFJS_BASE + 'cmaps/', cMapPacked: true, standardFontDataUrl: PDFJS_BASE + 'standard_fonts/', wasmUrl: PDFJS_BASE + 'wasm/' }).promise;
+    });
+  }
+  function rangesToSet(s, n) { var set = {}; parseRanges(s, n).forEach(function (g) { g.forEach(function (p) { set[p] = true; }); }); return set; }
+  function setToRanges(set) {
+    var ps = Object.keys(set).map(Number).sort(function (a, b) { return a - b; }), out = [], i = 0;
+    while (i < ps.length) { var j = i; while (j + 1 < ps.length && ps[j + 1] === ps[j] + 1) j++; out.push(i === j ? '' + (ps[i] + 1) : (ps[i] + 1) + '-' + (ps[j] + 1)); i = j + 1; }
+    return out.join(', ');
+  }
+
+  /* ---------- Delete PDF pages ---------- */
+  T['delete-pdf-pages'] = function () {
+    var inp = $('dp-file'), bytes = null, n = 0, del = {}, name = 'document', url = null, token = 0; setupDrop(inp);
+    function paint() {
+      document.querySelectorAll('#dp-thumbs button').forEach(function (b) { var p = +b.dataset.p; b.setAttribute('aria-pressed', del[p] ? 'true' : 'false'); });
+      var k = Object.keys(del).length; $('dp-msg').textContent = k ? k + ' page' + (k === 1 ? '' : 's') + ' marked for deletion. ' + (n - k) + ' will remain.' : '';
+    }
+    inp.addEventListener('change', function () {
+      var f = inp.files[0]; if (!f) return; var my = ++token;
+      name = baseName(f.name); del = {}; $('dp-pages').value = ''; $('dp-thumbs').innerHTML = ''; $('dp-opts').hidden = true; $('dp-dl-wrap').hidden = true; $('dp-msg').textContent = '';
+      readBytes(f).then(function (b) { bytes = b; return PDFLib.PDFDocument.load(b); }).then(function (d) {
+        n = d.getPageCount(); $('dp-info').textContent = f.name + ' — ' + n + ' page' + (n === 1 ? '' : 's') + '.'; $('dp-opts').hidden = false;
+        var grid = $('dp-thumbs');
+        for (var i = 0; i < n; i++) {
+          var b = document.createElement('button'); b.type = 'button'; b.dataset.p = i; b.setAttribute('aria-pressed', 'false');
+          b.setAttribute('aria-label', 'Page ' + (i + 1)); b.innerHTML = '<span class="ph"></span><span class="pn">' + (i + 1) + '</span>';
+          grid.appendChild(b);
+        }
+        return openPdfjs(bytes).then(function (doc) { // thumbnails, one at a time
+          var chain = Promise.resolve();
+          for (var p = 1; p <= Math.min(n, 400); p++) (function (p) {
+            chain = chain.then(function () { if (my !== token) return; return doc.getPage(p).then(function (pg) {
+              var vp = pg.getViewport({ scale: 1 }), s = 140 / vp.width, v = pg.getViewport({ scale: s }), c = document.createElement('canvas');
+              c.width = Math.ceil(v.width); c.height = Math.ceil(v.height);
+              return pg.render({ canvas: c, viewport: v, background: '#ffffff' }).promise.then(function () {
+                var slot = grid.querySelector('button[data-p="' + (p - 1) + '"] .ph'); if (slot) slot.replaceWith(c); pg.cleanup();
+              });
+            }); });
+          })(p);
+          return chain;
+        }).catch(function () { /* previews are optional */ });
+      }).catch(function (e) { bytes = null; $('dp-info').innerHTML = '<span class="err">' + esc(pdfLoadError(f.name, e)) + '</span>'; });
+    });
+    $('dp-thumbs').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return; var p = +b.dataset.p;
+      if (del[p]) delete del[p]; else del[p] = true;
+      $('dp-pages').value = setToRanges(del); paint();
+    });
+    on('dp-pages', 'input', function () { try { del = rangesToSet($('dp-pages').value, n); if (!$('dp-pages').value.trim()) del = {}; paint(); } catch (e) { $('dp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; } });
+    on('dp-go', 'click', function () {
+      if (!bytes) return;
+      $('dp-dl-wrap').hidden = true;
+      try { del = $('dp-pages').value.trim() ? rangesToSet($('dp-pages').value, n) : {}; } catch (e) { $('dp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; return; }
+      var idx = Object.keys(del).map(Number).sort(function (a, b) { return b - a; });
+      if (!idx.length) { $('dp-msg').innerHTML = '<span class="err">Choose at least one page to delete.</span>'; return; }
+      if (idx.length >= n) { $('dp-msg').innerHTML = '<span class="err">A PDF needs at least one page. Keep one or more pages.</span>'; return; }
+      $('dp-dl-wrap').hidden = true;
+      PDFLib.PDFDocument.load(bytes).then(function (d) { idx.forEach(function (i) { d.removePage(i); }); return d.save(); }).then(function (out) {
+        if (url) URL.revokeObjectURL(url); url = pdfUrl(out);
+        $('dp-dl').href = url; $('dp-dl').download = name + '-edited.pdf'; $('dp-dl-wrap').hidden = false;
+        $('dp-msg').textContent = 'Removed ' + idx.length + ' page' + (idx.length === 1 ? '' : 's') + '. New PDF: ' + (n - idx.length) + ' pages, ' + kb(out.length) + '.';
+      }).catch(function (e) { $('dp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; });
+    });
+  };
+
+  /* ---------- Add pages to PDF ---------- */
+  T['add-pages-to-pdf'] = function () {
+    var main = null, mainName = 'document', items = [], url = null, inMain = $('ap-main'), inAdd = $('ap-add'); setupDrop(inMain); setupDrop(inAdd);
+    function ready() { $('ap-go').disabled = !(main && items.length); $('ap-dl-wrap').hidden = true; }
+    function refresh() { renderFileList($('ap-list'), items, refresh, function (it) { return kb(it.file.size); }); ready(); }
+    inMain.addEventListener('change', function () {
+      var f = inMain.files[0]; if (!f) return; mainName = baseName(f.name);
+      readBytes(f).then(function (b) { return PDFLib.PDFDocument.load(b).then(function (d) {
+        main = b; $('ap-info').textContent = f.name + ' — ' + d.getPageCount() + ' pages.'; $('ap-after').max = d.getPageCount(); ready();
+      }); }).catch(function (e) { main = null; $('ap-info').innerHTML = '<span class="err">' + esc(pdfLoadError(f.name, e)) + '</span>'; ready(); });
+    });
+    inAdd.addEventListener('change', function () { Array.prototype.forEach.call(inAdd.files, function (f) { items.push({ file: f }); }); inAdd.value = ''; refresh(); });
+    on('ap-pos', 'change', function () { $('ap-after-f').hidden = $('ap-pos').value !== 'after'; });
+    on('ap-go', 'click', function () {
+      var btn = $('ap-go'); btn.disabled = true; $('ap-dl-wrap').hidden = true; $('ap-msg').textContent = 'Adding pages…';
+      PDFLib.PDFDocument.load(main).then(function (doc) {
+        var n = doc.getPageCount(), pos = $('ap-pos').value, at = pos === 'start' ? 0 : pos === 'end' ? n : Math.max(0, Math.min(n, parseInt($('ap-after').value, 10) || 0));
+        var first = doc.getPage(0).getSize(), size = [first.width, first.height], added = 0, chain = Promise.resolve();
+        items.forEach(function (it) {
+          chain = chain.then(function () {
+            var isPdf = /\.pdf$/i.test(it.file.name) || it.file.type === 'application/pdf';
+            if (isPdf) return readBytes(it.file).then(function (b) { return PDFLib.PDFDocument.load(b).catch(function (e) { throw new Error(pdfLoadError(it.file.name, e)); }); })
+              .then(function (src) { return doc.copyPages(src, src.getPageIndices()); })
+              .then(function (ps) { ps.forEach(function (p) { doc.insertPage(at + added, p); added++; }); });
+            return embedImageFile(doc, it.file).then(function (img) { addImagePage(doc, img, size, 'auto', 36, at + added); added++; });
+          });
+        });
+        return chain.then(function () { return doc.save(); }).then(function (out) {
+          if (url) URL.revokeObjectURL(url); url = pdfUrl(out);
+          $('ap-dl').href = url; $('ap-dl').download = mainName + '-updated.pdf'; $('ap-dl-wrap').hidden = false;
+          $('ap-msg').textContent = 'Added ' + added + ' page' + (added === 1 ? '' : 's') + '. New PDF: ' + (n + added) + ' pages, ' + kb(out.length) + '.';
+        });
+      }).catch(function (e) { $('ap-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; }).then(function () { btn.disabled = !(main && items.length); });
+    });
+  };
+
+  /* ---------- TXT to PDF ---------- */
+  T['txt-to-pdf'] = function () {
+    var inp = $('tp-file'), url = null, fname = 'text'; setupDrop(inp);
+    var WINANSI_EXTRA = '€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ';
+    function clean(s) { var bad = 0; var out = s.replace(/\r\n?/g, '\n').replace(/\t/g, '    ').replace(/[^\n\x20-\x7e\xa0-\xff]/gu, function (c) { if (WINANSI_EXTRA.indexOf(c) !== -1) return c; bad++; return '?'; }); return { text: out, bad: bad }; }
+    inp.addEventListener('change', function () { var f = inp.files[0]; if (!f) return; fname = baseName(f.name); f.text().then(function (t) { $('tp-text').value = t; }); });
+    on('tp-go', 'click', function () {
+      var raw = $('tp-text').value; if (!raw.trim()) { $('tp-msg').innerHTML = '<span class="err">Add some text first.</span>'; return; }
+      var c = clean(raw), size = +$('tp-size').value, margin = +$('tp-margin').value, dims = $('tp-page').value === 'a4' ? [595.28, 841.89] : [612, 792];
+      $('tp-dl-wrap').hidden = true;
+      PDFLib.PDFDocument.create().then(function (doc) {
+        return doc.embedFont(PDFLib.StandardFonts[$('tp-font').value]).then(function (font) {
+          var maxW = dims[0] - 2 * margin, lh = size * 1.4, page = null, y = 0, pages = 0;
+          function newPage() { page = doc.addPage(dims); y = dims[1] - margin - size; pages++; }
+          function wrap(line) { // break a paragraph into lines that fit maxW
+            if (!line) return [''];
+            var words = line.split(/( +)/), out = [], cur = '';
+            words.forEach(function (w) {
+              var test = cur + w;
+              if (font.widthOfTextAtSize(test, size) <= maxW) { cur = test; return; }
+              if (cur.trim()) out.push(cur.replace(/ +$/, ''));
+              cur = w.replace(/^ +/, '');
+              while (font.widthOfTextAtSize(cur, size) > maxW) { // very long word: hard break
+                var k = cur.length; while (k > 1 && font.widthOfTextAtSize(cur.slice(0, k), size) > maxW) k--;
+                out.push(cur.slice(0, k)); cur = cur.slice(k);
+              }
+            });
+            out.push(cur); return out;
+          }
+          newPage();
+          c.text.split('\n').forEach(function (para) {
+            wrap(para).forEach(function (ln) {
+              if (y < margin) newPage();
+              if (ln) page.drawText(ln, { x: margin, y: y, size: size, font: font });
+              y -= lh;
+            });
+          });
+          doc.setTitle(fname);
+          return doc.save().then(function (out) {
+            if (url) URL.revokeObjectURL(url); url = pdfUrl(out);
+            $('tp-dl').href = url; $('tp-dl').download = fname + '.pdf'; $('tp-dl-wrap').hidden = false;
+            $('tp-msg').textContent = 'Done: ' + pages + ' page' + (pages === 1 ? '' : 's') + ', ' + kb(out.length) + '.' + (c.bad ? ' ' + c.bad + ' unsupported character' + (c.bad === 1 ? ' was' : 's were') + ' replaced with “?”.' : '');
+          });
+        });
+      }).catch(function (e) { $('tp-msg').innerHTML = '<span class="err">' + esc(e.message) + '</span>'; });
+    });
+  };
+
+  /* ---------- Amortization schedule ---------- */
+  T['amortization-calculator'] = function () {
+    var d = new Date(); d.setMonth(d.getMonth() + 1);
+    $('am-start').value = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2);
+    var rows = [];
+    function money(x) { return '$' + Number(x).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    function run() {
+      var P = +$('am-p').value, R = +$('am-r').value, Y = +$('am-y').value, extra = +$('am-extra').value || 0, out = $('am-out');
+      if (!(P > 0) || !(Y > 0) || !(R >= 0)) { out.innerHTML = '<span class="err">Enter a loan amount, an interest rate of 0 or more, and a term.</span>'; $('am-table').innerHTML = ''; rows = []; return; }
+      var n = Math.round(Y * 12), r = R / 1200, M = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      var sp = ($('am-start').value || '2026-01').split('-'), sy = +sp[0], sm = +sp[1] - 1, bal = P, ti = 0, tp = 0, k = 0;
+      rows = [];
+      while (bal > 0.005 && k < 1200) {
+        var int = bal * r, prin = Math.min(bal, M - int + extra), pay = prin + int; bal -= prin; ti += int; tp += pay;
+        var dt = new Date(sy, sm + k, 1); k++;
+        rows.push({ n: k, date: dt.toLocaleString('en-US', { month: 'short', year: 'numeric' }), y: dt.getFullYear(), pay: pay, int: int, prin: prin, bal: Math.max(0, bal) });
+      }
+      var last = rows[rows.length - 1];
+      out.innerHTML = '<span class="lbl">Monthly payment</span><div class="big">' + money(M + extra) + '</div>' + (extra ? '<p style="margin:4px 0 0">' + money(M) + ' required + ' + money(extra) + ' extra</p>' : '') +
+        '<div class="stats"><div class="stat"><b>' + money(ti) + '</b><span>Total interest</span></div><div class="stat"><b>' + money(tp) + '</b><span>Total of payments</span></div>' +
+        '<div class="stat"><b>' + last.date + '</b><span>Payoff (' + rows.length + ' payments)</span></div></div>';
+      var byYear = {}; rows.forEach(function (x) { (byYear[x.y] = byYear[x.y] || []).push(x); });
+      $('am-table').innerHTML = Object.keys(byYear).map(function (yr, i) {
+        var g = byYear[yr], sI = 0, sP = 0; g.forEach(function (x) { sI += x.int; sP += x.prin; });
+        return '<details class="yr"' + (i === 0 ? ' open' : '') + '><summary><strong>' + yr + '</strong> — principal ' + money(sP) + ', interest ' + money(sI) + ', ending balance ' + money(g[g.length - 1].bal) + '</summary>' +
+          '<div style="overflow-x:auto"><table class="sched" style="width:100%;border-collapse:collapse"><thead><tr><th>#</th><th>Date</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>' +
+          g.map(function (x) { return '<tr><td>' + x.n + '</td><td>' + x.date + '</td><td>' + money(x.pay) + '</td><td>' + money(x.prin) + '</td><td>' + money(x.int) + '</td><td>' + money(x.bal) + '</td></tr>'; }).join('') + '</tbody></table></div></details>';
+      }).join('');
+    }
+    ['am-p', 'am-r', 'am-y', 'am-start', 'am-extra'].forEach(function (id) { on(id, 'input', run); on(id, 'change', run); });
+    on('am-csv', 'click', function () {
+      if (!rows.length) return;
+      var csv = 'Payment,Date,Payment amount,Principal,Interest,Balance\n' + rows.map(function (x) { return [x.n, '"' + x.date + '"', x.pay.toFixed(2), x.prin.toFixed(2), x.int.toFixed(2), x.bal.toFixed(2)].join(','); }).join('\n');
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'amortization-schedule.csv'; a.click();
+    });
+    run();
+  };
+
+  /* ---------- Age lookup pages (live values, so pages stay right after New Year) ---------- */
+  function setAll(sel, v) { document.querySelectorAll(sel).forEach(function (el) { el.textContent = v; }); }
+  T['age-year'] = function () {
+    var y = +document.querySelector('[data-age-year]').getAttribute('data-age-year'), now = new Date(), cy = now.getFullYear();
+    setAll('.yr-now', cy); setAll('.age-a', cy - y); setAll('.age-b', cy - y - 1);
+    function run() {
+      var m = +$('ya-m').value, d = +$('ya-d').value, last = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+      if (d > last) { $('ya-out').textContent = MONTHS_SHORT[m] + ' ' + y + ' has only ' + last + ' days.'; return; }
+      var a = new Date(Date.UTC(y, m, d)), b = new Date(Date.UTC(cy, now.getMonth(), now.getDate()));
+      var r = ymd(a, b);
+      $('ya-out').textContent = 'You are ' + plural(r.y, 'year') + ', ' + plural(r.m, 'month') + ' and ' + plural(r.d, 'day') + ' old.';
+    }
+    $('ya-m').value = '0'; $('ya-d').value = '1';
+    on('ya-m', 'change', run); on('ya-d', 'change', run); run();
+  };
+  var MONTHS_SHORT = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  T['age-n'] = function () {
+    var n = +document.querySelector('[data-age-n]').getAttribute('data-age-n'), cy = new Date().getFullYear();
+    setAll('.yr-now', cy); setAll('.yb-a', cy - n); setAll('.yb-b', cy - n - 1);
+    function run() {
+      var had = document.querySelector('input[name="yn-had"]:checked').value === '1';
+      $('yn-out').textContent = 'You were born in ' + (had ? cy - n : cy - n - 1) + '.';
+    }
+    document.querySelectorAll('input[name="yn-had"]').forEach(function (r) { r.addEventListener('change', run); }); run();
   };
 
   if (T[tool]) T[tool]();

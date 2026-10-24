@@ -10,7 +10,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from tools_a import TOOLS_A
 from tools_b import TOOLS_B
 from tools_c import TOOLS_C
+from tools_d import TOOLS_D
 from articles import ARTICLES
+import age_pages
 
 # ------------------------------------------------------------------ CONFIG
 CONFIG = dict(
@@ -35,12 +37,13 @@ def slashify(text):
     return SLASH_RE.sub(lambda m: m.group(1) + m.group(2) + '/"', text)
 
 
-TOOLS = TOOLS_A + TOOLS_B + TOOLS_C
+TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D
 BY_SLUG = {t["slug"]: t for t in TOOLS}
 CATS = [("pdf", "PDF tools"), ("calc", "Calculators"), ("text", "Text tools"), ("image", "Image tools"),
         ("convert", "Converters"), ("generate", "Generators"), ("dev", "Developer tools")]
 CAT_NAME = dict(CATS)
 C = CONFIG
+PROG = age_pages.all_pages()
 e = html.escape
 
 LOGO = """<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg>"""
@@ -163,7 +166,11 @@ def build_home():
 <div><h3>No account, no limits</h3><p>Every tool is free to use as often as you like, with no sign-up, watermarks or daily caps.</p></div>
 <div><h3>Explained, not just answered</h3><p>Each tool page shows the formula or method behind the result, so you can check the numbers and learn how they work.</p></div>
 </div></section>
-<section class="wrap" style="padding:40px 16px 56px">
+<section class="wrap" style="padding:40px 16px 0">
+<h2 style="margin-top:0">Popular lookups</h2>
+<p class="lookups"><a href="/how-old-am-i">How old am I? (by birth year)</a><a href="/what-year-was-i-born">What year was I born? (by age)</a>{''.join(f'<a href="/how-old-am-i/born-in-{y}">Born in {y}</a>' for y in (1980, 1990, 2000, 2005, 2010))}</p>
+</section>
+<section class="wrap" style="padding:32px 16px 56px">
 <h2 style="margin-top:0">Latest guides</h2>
 <ul>{''.join(f'<li><a href="/blog/{a["slug"]}">{e(a["title"])}</a></li>' for a in ARTICLES)}</ul>
 </section>
@@ -212,6 +219,35 @@ def build_tool(t):
 {extra_js}<script src="/assets/tools.js"></script>
 </body></html>"""
     write(path, page)
+
+
+def build_prog(p):
+    """Render a programmatic lookup page (age by year, birth year by age, ...)."""
+    crumbs = " › ".join(f'<a href="{c[1]}">{e(c[0])}</a>' if i < len(p["crumbs"]) - 1 else f"<span>{e(c[0])}</span>"
+                        for i, c in enumerate(p["crumbs"]))
+    rel = "".join(f'<li><a href="{u}">{e(n)}</a></li>' for n, u in p.get("related", []))
+    faq = re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", p["body"], re.S)
+    ld = [crumbs_ld(p["crumbs"])]
+    if faq:
+        strip = lambda s: re.sub(r"<[^>]+>", "", s)
+        ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in faq]})
+    tool_attr = f' data-tool="{p["tool"]}"' if p.get("tool") else ""
+    page = head(p["title"], p["desc"], p["path"], ld) + f"""
+<body{tool_attr}>
+{header()}
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb">{crumbs}</nav>
+<div class="tool-head"><h1>{e(p['h1'])}</h1><p>{e(p['lede'])}</p></div>
+<div class="layout">
+<div>{p['body']}</div>
+<aside class="side" aria-label="Related"><h2>Related</h2><ul>{rel}</ul></aside>
+</div>
+</main>
+{footer()}
+<script src="/assets/tools.js"></script>
+</body></html>"""
+    write(p["path"], page)
 
 
 def plain_page(path, title, desc, h1, body, active=""):
@@ -350,8 +386,8 @@ def build_misc():
 <p>The page you were looking for has moved or never existed. Find what you need on the <a href="/">tools home page</a>.</p></div></main>{footer()}</body></html>"""
     with open(os.path.join(DIST, "404.html"), "w", encoding="utf-8") as f:
         f.write(slashify(page))
-    urls =["/"] + ["/" + t["slug"] for t in TOOLS] + ["/blog"] + ["/blog/" + a["slug"] for a in ARTICLES] + \
-           ["/about", "/contact", "/privacy-policy", "/terms", "/disclaimer"]
+    urls = ["/"] + ["/" + t["slug"] for t in TOOLS] + ["/blog"] + ["/blog/" + a["slug"] for a in ARTICLES] + \
+           [p["path"] for p in PROG] + ["/about", "/contact", "/privacy-policy", "/terms", "/disclaimer"]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
         f"  <url><loc>{C['SITE_URL']}{u if u == '/' else u + '/'}</loc><lastmod>{C['UPDATED']}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     open(os.path.join(DIST, "sitemap.xml"), "w").write(sm)
@@ -374,6 +410,8 @@ def main():
         build_tool(t)
     build_static_pages()
     build_blog()
+    for p in PROG:
+        build_prog(p)
     urls = build_misc()
     print(f"Built {len(urls)} pages into {DIST}")
 

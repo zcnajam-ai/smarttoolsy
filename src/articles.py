@@ -444,4 +444,101 @@ body="""
 <h2>Doing it on a computer</h2>
 <p>The same steps work on Windows and Mac: transfer the photos from your phone (by cable, AirDrop, or a cloud drive), then use <a href="/jpg-to-pdf">JPG to PDF</a> in your browser. A larger screen makes it easier to spot blurry pages before you submit.</p>
 """),
+dict(
+slug="how-to-combine-pdf-files-on-mac", date="2026-10-24",
+title="How to Combine PDF Files on a Mac (3 Free Ways)",
+desc="Merge PDFs on macOS with Finder Quick Actions, Preview or a browser tool. Step-by-step instructions, page-order tips and fixes for common problems.",
+tools=["merge-pdf", "delete-pdf-pages", "add-pages-to-pdf"],
+body="""
+<p>Macs come with everything you need to combine PDF files, no paid software required. There are three good ways to do it, and which one is best depends on whether you want speed, control over individual pages, or a method that works the same on any computer.</p>
+
+<h2>Method 1: Finder Quick Actions (fastest)</h2>
+<p>Since macOS Mojave, Finder can turn several files into one PDF in two clicks:</p>
+<ol>
+<li>Put the PDFs in the same Finder window.</li>
+<li>Select them: click the first, then hold Command and click the others.</li>
+<li>Control-click (or right-click) one of the selected files and choose <strong>Quick Actions → Create PDF</strong>.</li>
+</ol>
+<p>A new PDF appears in the same folder, usually named after the first file. Finder combines the files in the order they are listed in the window, so the easiest way to control the order is to rename them with numbers first, such as <code>1-cover.pdf</code>, <code>2-letter.pdf</code>, <code>3-references.pdf</code>, and sort by name. Quick Actions also accepts images, so you can mix photos and PDFs in one go.</p>
+
+<h2>Method 2: Preview (best for choosing pages)</h2>
+<p>Preview, the Mac’s built-in PDF viewer, lets you see every page as you assemble the document:</p>
+<ol>
+<li>Open the first PDF in Preview.</li>
+<li>Choose <strong>View → Thumbnails</strong> so page thumbnails show in the sidebar.</li>
+<li>Drag another PDF from Finder into the sidebar. Drop it between the thumbnails where you want its pages to go. A line shows where they will land.</li>
+<li>Repeat for any other files, and drag individual thumbnails up or down to reorder pages.</li>
+<li>Choose <strong>File → Export as PDF</strong> and save under a new name.</li>
+</ol>
+<p>You can also add a whole file with <strong>Edit → Insert → Page from File</strong>. To remove a page, select its thumbnail and press Delete. Exporting to a new name keeps your original files unchanged, which is safer than saving over them.</p>
+<p>One common snag: if you drag a file onto a thumbnail rather than between thumbnails, Preview may annotate the page instead of inserting new pages. If that happens, press Command-Z and drop the file in the gap between two pages.</p>
+
+<h2>Method 3: A browser tool (works on any Mac, iPad or PC)</h2>
+<p>If you prefer a simple list where you can reorder whole files with buttons, use <a href="/merge-pdf">Merge PDF</a> in Safari or Chrome. Choose the files, arrange them, click Merge and download. The PDFs are combined inside your browser and are not uploaded, so it is fine for personal documents. This method is also handy on a shared or work Mac where you would rather not change files in Finder.</p>
+
+<h2>Which method should you use?</h2>
+<ul>
+<li><strong>Quick Actions</strong> when you just need everything in one file, fast.</li>
+<li><strong>Preview</strong> when you need to drop specific pages, rearrange individual pages or check each page.</li>
+<li><strong>A browser tool</strong> when you want the same steps on every device, or Finder and Preview are giving you trouble.</li>
+</ul>
+
+<h2>Removing or adding pages after combining</h2>
+<p>Combined files often include pages you don’t need, such as blank backs of scanned sheets or terms-and-conditions pages from a statement. In Preview, select those thumbnails and press Delete. In a browser, <a href="/delete-pdf-pages">Delete PDF Pages</a> lets you click the pages to remove. To slot an extra page into the middle of a document, use <a href="/add-pages-to-pdf">Add Pages to PDF</a> and choose the position.</p>
+
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>“Create PDF” is missing from Quick Actions.</strong> Open System Settings, search for “Extensions”, and make sure Create PDF is enabled under Finder extensions.</li>
+<li><strong>The file is password-protected.</strong> Open it in Preview with the password, then use File → Export as PDF to save an unlocked copy you are allowed to edit.</li>
+<li><strong>The combined file is too large to email.</strong> Large scanned pages are usually the cause. Rescanning at a lower resolution, or rebuilding from compressed photos, makes the biggest difference.</li>
+<li><strong>Pages are in the wrong order.</strong> In Preview, drag thumbnails into place before exporting; with Quick Actions, rename the files with numbers and try again.</li>
+</ul>
+"""),
+dict(
+slug="how-to-merge-two-pdfs-into-one", date="2026-10-24",
+title="How to Merge 2 PDFs Into 1 (Free, in Under a Minute)",
+desc="The quickest free ways to combine two PDF files into one on Windows, Mac, iPhone and Android, plus how to put pages in the right order.",
+tools=["merge-pdf", "add-pages-to-pdf"],
+body="""
+<p>Combining two PDFs is one of the most common document chores: a résumé and a cover letter, a form and its signature page, two halves of a scan, or a statement and a receipt. It should take less than a minute. Here is the fastest way on each device, and how to make sure the pages end up in the right order.</p>
+
+<h2>The one-minute method (any device)</h2>
+<ol>
+<li>Open <a href="/merge-pdf">Merge PDF</a> in your browser.</li>
+<li>Tap “Choose PDF files” and select both PDFs.</li>
+<li>Check the order. The file at the top becomes the first pages. Use the arrow to swap them if needed.</li>
+<li>Tap “Merge PDFs”, then “Download merged PDF”.</li>
+</ol>
+<p>That’s it. The two files are joined inside your browser, so nothing is uploaded, and every page keeps its original quality.</p>
+
+<h2>On Windows</h2>
+<p>Windows doesn’t include a feature that joins existing PDFs. The free Adobe Acrobat Reader app can view and sign PDFs, but combining files is part of Adobe’s paid Acrobat plans. A browser tool is the simplest free option: open <a href="/merge-pdf">Merge PDF</a> in Edge or Chrome, select both files from File Explorer, and merge.</p>
+
+<h2>On a Mac</h2>
+<p>Select both files in Finder, Control-click and choose <strong>Quick Actions → Create PDF</strong>. Or open the first file in Preview, show thumbnails (View → Thumbnails), drag the second file into the sidebar below the last page, and choose File → Export as PDF. Our guide to <a href="/blog/how-to-combine-pdf-files-on-mac">combining PDFs on a Mac</a> covers both methods in detail.</p>
+
+<h2>On iPhone or iPad</h2>
+<p>Save both PDFs to the Files app, tap the “…” button and choose Select, tap the two files, then tap “…” at the bottom and choose <strong>Create PDF</strong>. The new file appears in the same folder.</p>
+
+<h2>On Android</h2>
+<p>Most Android phones don’t include a built-in way to merge PDFs. Open <a href="/merge-pdf">Merge PDF</a> in Chrome, choose the two files from Downloads or Google Drive, and merge them there.</p>
+
+<h2>Getting the order right</h2>
+<p>Most mistakes come from the order of the pages, not the merge itself. A few habits help:</p>
+<ul>
+<li><strong>Decide what the reader should see first.</strong> For applications, that is usually the cover letter or the form, followed by supporting documents.</li>
+<li><strong>Check the first and last page after merging.</strong> Scroll through the new PDF before you send it.</li>
+<li><strong>Need the second file in the middle of the first?</strong> Merging only joins files end to end. To insert pages after, say, page 3, use <a href="/add-pages-to-pdf">Add Pages to PDF</a> and choose “After page 3”.</li>
+</ul>
+
+<h2>Merging two pages onto one sheet</h2>
+<p>Some people searching for this actually want two pages printed side by side on one sheet of paper. That is a printing setting rather than a merge: in your PDF viewer’s Print dialog, look for “Pages per sheet” or “Multiple” and choose 2. If you need it as a file, print to PDF with that setting.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Will the merged file be bigger?</strong> It will be about the size of both files added together, since pages are copied as they are.</li>
+<li><strong>Can I merge a PDF with a photo?</strong> Yes. Convert the photo with <a href="/jpg-to-pdf">JPG to PDF</a> first, or use Add Pages to PDF, which accepts images directly.</li>
+<li><strong>What if one file is password-protected?</strong> Open it with the password and save an unlocked copy first. Merging tools cannot read locked files.</li>
+</ul>
+"""),
 ]

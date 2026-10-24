@@ -232,6 +232,7 @@ ui="""
 """,
 content="""
 <p>The age calculator works out exactly how old someone is in years, months and days on any date. It also shows the total number of months, weeks and days lived and counts down to the next birthday. Leave the second date as today, or change it to find someone’s age on a past or future date, such as an exam cut-off or a visa application.</p>
+<p>Only know the year? See the <a href="/how-old-am-i">age by birth year chart</a>, or work backwards with <a href="/what-year-was-i-born">what year was I born</a>.</p>
 <h2>How to use it</h2>
 <ol>
 <li>Enter the date of birth.</li>

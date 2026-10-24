@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amortization Schedule Calculator – Monthly Loan Payment Table</title>
+<meta name="description" content="See a full month-by-month amortization schedule for any loan, with payment dates, principal, interest and balance. Add extra payments and download as CSV.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/amortization-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Amortization Schedule Calculator – Monthly Loan Payment Table">
+<meta property="og:description" content="See a full month-by-month amortization schedule for any loan, with payment dates, principal, interest and balance. Add extra payments and download as CSV.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/amortization-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 3, "name": "Amortization Schedule Calculator", "item": "https://www.smarttoolsy.tech/amortization-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Amortization Schedule Calculator", "url": "https://www.smarttoolsy.tech/amortization-calculator", "description": "See a full month-by-month amortization schedule for any loan, with payment dates, principal, interest and balance. Add extra payments and download as CSV.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="amortization-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Calculators › <span>Amortization Schedule Calculator</span></nav>
+<div class="tool-head"><h1>Amortization Schedule Calculator</h1><p>Month-by-month loan schedule with extra payments and CSV export.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Amortization Schedule Calculator">
+<div class="row">
+ <div class="field"><label for="am-p">Loan amount ($)</label><input id="am-p" type="number" min="0" step="100" value="250000"></div>
+ <div class="field"><label for="am-r">Interest rate (%)</label><input id="am-r" type="number" min="0" step="0.01" value="6.5"></div>
+ <div class="field"><label for="am-y">Term (years)</label><input id="am-y" type="number" min="0.5" step="0.5" value="30"></div>
+ <div class="field"><label for="am-start">First payment</label><input id="am-start" type="month"></div>
+ <div class="field"><label for="am-extra">Extra principal ($/month)</label><input id="am-extra" type="number" min="0" step="25" value="0"></div>
+</div>
+<div class="result" id="am-out" aria-live="polite"></div>
+<div class="btns"><button class="btn ghost" id="am-csv" type="button">Download schedule (CSV)</button></div>
+<div id="am-table"></div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>An amortization schedule shows exactly how a loan is paid off, one payment at a time. For every month it lists the payment date, how much goes to interest, how much reduces the balance, and what you still owe. Use this calculator for mortgages, car loans, personal loans and student loans with a fixed rate, and see the total cost of the loan before you sign.</p>
+
+<h2>How to use the amortization calculator</h2>
+<ol>
+<li>Enter the loan amount, the annual interest rate and the term in years.</li>
+<li>Choose the month of your first payment so the schedule shows real dates.</li>
+<li>Optionally add an extra monthly principal payment to see how much sooner you’d finish.</li>
+<li>Open any year to see its monthly rows, or download the full schedule as a CSV file for Excel or Google Sheets.</li>
+</ol>
+
+<h2>What “amortization” means</h2>
+<p>An amortizing loan is repaid in equal monthly payments that cover both interest and principal. Each month, interest is charged on the balance you still owe. Whatever is left of the payment after interest reduces that balance. Because the balance is largest at the start, early payments are mostly interest; as the balance falls, more of each payment goes to principal. On a 30-year mortgage at 6.5%, it takes many years before principal makes up the larger share of the payment.</p>
+
+<h2>The formula</h2>
+<div class="formula">Payment = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)<br>Interest this month = balance × r<br>Principal this month = payment − interest</div>
+<p><strong>P</strong> is the loan amount, <strong>r</strong> the monthly rate (annual rate ÷ 12 ÷ 100) and <strong>n</strong> the number of payments. A $250,000 loan at 6.5% over 30 years has a monthly payment of about $1,580.17.</p>
+
+<h2>Total loan cost</h2>
+<p>The total cost of a loan is every payment added together: the amount you borrowed plus all the interest. The calculator shows this under “Total of payments”. For the example above, you would repay roughly $568,860, of which about $318,860 is interest. Comparing total cost, not just the monthly payment, is the clearest way to compare loan offers with different rates and terms.</p>
+
+<h2>How extra payments change the schedule</h2>
+<p>Extra money paid toward principal reduces the balance immediately, so every later month charges less interest. Even modest amounts matter: adding $200 a month to the example loan pays it off years early and saves tens of thousands of dollars in interest. Check with your lender that extra payments are applied to principal and that there is no prepayment penalty.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>Does the schedule include taxes and insurance?</summary><p>No. It covers principal and interest only. For a house payment including property tax, insurance and PMI, use the <a href="/mortgage-calculator/">mortgage calculator</a>.</p></details>
+<details><summary>Why is my lender’s schedule slightly different?</summary><p>Lenders round each payment to the cent and some calculate interest by days in the month. Differences are usually a few cents per month.</p></details>
+<details><summary>Can I use it for car loans?</summary><p>Yes. Enter the amount financed, the APR and the term, for example 5 years for a 60-month loan.</p></details>
+</div>
+<p><em>Results are estimates for planning and are not financial advice.</em></p>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/age-calculator/">Age Calculator</a></li><li><a href="/bmi-calculator/">BMI Calculator</a></li><li><a href="/percentage-calculator/">Percentage Calculator</a></li><li><a href="/loan-calculator/">Loan &amp; EMI Calculator</a></li><li><a href="/discount-calculator/">Discount Calculator</a></li><li><a href="/date-difference-calculator/">Date Difference Calculator</a></li><li><a href="/mortgage-calculator/">Mortgage Calculator</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>
