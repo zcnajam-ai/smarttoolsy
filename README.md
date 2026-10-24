@@ -59,3 +59,7 @@ After any change: `python3 src/build.py`, then commit and push (including `docs/
   (check Google autocomplete, "People also ask", and Search Console queries).
 - Write one guide per tool explaining a real problem it solves, and link the two together.
 - Share tools where people ask for them (Reddit answers, Quora, Pinterest pins for calculators).
+
+## Tool icons
+
+Every tool needs an icon. Add its slug to `TOOL_ICON` in `src/icons.py` and copy the matching SVG into `src/icons/` (the build stops with a message if one is missing). Icons are Material Design Icons by Pictogrammers; see `src/icons/LICENSE`. Each category has its own colour, set in `static/assets/app.css` under "Category colours".

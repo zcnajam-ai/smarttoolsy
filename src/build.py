@@ -14,6 +14,7 @@ from tools_d import TOOLS_D
 from tools_e import TOOLS_E
 from articles import ARTICLES
 import age_pages
+from icons import tool_svg, cat_svg, TOOL_ICON
 import time_pages
 
 # ------------------------------------------------------------------ CONFIG
@@ -40,6 +41,9 @@ def slashify(text):
 
 
 TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E
+_no_icon = [t["slug"] for t in TOOLS if t["slug"] not in TOOL_ICON]
+if _no_icon:
+    sys.exit("Add an icon in src/icons.py for: " + ", ".join(_no_icon))
 BY_SLUG = {t["slug"]: t for t in TOOLS}
 CATS = [("pdf", "PDF tools"), ("calc", "Calculators"), ("home", "Home & construction"), ("text", "Text tools"), ("image", "Image tools"),
         ("convert", "Converters"), ("generate", "Generators"), ("dev", "Developer tools")]
@@ -132,7 +136,7 @@ def crumbs_ld(items):
 # ------------------------------------------------------------------ pages
 def build_home():
     chips = '<button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>' + "".join(
-        f'<button class="chip" type="button" data-cat="{k}" aria-pressed="false">{v}</button>' for k, v in CATS)
+        f'<button class="chip" type="button" data-cat="{k}" aria-pressed="false"><span class="chip-ico" data-c="{k}">{cat_svg(k)}</span>{v}</button>' for k, v in CATS)
     groups = ""
     for k, label in CATS:
         items = [t for t in TOOLS if t["cat"] == k]
@@ -140,10 +144,10 @@ def build_home():
             continue
         lis = "".join(
             f'<li data-cat="{t["cat"]}" data-search="{e((t["name"] + " " + t["short"] + " " + t["slug"].replace("-", " ") + " " + label).lower())}">'
-            f'<a class="tool-link" href="/{t["slug"]}"><span class="tool-ico" aria-hidden="true">{e(t["ico"])}</span>'
+            f'<a class="tool-link" href="/{t["slug"]}"><span class="tool-ico" data-c="{t["cat"]}">{tool_svg(t["slug"])}</span>'
             f'<span><span class="tool-name">{e(t["name"])}</span><span class="tool-desc">{e(t["short"])}</span></span></a></li>'
             for t in items)
-        groups += f'<section class="tool-group" aria-labelledby="g-{k}"><h2 id="g-{k}">{label}</h2><ul class="tool-list">{lis}</ul></section>'
+        groups += f'<section class="tool-group" aria-labelledby="g-{k}"><h2 id="g-{k}"><span class="cat-ico" data-c="{k}">{cat_svg(k)}</span>{label} <span class="cat-count">{len(items)}</span></h2><ul class="tool-list">{lis}</ul></section>'
     title = f"{C['SITE_NAME']} – Free Online Tools: Calculators, Converters & Generators"
     desc = f"{len(TOOLS)} free online tools that run in your browser: word counter, QR code generator, image compressor, loan and BMI calculators, unit converter and more. No sign-up."
     page = head(title, desc, "/", [org_ld()]) + f"""
@@ -194,7 +198,7 @@ def build_tool(t):
           {"@context": "https://schema.org", "@type": "WebApplication", "name": t["name"], "url": C["SITE_URL"] + path,
            "description": t["desc"], "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)",
            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}]
-    rel = "".join(f'<li><a href="/{x["slug"]}">{e(x["name"])}</a></li>' for x in related_for(t))
+    rel = "".join(f'<li><a class="side-tool" href="/{x["slug"]}"><span class="tool-ico tool-ico-sm" data-c="{x["cat"]}">{tool_svg(x["slug"])}</span>{e(x["name"])}</a></li>' for x in related_for(t))
     guides = [a for a in ARTICLES if t["slug"] in a["tools"]]
     guide_html = ""
     if guides:
@@ -207,7 +211,7 @@ def build_tool(t):
 {header()}
 <main id="main" class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › {CAT_NAME[t['cat']]} › <span>{e(t['name'])}</span></nav>
-<div class="tool-head"><h1>{e(t['name'])}</h1><p>{e(t['short'])}</p></div>
+<div class="tool-head tool-head-ico"><span class="tool-ico tool-ico-lg" data-c="{t['cat']}">{tool_svg(t['slug'])}</span><div><h1>{e(t['name'])}</h1><p>{e(t['short'])}</p></div></div>
 <div class="layout">
 <div>
 <section class="panel" aria-label="{e(t['name'])}">{t['ui']}</section>
@@ -358,7 +362,7 @@ def build_blog():
                f'<p>Short, practical guides that go deeper into the jobs our tools help with.</p><ul style="list-style:none;padding:0">{items}</ul>', "blog")
     for a in ARTICLES:
         path = "/blog/" + a["slug"]
-        tools = "".join(f'<li><a href="/{s}">{e(BY_SLUG[s]["name"])}</a></li>' for s in a["tools"])
+        tools = "".join(f'<li><a class="side-tool" href="/{s}"><span class="tool-ico tool-ico-sm" data-c="{BY_SLUG[s]["cat"]}">{tool_svg(s)}</span>{e(BY_SLUG[s]["name"])}</a></li>' for s in a["tools"])
         ld = [crumbs_ld([("Home", "/"), ("Guides", "/blog"), (a["title"], path)]),
               {"@context": "https://schema.org", "@type": "Article", "headline": a["title"], "description": a["desc"],
                "datePublished": a["date"], "dateModified": a["date"], "author": {"@type": "Organization", "name": C["SITE_NAME"]},

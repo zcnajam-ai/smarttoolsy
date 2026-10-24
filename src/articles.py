@@ -541,4 +541,226 @@ body="""
 <li><strong>What if one file is password-protected?</strong> Open it with the password and save an unlocked copy first. Merging tools cannot read locked files.</li>
 </ul>
 """),
+dict(
+slug="how-to-add-a-page-to-a-pdf", date="2026-10-24",
+title="How to Add a Page to a PDF Document (iPhone, Mac, Windows, Android)",
+desc="Step-by-step ways to add a page to a PDF on any device: insert pages from another PDF, add a photo as a page, or slip in a blank page, all for free.",
+tools=["add-pages-to-pdf", "merge-pdf", "delete-pdf-pages"],
+body="""
+<p>You have a PDF that is almost right. A signed page needs to go back into a contract, a scan is missing page 4, or an application wants a photo of your ID attached after the form. You don’t need to rebuild the document. You only need to insert the page where it belongs.</p>
+<p>Here is how to add a page to a PDF on every common device, with free methods only.</p>
+
+<h2>The quick way on any device</h2>
+<ol>
+<li>Open <a href="/add-pages-to-pdf">Add Pages to PDF</a> in your browser.</li>
+<li>Choose the PDF you want to add to.</li>
+<li>Choose the page or pages to insert. These can be other PDFs, or JPG, PNG and WebP photos.</li>
+<li>Pick where they go: at the beginning, at the end, or after a page number you choose.</li>
+<li>Tap “Add pages” and download the new PDF.</li>
+</ol>
+<p>The work happens inside your browser, so the document is never uploaded to a server. That matters when the PDF is a contract, a tax form or anything with personal details on it. Your original file stays untouched; you get a new copy with the extra pages.</p>
+
+<h2>On a Mac (Preview)</h2>
+<p>Preview, the PDF viewer built into every Mac, can insert pages without any extra software.</p>
+<ol>
+<li>Open the PDF in Preview and choose <strong>View → Thumbnails</strong> to show the page sidebar.</li>
+<li>Click the thumbnail of the page you want the new page to follow.</li>
+<li>Choose <strong>Edit → Insert → Page from File</strong> to add pages from another PDF, or <strong>Edit → Insert → Blank Page</strong> for an empty page.</li>
+<li>Choose <strong>File → Save</strong> (or File → Export as PDF to keep the original as it was).</li>
+</ol>
+<p>You can also drag another PDF straight from Finder into the thumbnail sidebar and drop it between two pages. If you need to join several whole files instead, see our guide to <a href="/blog/how-to-combine-pdf-files-on-mac">combining PDF files on a Mac</a>.</p>
+
+<h2>On iPhone or iPad (Files app)</h2>
+<ol>
+<li>Save the PDF to the Files app and open it.</li>
+<li>Show the page thumbnails. On iPhone, turn the phone sideways or swipe in from the left edge; on iPad they usually appear on the left.</li>
+<li>Touch and hold the thumbnail of the page the new one should follow.</li>
+<li>Choose <strong>Insert Blank Page</strong>, <strong>Insert from File</strong> (to add pages from another PDF), or <strong>Scan Pages</strong> to photograph a paper page with the camera.</li>
+<li>Tap Done. The change is saved to the file.</li>
+</ol>
+<p>The exact menu names can vary slightly between iOS versions. If you don’t see them, the browser method above works in Safari on any iPhone.</p>
+
+<h2>On Windows</h2>
+<p>Windows can open PDFs in Microsoft Edge, but Edge can’t insert pages into one. The free Adobe Acrobat Reader app can’t either; organizing and inserting pages is part of Adobe’s paid Acrobat plans. The simplest free route is a browser tool: open <a href="/add-pages-to-pdf">Add Pages to PDF</a> in Edge or Chrome, pick your files from File Explorer, and choose where the pages go.</p>
+
+<h2>On Android</h2>
+<p>Most Android phones can view PDFs but have no built-in way to edit their pages. Open <a href="/add-pages-to-pdf">Add Pages to PDF</a> in Chrome, choose your PDF from Downloads or Google Drive, then add pages from another file or straight from your photo gallery.</p>
+
+<h2>Adding a photo or scan as a page</h2>
+<p>A common case is attaching a photo: an ID card, a receipt, or a signed page you photographed with your phone. Add Pages to PDF accepts images directly. Each picture becomes one page, sized to match the first page of your document, so a photo added to a US Letter PDF becomes a US Letter page with the image scaled to fit. Phone photos keep the rotation the camera recorded, so they won’t come out sideways.</p>
+<p>For the clearest result, photograph the page flat, in good light, from straight above. If you have several photos to turn into a document of their own, <a href="/jpg-to-pdf">JPG to PDF</a> is quicker.</p>
+
+<h2>Adding a page vs merging PDFs</h2>
+<p>Both tools combine pages, but they do different jobs:</p>
+<ul>
+<li><strong>Add pages</strong> when the new page has to go in a specific spot inside an existing document, such as after page 3.</li>
+<li><strong><a href="/merge-pdf">Merge PDFs</a></strong> when you want to join whole files end to end, such as a cover letter followed by a résumé.</li>
+</ul>
+<p>And if the problem is an extra page rather than a missing one, <a href="/delete-pdf-pages">Delete PDF Pages</a> lets you click the pages to remove.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Will adding a page reduce the quality of the rest?</strong> No. Existing pages are copied as they are, so text stays sharp and searchable.</li>
+<li><strong>Can I add a page to a password-protected PDF?</strong> Not until it’s unlocked. Open it with the password, save an unprotected copy, and add pages to that.</li>
+<li><strong>Can I add a page to a PDF that has form fields?</strong> Yes, but if you plan to fill in the form, fill it in first and save, then add pages to the completed copy.</li>
+<li><strong>How do I add page numbers after inserting pages?</strong> That’s a separate step. Many PDF editors have an “add page numbers” option; if your document came from Word or Google Docs, it’s often easier to number it there and export again.</li>
+</ul>
+"""),
+dict(
+slug="how-much-stone-do-i-need", date="2026-10-24",
+title="How Much Stone Do I Need for a Driveway, Patio or Path?",
+desc="Worked examples for how much gravel or crushed stone to order for driveways, patio bases, garden paths and French drains, plus how gravel is priced by the ton.",
+tools=["gravel-calculator", "cubic-yard-calculator", "concrete-calculator"],
+body="""
+<p>Order too little stone and the delivery truck has to come back, often with a second delivery fee. Order too much and you’re left with a pile in the yard. The good news is that working out the right amount takes three measurements and one formula. Below are real examples for the most common projects, so you can see the numbers before you call a supplier.</p>
+
+<h2>The formula</h2>
+<div class="formula">Cubic yards = length (ft) × width (ft) × depth (inches ÷ 12) ÷ 27<br>Tons = cubic yards × tons per cubic yard</div>
+<p>Depth is the part people get wrong. It has to be in feet before you multiply, so 4 inches is 0.333 ft, 3 inches is 0.25 ft and 2 inches is 0.167 ft. Dividing by 27 turns cubic feet into cubic yards, because a cubic yard is 3 × 3 × 3 feet.</p>
+<p>Most gravel and crushed stone weighs around 1.4 tons per cubic yard, though it ranges from roughly 1.3 to 1.7 depending on the stone size and how wet it is. Ask your supplier for the figure for the product you’re buying. Then add about 10% for compaction and uneven ground.</p>
+<p>Our <a href="/gravel-calculator">gravel calculator</a> does all of this for you, including the extra and the cost. The examples below show how it works.</p>
+
+<h2>Example 1: a gravel driveway</h2>
+<p>A single-car driveway 50 feet long and 10 feet wide, 4 inches deep:</p>
+<ul>
+<li>50 × 10 × 0.333 = 166.7 cubic feet</li>
+<li>166.7 ÷ 27 = 6.17 cubic yards</li>
+<li>6.17 × 1.4 = 8.6 tons</li>
+<li>With 10% extra: about <strong>9.5 tons</strong></li>
+</ul>
+<p>Four inches works for topping up an existing driveway. A brand-new driveway on bare soil usually needs more, built in layers: a coarse base stone first, then a finer top layer that packs down. On clay or soft ground, or where heavy vehicles park, a deeper base and landscape fabric underneath help prevent ruts.</p>
+
+<h2>Example 2: a base for a paver patio</h2>
+<p>A 12 × 12 ft patio with a 4-inch compacted base:</p>
+<ul>
+<li>12 × 12 × 0.333 = 48 cubic feet</li>
+<li>48 ÷ 27 = 1.78 cubic yards</li>
+<li>1.78 × 1.4 = 2.5 tons</li>
+<li>With 10% extra: about <strong>2.75 tons</strong></li>
+</ul>
+<p>Paver bases often go to 4 to 6 inches in colder climates, plus a thin layer of sand on top for setting the pavers. If you plan to pour a slab instead, use the <a href="/concrete-calculator">concrete calculator</a> for the concrete and this method for the stone underneath.</p>
+
+<h2>Example 3: a garden path</h2>
+<p>A path 30 feet long and 3 feet wide, 2 inches deep:</p>
+<ul>
+<li>30 × 3 × 0.167 = 15 cubic feet</li>
+<li>15 ÷ 27 = 0.56 cubic yards</li>
+<li>0.56 × 1.4 = 0.78 tons</li>
+<li>With 10% extra: just under <strong>1 ton</strong></li>
+</ul>
+<p>Small jobs like this are often cheaper in bags from a garden center, or as a half-yard scoop from a landscape yard if you have a truck or trailer.</p>
+
+<h2>Example 4: a French drain</h2>
+<p>A trench 40 feet long, 1 foot wide and 18 inches deep:</p>
+<ul>
+<li>40 × 1 × 1.5 = 60 cubic feet</li>
+<li>60 ÷ 27 = 2.2 cubic yards</li>
+<li>2.2 × 1.4 = 3.1 tons</li>
+</ul>
+<p>A 4-inch perforated pipe in that trench takes up only about 3.5 cubic feet, so it barely changes the order. Drains need clean, washed stone with no fine dust, so water can flow through the gaps.</p>
+
+<h2>How far does a ton go?</h2>
+<p>At 1.4 tons per cubic yard, one ton of gravel is about 19 cubic feet. Spread out, that covers:</p>
+<table>
+<thead><tr><th>Depth</th><th>Area one ton covers</th></tr></thead>
+<tbody>
+<tr><td>2 inches</td><td>about 115 sq ft</td></tr>
+<tr><td>3 inches</td><td>about 77 sq ft</td></tr>
+<tr><td>4 inches</td><td>about 58 sq ft</td></tr>
+<tr><td>6 inches</td><td>about 39 sq ft</td></tr>
+</tbody>
+</table>
+
+<h2>Which stone for which job</h2>
+<ul>
+<li><strong>Crusher run</strong> (also sold as road base or dense grade aggregate) mixes stone with fine dust. It packs down hard, which makes it a good base for driveways and patios. It drains slowly, so don’t use it for drainage.</li>
+<li><strong>Clean crushed stone</strong>, such as #57 stone at roughly ¾ to 1 inch, has no fines. Water runs through it, so it suits French drains, behind retaining walls and the top layer of many driveways.</li>
+<li><strong>Pea gravel</strong> is small and rounded. It’s comfortable underfoot for paths and play areas, but it rolls and shifts, so it’s a poor choice for driveways and slopes unless it’s held in by edging or grid panels.</li>
+<li><strong>River rock</strong> is larger and smooth, mostly used for decoration and around downspouts.</li>
+</ul>
+<p>Names vary between regions, so describe the job to the supplier and ask what they recommend.</p>
+
+<h2>How gravel is priced</h2>
+<p>Landscape yards and quarries sell stone by the ton, by the cubic yard, or both. Prices depend heavily on the type of stone and where you live, so there’s no single national price worth quoting. What to ask when you call:</p>
+<ul>
+<li>The price per ton or per yard for the exact product.</li>
+<li>The weight per cubic yard, so you can convert between the two.</li>
+<li>The delivery fee and any minimum order. Delivery often costs as much as the stone on small orders.</li>
+<li>How many tons the truck carries, so a large order doesn’t need two trips.</li>
+</ul>
+<p>Once you have a price, the math is simple. If a supplier charges, say, $45 a ton, the 9.5-ton driveway above comes to about $430 for the stone, plus delivery. Enter your own price in the <a href="/gravel-calculator">gravel calculator</a> to get the total.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Is it better to buy by the ton or by the yard?</strong> Neither is cheaper by itself. Convert one to the other using the weight per yard, then compare suppliers on the same basis.</li>
+<li><strong>Should I order extra?</strong> Yes, about 10%. Stone compacts as it’s spread and rolled, and few yards are perfectly level. Running short costs more than a small leftover pile.</li>
+<li><strong>How do I measure an irregular area?</strong> Break it into rectangles, work out each one, and add them together. For a round area, multiply the radius by itself and by 3.14 to get the square feet.</li>
+<li><strong>What about dirt, mulch or topsoil?</strong> Those are usually sold by the cubic yard. Use the <a href="/cubic-yard-calculator">cubic yard calculator</a> and skip the tons step.</li>
+</ul>
+"""),
+dict(
+slug="how-to-calculate-roofing-squares", date="2026-10-24",
+title="How to Calculate Roofing Squares and Shingle Bundles (With Examples)",
+desc="Learn what a roofing square is, how to measure your roof from the ground, how roof pitch changes the area, and how many bundles of shingles to buy.",
+tools=["roofing-calculator", "percentage-calculator"],
+body="""
+<p>Roofers don’t talk in square feet. They price jobs, order shingles and compare quotes in <strong>squares</strong>. Knowing how to work out the number of squares on your own roof helps you check a contractor’s quote, plan a DIY reroof or order the right amount of shingles for a shed. You can do it from the ground, without climbing a ladder.</p>
+
+<h2>What is a roofing square?</h2>
+<p>One roofing square is <strong>100 square feet</strong> of roof surface. A roof with 2,000 square feet of surface is a 20-square roof. Standard asphalt shingles are packed so that <strong>three bundles cover one square</strong>, although some heavier architectural shingles need four or more, so always check the wrapper.</p>
+
+<h2>Step 1: measure the footprint</h2>
+<p>Measure the length and width of the house, then add the overhang on each side, because the eaves are roofed too. An overhang of around 1 foot is common. You can measure along the walls with a tape, take the dimensions from the house plans, or measure the roof outline on an online satellite map.</p>
+<div class="formula">Footprint = (length + 2 × overhang) × (width + 2 × overhang)</div>
+<p>Example: a 40 × 30 ft house with a 1 ft overhang has a footprint of 42 × 32 = 1,344 square feet.</p>
+
+<h2>Step 2: find the roof pitch</h2>
+<p>Pitch is how many inches the roof rises for every 12 inches it runs horizontally. A 6/12 roof rises 6 inches per foot. The easiest way to measure it is from inside the attic: hold a level horizontally against the underside of a rafter, mark 12 inches along the level, and measure straight up from that mark to the rafter. That measurement in inches is the rise. Many US homes fall between 4/12 and 9/12.</p>
+
+<h2>Step 3: apply the pitch multiplier</h2>
+<p>A sloped roof has more surface than the ground it covers. The steeper it is, the bigger the difference. Multiply the footprint by the pitch multiplier:</p>
+<table>
+<thead><tr><th>Pitch</th><th>Multiplier</th><th>Pitch</th><th>Multiplier</th></tr></thead>
+<tbody>
+<tr><td>3/12</td><td>1.031</td><td>8/12</td><td>1.202</td></tr>
+<tr><td>4/12</td><td>1.054</td><td>9/12</td><td>1.250</td></tr>
+<tr><td>5/12</td><td>1.083</td><td>10/12</td><td>1.302</td></tr>
+<tr><td>6/12</td><td>1.118</td><td>12/12</td><td>1.414</td></tr>
+<tr><td>7/12</td><td>1.158</td><td></td><td></td></tr>
+</tbody>
+</table>
+<p>The multiplier comes from the Pythagorean theorem: √(1 + (rise ÷ 12)²). For our example, 1,344 × 1.118 = about 1,503 square feet of roof.</p>
+
+<h2>Step 4: convert to squares and add waste</h2>
+<p>Divide the roof area by 100: 1,503 ÷ 100 = 15.0 squares. Then add a waste allowance, because shingles are cut at edges, valleys and ridges:</p>
+<ul>
+<li><strong>About 10%</strong> for a simple gable roof (two sloped sides).</li>
+<li><strong>About 15%</strong> for a hip roof, where all four sides slope and more cutting is needed.</li>
+<li><strong>Up to 20%</strong> for complex roofs with dormers, valleys and several levels.</li>
+</ul>
+<p>Our gable example becomes 15.0 × 1.10 = 16.5 squares. Round up to <strong>17 squares</strong>.</p>
+
+<h2>Step 5: work out the bundles</h2>
+<p>At three bundles per square, 16.5 squares × 3 = 49.6, so buy <strong>50 bundles</strong>. Starter strips and ridge cap shingles are usually separate products, sold by the linear foot they cover, so measure the eaves, rakes and ridges and add those to the order.</p>
+<p>The <a href="/roofing-calculator">roofing calculator</a> runs all five steps at once: enter the footprint, overhang, pitch and waste, and it gives you the roof area, squares and bundles.</p>
+
+<h2>What else to measure</h2>
+<ul>
+<li><strong>Underlayment</strong> goes under the shingles and is sold in rolls labeled with the number of squares they cover. Divide your squares by that number.</li>
+<li><strong>Drip edge</strong> runs along the eaves and rakes and is sold in lengths, commonly 10 feet.</li>
+<li><strong>Ridge vents, flashing and nails</strong> depend on the roof design; a supplier can work these out from your squares and roof shape.</li>
+</ul>
+
+<h2>Using squares to check a quote</h2>
+<p>Contractors often quote a price per square, which makes quotes easy to compare once you know your own number. If two quotes list very different square counts for the same roof, ask how each one measured it; the difference usually comes from the pitch or the waste allowance. NerdWallet’s roof cost guide puts asphalt shingle roofs at roughly $4.25 to $12.25 per square foot installed, which is about $425 to $1,225 per square, with labor making up around 60% of the total. Local prices vary a lot, so treat that as a rough check rather than a target.</p>
+<p>To compare quotes as a percentage difference, the <a href="/percentage-calculator">percentage calculator</a> helps.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>How many squares is a 2,000 sq ft house?</strong> It depends on the pitch and overhang, not just the floor area. A single-story 2,000 sq ft home with a 6/12 roof and 1 ft overhangs usually has roughly 24 to 25 squares before waste. A two-story house with the same floor area has a much smaller footprint, and so fewer squares.</li>
+<li><strong>How much does one bundle of shingles cover?</strong> About 33.3 square feet for most standard shingles, which is why three make a square.</li>
+<li><strong>Do I measure each side of the roof separately?</strong> For simple gable and hip roofs, the footprint-and-pitch method gives the same answer with less work. Measure separately when sections have different pitches.</li>
+<li><strong>Is it safe to measure on the roof?</strong> Measuring from the ground or the attic avoids the risk. If you do go up, use proper fall protection, and never climb a wet or steep roof.</li>
+</ul>
+"""),
 ]
