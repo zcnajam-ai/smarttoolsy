@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roofing Calculator – Roof Area, Squares &amp; Shingle Bundles</title>
+<meta name="description" content="Estimate roof area from your home’s footprint and roof pitch, then get roofing squares and bundles of shingles with waste included. Free roof square footage calculator.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/roofing-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Roofing Calculator – Roof Area, Squares &amp; Shingle Bundles">
+<meta property="og:description" content="Estimate roof area from your home’s footprint and roof pitch, then get roofing squares and bundles of shingles with waste included. Free roof square footage calculator.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/roofing-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Home & construction", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 3, "name": "Roofing Calculator", "item": "https://www.smarttoolsy.tech/roofing-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Roofing Calculator", "url": "https://www.smarttoolsy.tech/roofing-calculator", "description": "Estimate roof area from your home’s footprint and roof pitch, then get roofing squares and bundles of shingles with waste included. Free roof square footage calculator.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="roofing-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Home & construction › <span>Roofing Calculator</span></nav>
+<div class="tool-head"><h1>Roofing Calculator</h1><p>Roof area, squares and shingle bundles from footprint and pitch.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Roofing Calculator"><div class="row">
+ <div class="field"><label for="rf-l">House length (ft)</label><input id="rf-l" type="number" min="0" step="any" value="50"></div>
+ <div class="field"><label for="rf-w">House width (ft)</label><input id="rf-w" type="number" min="0" step="any" value="30"></div>
+ <div class="field"><label for="rf-o">Overhang (inches)</label><input id="rf-o" type="number" min="0" step="1" value="12"></div>
+</div>
+<div class="row">
+ <div class="field"><label for="rf-p">Roof pitch (rise per 12 in)</label><select id="rf-p"><option value="0">0/12</option><option value="1">1/12</option><option value="2">2/12</option><option value="3">3/12</option><option value="4">4/12</option><option value="5">5/12</option><option value="6" selected>6/12</option><option value="7">7/12</option><option value="8">8/12</option><option value="9">9/12</option><option value="10">10/12</option><option value="11">11/12</option><option value="12">12/12</option><option value="13">13/12</option><option value="14">14/12</option><option value="15">15/12</option><option value="16">16/12</option><option value="17">17/12</option><option value="18">18/12</option></select></div>
+ <div class="field"><label for="rf-waste">Waste (%)</label><select id="rf-waste"><option value="10" selected>10% (gable roof)</option><option value="15">15% (hip roof)</option><option value="20">20% (complex roof)</option></select></div>
+ <div class="field"><label for="rf-b">Bundles per square</label><input id="rf-b" type="number" min="1" step="1" value="3"></div>
+</div>
+<div class="stats" aria-live="polite">
+ <div class="stat"><b id="rf-area">—</b><span>Roof area (sq ft)</span></div>
+ <div class="stat"><b id="rf-sq">—</b><span>Squares (with waste)</span></div>
+ <div class="stat"><b id="rf-bun">—</b><span>Bundles of shingles</span></div>
+ <div class="stat"><b id="rf-f">—</b><span>Pitch multiplier</span></div>
+</div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>The roofing calculator estimates the area of a roof and the materials to cover it, without climbing a ladder. Enter your home’s length and width (from plans, a tape measure or an online map), the eave overhang and the roof pitch. You get the roof surface area, the number of roofing squares and the bundles of shingles to buy, with a waste allowance included.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Enter the house’s outside length and width in feet.</li>
+<li>Add the overhang, the distance the roof extends past the walls. 12 inches is common.</li>
+<li>Choose the pitch: how many inches the roof rises for every 12 inches across. Many US homes fall between 4/12 and 9/12.</li>
+<li>Pick a waste allowance based on the roof shape.</li>
+</ol>
+<h2>How roof area is calculated</h2>
+<div class="formula">Footprint = (length + 2 × overhang) × (width + 2 × overhang)<br>Pitch multiplier = √(1 + (rise ÷ 12)²)<br>Roof area = footprint × pitch multiplier</div>
+<p>A sloped roof has more surface than the ground it covers. The pitch multiplier accounts for that: a 6/12 roof has a multiplier of about 1.118, so a 52 × 32 ft footprint (1,664 sq ft) has about 1,860 sq ft of roof. This works for simple gable and hip roofs; dormers, valleys and multiple levels add area, so measure those sections separately or use a higher waste figure.</p>
+<h2>Squares and bundles</h2>
+<p>Roofers measure in <strong>squares</strong>: one square is 100 square feet of roof. Most standard asphalt shingles come in bundles that cover about a third of a square, so 3 bundles per square is the usual figure. Check the product label, as some heavier architectural shingles use more bundles per square.</p>
+<h2>Why add waste?</h2>
+<p>Shingles are cut at edges, ridges, hips and valleys, and starter strips and ridge caps use extra material. Around 10% is typical for a simple gable roof and 15% or more for hip roofs and roofs with several valleys.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>How do I find my roof pitch?</summary><p>Hold a level horizontally against the roof or a rafter, measure 12 inches along it, then measure straight up to the roof surface. That vertical distance in inches is the rise, so 6 inches means a 6/12 pitch.</p></details>
+<details><summary>Does this include underlayment and nails?</summary><p>No. It estimates shingles. Underlayment is usually sold in rolls covering a stated number of squares, so use the squares figure to work it out.</p></details>
+<details><summary>Is this an accurate quote?</summary><p>It is an estimate for planning and budgeting. A roofer will measure the actual roof and include labor, tear-off and disposal.</p></details>
+</div>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/gravel-calculator/">Gravel Calculator</a></li><li><a href="/cubic-yard-calculator/">Cubic Yard Calculator</a></li><li><a href="/concrete-calculator/">Concrete Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li><li><a href="/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li><li><a href="/text-cleaner/">Text Cleaner</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

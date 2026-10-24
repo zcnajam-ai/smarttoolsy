@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gravel Calculator – How Much Gravel Do I Need? (Tons &amp; Yards)</title>
+<meta name="description" content="Work out how much gravel you need in cubic yards and tons for a driveway, path or patio, plus the estimated cost. Free gravel estimator.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/gravel-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Gravel Calculator – How Much Gravel Do I Need? (Tons &amp; Yards)">
+<meta property="og:description" content="Work out how much gravel you need in cubic yards and tons for a driveway, path or patio, plus the estimated cost. Free gravel estimator.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/gravel-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Home & construction", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 3, "name": "Gravel Calculator", "item": "https://www.smarttoolsy.tech/gravel-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Gravel Calculator", "url": "https://www.smarttoolsy.tech/gravel-calculator", "description": "Work out how much gravel you need in cubic yards and tons for a driveway, path or patio, plus the estimated cost. Free gravel estimator.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="gravel-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Home & construction › <span>Gravel Calculator</span></nav>
+<div class="tool-head"><h1>Gravel Calculator</h1><p>Cubic yards, tons and cost of gravel for driveways and paths.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Gravel Calculator"><div class="row"><div class="field"><label for="gv-l">Length</label><div class="split"><input id="gv-l" type="number" min="0" step="any" value="40"><select id="gv-l-u" aria-label="Length unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="gv-w">Width</label><div class="split"><input id="gv-w" type="number" min="0" step="any" value="12"><select id="gv-w-u" aria-label="Width unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="gv-d">Depth</label><div class="split"><input id="gv-d" type="number" min="0" step="any" value="4"><select id="gv-d-u" aria-label="Depth unit"><option value="ft">feet</option><option value="in" selected>inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div></div>
+<div class="row">
+ <div class="field"><label for="gv-den">Density (tons per cubic yard)</label><input id="gv-den" type="number" min="0.5" step="0.05" value="1.4"></div>
+ <div class="field"><label for="gv-extra">Extra for compaction & waste (%)</label><input id="gv-extra" type="number" min="0" step="1" value="10"></div>
+ <div class="field"><label for="gv-price">Price per ton ($, optional)</label><input id="gv-price" type="number" min="0" step="0.5" placeholder="e.g. 45"></div>
+</div>
+<div class="stats" aria-live="polite">
+ <div class="stat"><b id="gv-yd">—</b><span>Cubic yards</span></div>
+ <div class="stat"><b id="gv-t">—</b><span>Tons</span></div>
+ <div class="stat"><b id="gv-ft">—</b><span>Cubic feet</span></div>
+ <div class="stat"><b id="gv-cost">—</b><span>Estimated cost</span></div>
+</div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>The gravel calculator tells you how much gravel to order for a driveway, walkway, patio base or drainage area. Enter the length, width and depth of the area and you get the volume in cubic yards, the weight in tons, and an estimated cost if you know your supplier’s price per ton. Most landscape yards in the US sell gravel by the ton or by the cubic yard, so the calculator shows both.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Measure the length and width of the area. For an irregular shape, split it into rectangles and add the results.</li>
+<li>Enter the depth you want, usually in inches.</li>
+<li>Leave the density at 1.4 tons per cubic yard unless your supplier gives a different figure for the stone you’re buying.</li>
+<li>Keep about 10% extra to allow for compaction and uneven ground.</li>
+</ol>
+<h2>The formula</h2>
+<div class="formula">Cubic yards = length (ft) × width (ft) × depth (ft) ÷ 27<br>Tons = cubic yards × density (tons per cubic yard)</div>
+<p>Example: a 40 × 12 ft driveway 4 inches deep is 40 × 12 × 0.333 = 160 cubic feet, or 5.93 cubic yards. At 1.4 tons per cubic yard that’s about 8.3 tons, or roughly 9.1 tons with 10% extra.</p>
+<h2>How deep should gravel be?</h2>
+<p>Depth depends on the use. Paths and patio bases commonly use 2 to 3 inches. Driveways usually need more, often 4 to 6 inches in total, built up in layers with a coarse base stone covered by a finer top layer. On soft or clay soil, or for heavy vehicles, deeper bases and landscape fabric help prevent ruts. Local contractors can advise on what works in your climate.</p>
+<h2>Gravel weight varies</h2>
+<p>Different stones weigh different amounts. Many common gravels weigh roughly 1.4 to 1.7 tons per cubic yard, and wet or densely graded material sits at the heavier end. If you buy by the ton, ask the supplier for the weight per cubic yard of that exact product and enter it above.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>How many tons of gravel are in a cubic yard?</summary><p>Typically about 1.4 tons, but it ranges from roughly 1.3 to 1.7 tons depending on the stone size, type and moisture.</p></details>
+<details><summary>How much area does a ton of gravel cover?</summary><p>At 1.4 tons per cubic yard, one ton is about 19 cubic feet, enough for roughly 58 square feet at 4 inches deep or about 77 square feet at 3 inches.</p></details>
+<details><summary>Should I order extra?</summary><p>Yes. Gravel settles and compacts, and ground is rarely perfectly level. Ordering 5–15% extra avoids a second delivery fee.</p></details>
+</div>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/cubic-yard-calculator/">Cubic Yard Calculator</a></li><li><a href="/concrete-calculator/">Concrete Calculator</a></li><li><a href="/roofing-calculator/">Roofing Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li><li><a href="/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li><li><a href="/text-cleaner/">Text Cleaner</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

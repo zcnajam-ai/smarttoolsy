@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concrete Calculator – Cubic Yards &amp; Bags for Slabs and Footings</title>
+<meta name="description" content="Calculate how much concrete you need for a slab, footing or round column in cubic yards, plus the number of 40, 60 or 80 lb bags of premix.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/concrete-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Concrete Calculator – Cubic Yards &amp; Bags for Slabs and Footings">
+<meta property="og:description" content="Calculate how much concrete you need for a slab, footing or round column in cubic yards, plus the number of 40, 60 or 80 lb bags of premix.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/concrete-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Home & construction", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 3, "name": "Concrete Calculator", "item": "https://www.smarttoolsy.tech/concrete-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Concrete Calculator", "url": "https://www.smarttoolsy.tech/concrete-calculator", "description": "Calculate how much concrete you need for a slab, footing or round column in cubic yards, plus the number of 40, 60 or 80 lb bags of premix.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="concrete-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Home & construction › <span>Concrete Calculator</span></nav>
+<div class="tool-head"><h1>Concrete Calculator</h1><p>Cubic yards and 40/60/80 lb bags for slabs and columns.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Concrete Calculator"><div class="field"><span class="lbl">Shape</span>
+<label class="check" style="display:inline-flex;margin-right:16px"><input type="radio" name="cc-shape" value="slab" checked> Slab, footing or wall</label>
+<label class="check" style="display:inline-flex"><input type="radio" name="cc-shape" value="col"> Round column or post hole</label></div>
+<div class="row" id="cc-slab"><div class="field"><label for="cc-l">Length</label><div class="split"><input id="cc-l" type="number" min="0" step="any" value="10"><select id="cc-l-u" aria-label="Length unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="cc-w">Width</label><div class="split"><input id="cc-w" type="number" min="0" step="any" value="10"><select id="cc-w-u" aria-label="Width unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="cc-t">Thickness</label><div class="split"><input id="cc-t" type="number" min="0" step="any" value="4"><select id="cc-t-u" aria-label="Thickness unit"><option value="ft">feet</option><option value="in" selected>inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div></div>
+<div class="row" id="cc-col" hidden><div class="field"><label for="cc-dia">Diameter</label><div class="split"><input id="cc-dia" type="number" min="0" step="any" value="12"><select id="cc-dia-u" aria-label="Diameter unit"><option value="ft">feet</option><option value="in" selected>inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="cc-h">Depth / height</label><div class="split"><input id="cc-h" type="number" min="0" step="any" value="3"><select id="cc-h-u" aria-label="Depth / height unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div></div>
+<div class="row">
+ <div class="field"><label for="cc-q">Quantity</label><input id="cc-q" type="number" min="1" step="1" value="1"></div>
+ <div class="field"><label for="cc-waste">Extra for waste (%)</label><input id="cc-waste" type="number" min="0" step="1" value="10"></div>
+</div>
+<div class="stats" aria-live="polite">
+ <div class="stat"><b id="cc-yd">—</b><span>Cubic yards</span></div>
+ <div class="stat"><b id="cc-ft">—</b><span>Cubic feet</span></div>
+ <div class="stat"><b id="cc-80">—</b><span>80 lb bags</span></div>
+ <div class="stat"><b id="cc-60">—</b><span>60 lb bags</span></div>
+ <div class="stat"><b id="cc-40">—</b><span>40 lb bags</span></div>
+</div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>The concrete calculator estimates the volume of concrete for a slab, patio, footing, wall or round post hole, in cubic yards for ready-mix delivery and in bags for premixed concrete you mix yourself. A small allowance for waste is included because forms bulge, ground is uneven and some concrete is always left in the mixer.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Choose a slab (also use this for footings and walls) or a round column.</li>
+<li>Enter the dimensions. Thickness is usually given in inches.</li>
+<li>Enter how many identical pours you need, such as the number of fence post holes.</li>
+<li>Keep 5–10% extra, more if the ground is uneven.</li>
+</ol>
+<h2>The formulas</h2>
+<div class="formula">Slab: length × width × thickness (ft) ÷ 27 = cubic yards<br>Column: π × (diameter ÷ 2)² × height (ft) ÷ 27</div>
+<p>A 10 × 10 ft patio 4 inches thick is 10 × 10 × 0.333 = 33.3 cubic feet, or 1.23 cubic yards. With 10% extra, that’s about 1.36 cubic yards.</p>
+<h2>How many bags of concrete?</h2>
+<p>Premixed concrete bag yields are printed on the bag. Common figures for standard concrete mix are about 0.60 cubic feet for an 80 lb bag, 0.45 cubic feet for a 60 lb bag and 0.30 cubic feet for a 40 lb bag, which the calculator uses. Check your brand’s label, especially for fast-setting or high-strength mixes. For jobs larger than about one cubic yard, ready-mix delivery is usually easier than mixing dozens of bags by hand.</p>
+<h2>Typical thicknesses</h2>
+<ul>
+<li><strong>Walkways and patios:</strong> commonly 4 inches.</li>
+<li><strong>Driveways:</strong> often 4–6 inches, thicker for heavy vehicles.</li>
+<li><strong>Footings and post holes:</strong> follow local building code and the post manufacturer’s instructions; frost depth varies widely across the US.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>How many 80 lb bags make a cubic yard?</summary><p>About 45, since a cubic yard is 27 cubic feet and each 80 lb bag yields about 0.6 cubic feet.</p></details>
+<details><summary>How many 60 lb bags make a cubic yard?</summary><p>About 60 bags, at roughly 0.45 cubic feet per bag.</p></details>
+<details><summary>Does this include rebar or gravel base?</summary><p>No. It covers concrete only. Use the <a href="/gravel-calculator/">gravel calculator</a> for a compacted stone base.</p></details>
+</div>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/gravel-calculator/">Gravel Calculator</a></li><li><a href="/cubic-yard-calculator/">Cubic Yard Calculator</a></li><li><a href="/roofing-calculator/">Roofing Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li><li><a href="/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li><li><a href="/text-cleaner/">Text Cleaner</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cubic Yard Calculator – Yards of Dirt, Mulch, Soil or Concrete</title>
+<meta name="description" content="Calculate cubic yards for dirt, topsoil, mulch, sand or concrete from length, width and depth in feet, inches, yards or meters. Includes bags of mulch.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/cubic-yard-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="Cubic Yard Calculator – Yards of Dirt, Mulch, Soil or Concrete">
+<meta property="og:description" content="Calculate cubic yards for dirt, topsoil, mulch, sand or concrete from length, width and depth in feet, inches, yards or meters. Includes bags of mulch.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/cubic-yard-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Home & construction", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 3, "name": "Cubic Yard Calculator", "item": "https://www.smarttoolsy.tech/cubic-yard-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Cubic Yard Calculator", "url": "https://www.smarttoolsy.tech/cubic-yard-calculator", "description": "Calculate cubic yards for dirt, topsoil, mulch, sand or concrete from length, width and depth in feet, inches, yards or meters. Includes bags of mulch.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+</head>
+<body data-tool="cubic-yard-calculator">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Home & construction › <span>Cubic Yard Calculator</span></nav>
+<div class="tool-head"><h1>Cubic Yard Calculator</h1><p>Cubic yards for dirt, mulch, soil and sand in any units.</p></div>
+<div class="layout">
+<div>
+<section class="panel" aria-label="Cubic Yard Calculator"><div class="field"><span class="lbl">Shape</span>
+<label class="check" style="display:inline-flex;margin-right:16px"><input type="radio" name="cy-shape" value="rect" checked> Rectangle</label>
+<label class="check" style="display:inline-flex"><input type="radio" name="cy-shape" value="circle"> Circle</label></div>
+<div class="row" id="cy-rect"><div class="field"><label for="cy-l">Length</label><div class="split"><input id="cy-l" type="number" min="0" step="any" value="10"><select id="cy-l-u" aria-label="Length unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="cy-w">Width</label><div class="split"><input id="cy-w" type="number" min="0" step="any" value="10"><select id="cy-w-u" aria-label="Width unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div></div>
+<div class="row" id="cy-circ" hidden><div class="field"><label for="cy-dia">Diameter</label><div class="split"><input id="cy-dia" type="number" min="0" step="any" value="8"><select id="cy-dia-u" aria-label="Diameter unit"><option value="ft" selected>feet</option><option value="in">inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div></div>
+<div class="row"><div class="field"><label for="cy-d">Depth</label><div class="split"><input id="cy-d" type="number" min="0" step="any" value="3"><select id="cy-d-u" aria-label="Depth unit"><option value="ft">feet</option><option value="in" selected>inches</option><option value="yd">yards</option><option value="m">meters</option></select></div></div><div class="field"><label for="cy-q">Number of areas</label><input id="cy-q" type="number" min="1" step="1" value="1"></div></div>
+<div class="stats" aria-live="polite">
+ <div class="stat"><b id="cy-yd">—</b><span>Cubic yards</span></div>
+ <div class="stat"><b id="cy-ft">—</b><span>Cubic feet</span></div>
+ <div class="stat"><b id="cy-m">—</b><span>Cubic meters</span></div>
+ <div class="stat"><b id="cy-bags">—</b><span>2 cu ft bags</span></div>
+</div>
+</section>
+<!-- AD SLOT: in-content. Auto ads place ads automatically once AdSense is approved. -->
+<article class="article">
+<p>Bulk landscaping materials such as topsoil, fill dirt, mulch, compost, sand and concrete are sold by the cubic yard in the US. This calculator converts your measurements into cubic yards, and also shows cubic feet, cubic meters and the number of 2-cubic-foot bags, which is the common size for bagged mulch and soil at home improvement stores.</p>
+<h2>How to use it</h2>
+<ol>
+<li>Choose a rectangle (beds, lawns, slabs) or a circle (tree rings, round beds).</li>
+<li>Enter the measurements. Each one can use its own unit, so you can mix feet for length and inches for depth.</li>
+<li>If you have several identical areas, enter how many.</li>
+</ol>
+<h2>The formula</h2>
+<div class="formula">Cubic yards = length × width × depth (all in feet) ÷ 27<br>Circle: π × (diameter ÷ 2)² × depth ÷ 27</div>
+<p>There are 27 cubic feet in a cubic yard because a yard is 3 feet, and 3 × 3 × 3 = 27. A 10 × 10 ft bed covered 3 inches deep needs 10 × 10 × 0.25 = 25 cubic feet, which is about 0.93 cubic yards, or 13 bags of 2 cubic feet.</p>
+<h2>Typical depths</h2>
+<ul>
+<li><strong>Mulch:</strong> 2–4 inches around plants and trees, keeping it away from trunks.</li>
+<li><strong>Topsoil for a new lawn:</strong> often 4–6 inches.</li>
+<li><strong>Raised garden beds:</strong> the full height of the bed, often 8–12 inches.</li>
+<li><strong>Sand under pavers:</strong> about 1 inch of bedding sand over a compacted base.</li>
+</ul>
+<h2>Bulk or bags?</h2>
+<p>One cubic yard equals 13.5 bags of 2 cubic feet. For small jobs bags are convenient; for anything over a couple of cubic yards, bulk delivery is usually cheaper and quicker. For gravel and stone sold by weight, use the <a href="/gravel-calculator/">gravel calculator</a>; for concrete with bag counts, use the <a href="/concrete-calculator/">concrete calculator</a>.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>How many square feet does a cubic yard cover?</summary><p>324 square feet at 1 inch deep, 108 square feet at 3 inches, and 81 square feet at 4 inches.</p></details>
+<details><summary>How much does a cubic yard of dirt weigh?</summary><p>Usually somewhere around a ton or more, depending on soil type and moisture. Check that your vehicle or trailer can carry it before picking up.</p></details>
+</div>
+</article>
+</div>
+<aside class="side" aria-label="More tools"><h2>More tools</h2><ul><li><a href="/gravel-calculator/">Gravel Calculator</a></li><li><a href="/concrete-calculator/">Concrete Calculator</a></li><li><a href="/roofing-calculator/">Roofing Calculator</a></li><li><a href="/word-counter/">Word Counter</a></li><li><a href="/case-converter/">Case Converter</a></li><li><a href="/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li><li><a href="/text-cleaner/">Text Cleaner</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tools.js"></script>
+</body></html>

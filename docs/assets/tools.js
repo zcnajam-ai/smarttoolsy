@@ -959,6 +959,130 @@
     run();
   };
 
+  /* ---------- Home & construction ---------- */
+  var TO_FT = { ft: 1, in: 1 / 12, yd: 3, m: 3.28083989501 };
+  function ft(id) { var v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v * TO_FT[$(id + '-u').value] : NaN; }
+  function watch(ids, fn) { ids.forEach(function (id) { on(id, 'input', fn); on(id, 'change', fn); if ($(id + '-u')) on(id + '-u', 'change', fn); }); fn(); }
+  function shapeToggle(name, map, fn) {
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+      r.addEventListener('change', function () { var v = document.querySelector('input[name="' + name + '"]:checked').value; Object.keys(map).forEach(function (k) { $(map[k]).hidden = k !== v; }); fn(); });
+    });
+  }
+  T['gravel-calculator'] = function () {
+    function run() {
+      var cf = ft('gv-l') * ft('gv-w') * ft('gv-d'), ex = 1 + (+$('gv-extra').value || 0) / 100, yd = cf / 27 * ex, t = yd * (+$('gv-den').value || 0), price = parseFloat($('gv-price').value);
+      $('gv-yd').textContent = fmt(yd, 2); $('gv-t').textContent = fmt(t, 2); $('gv-ft').textContent = fmt(cf * ex, 1);
+      $('gv-cost').textContent = price > 0 && isFinite(t) ? '$' + (t * price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '—';
+    }
+    watch(['gv-l', 'gv-w', 'gv-d', 'gv-den', 'gv-extra', 'gv-price'], run);
+  };
+  T['cubic-yard-calculator'] = function () {
+    function run() {
+      var circ = document.querySelector('input[name="cy-shape"]:checked').value === 'circle', q = Math.max(1, +$('cy-q').value || 1);
+      var area = circ ? Math.PI * Math.pow(ft('cy-dia') / 2, 2) : ft('cy-l') * ft('cy-w'), cf = area * ft('cy-d') * q;
+      $('cy-yd').textContent = fmt(cf / 27, 2); $('cy-ft').textContent = fmt(cf, 1); $('cy-m').textContent = fmt(cf * 0.0283168466, 2);
+      $('cy-bags').textContent = isFinite(cf) ? fmt(Math.ceil(cf / 2 - 1e-9), 0) : '—';
+    }
+    shapeToggle('cy-shape', { rect: 'cy-rect', circle: 'cy-circ' }, run);
+    watch(['cy-l', 'cy-w', 'cy-dia', 'cy-d', 'cy-q'], run);
+  };
+  T['concrete-calculator'] = function () {
+    function run() {
+      var col = document.querySelector('input[name="cc-shape"]:checked').value === 'col', q = Math.max(1, +$('cc-q').value || 1), ex = 1 + (+$('cc-waste').value || 0) / 100;
+      var cf = (col ? Math.PI * Math.pow(ft('cc-dia') / 2, 2) * ft('cc-h') : ft('cc-l') * ft('cc-w') * ft('cc-t')) * q * ex;
+      $('cc-yd').textContent = fmt(cf / 27, 2); $('cc-ft').textContent = fmt(cf, 1);
+      [['cc-80', 0.6], ['cc-60', 0.45], ['cc-40', 0.3]].forEach(function (b) { $(b[0]).textContent = isFinite(cf) ? fmt(Math.ceil(cf / b[1] - 1e-9), 0) : '—'; });
+    }
+    shapeToggle('cc-shape', { slab: 'cc-slab', col: 'cc-col' }, run);
+    watch(['cc-l', 'cc-w', 'cc-t', 'cc-dia', 'cc-h', 'cc-q', 'cc-waste'], run);
+  };
+  T['roofing-calculator'] = function () {
+    function run() {
+      var o = (+$('rf-o').value || 0) / 12, L = +$('rf-l').value + 2 * o, W = +$('rf-w').value + 2 * o, p = +$('rf-p').value, f = Math.sqrt(1 + Math.pow(p / 12, 2));
+      var area = L * W * f, sq = area / 100 * (1 + +$('rf-waste').value / 100);
+      $('rf-area').textContent = fmt(area, 0); $('rf-sq').textContent = fmt(sq, 1); $('rf-bun').textContent = isFinite(sq) ? fmt(Math.ceil(sq * (+$('rf-b').value || 3) - 1e-9), 0) : '—'; $('rf-f').textContent = f.toFixed(3);
+    }
+    watch(['rf-l', 'rf-w', 'rf-o', 'rf-p', 'rf-waste', 'rf-b'], run);
+  };
+
+  /* ---------- Time & date lookup pages ---------- */
+  var DAYN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  function shiftDate(base, unit, k) {
+    var d = new Date(base.getTime());
+    if (unit === 'minute') d.setMinutes(d.getMinutes() + k);
+    else if (unit === 'hour') d = new Date(base.getTime() + k * 3600000); // real elapsed hours
+    else if (unit === 'day') d.setDate(d.getDate() + k);
+    else if (unit === 'week') d.setDate(d.getDate() + 7 * k);
+    else { // month / year: keep day of month, clamp to month end
+      var months = unit === 'month' ? k : 12 * k, day = d.getDate();
+      d.setDate(1); d.setMonth(d.getMonth() + months);
+      var last = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate(); d.setDate(Math.min(day, last));
+    }
+    return d;
+  }
+  function longDate(d) { return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); }
+  function clock(d, sec) { return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: sec ? '2-digit' : undefined }); }
+  function isoWeek(d) { var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day); var y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return Math.ceil(((t - y0) / 864e5 + 1) / 7); }
+  function dayOfYear(d) { return Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - new Date(d.getFullYear(), 0, 1)) / 864e5) + 1; }
+  function bizDays(a, b) { // weekdays strictly after a, up to and including b (a < b)
+    var n = 0, d = new Date(a.getFullYear(), a.getMonth(), a.getDate()), end = new Date(b.getFullYear(), b.getMonth(), b.getDate());
+    while (d < end) { d.setDate(d.getDate() + 1); var w = d.getDay(); if (w && w !== 6) n++; }
+    return n;
+  }
+  function calDays(a, b) { return Math.round((new Date(b.getFullYear(), b.getMonth(), b.getDate()) - new Date(a.getFullYear(), a.getMonth(), a.getDate())) / 864e5); }
+  function relAnswer(unit, k, now) { // returns {main, sub, rows}
+    var t = shiftDate(now, unit, k), sameDay = t.toDateString() === now.toDateString(), rows = [];
+    if (unit === 'minute' || unit === 'hour') {
+      var main = clock(t, false), sub = sameDay ? (k < 0 ? 'Earlier today, ' : 'Later today, ') + longDate(t) + '.' : (k < 0 ? 'On ' : 'On ') + longDate(t) + '.';
+      rows.push(['Time', clock(t, true)], ['24-hour time', ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2)], ['Date', longDate(t)], ['Current time', clock(now, true)]);
+      return { main: main, sub: sub, rows: rows };
+    }
+    var days = calDays(now, t), lo = days < 0 ? t : now, hi = days < 0 ? now : t;
+    rows.push(['Date', longDate(t)], ['Day of the week', DAYN[t.getDay()]], ['Days ' + (days < 0 ? 'ago' : 'from today'), Math.abs(days).toLocaleString('en-US')],
+      ['Business days (Mon–Fri)', bizDays(lo, hi).toLocaleString('en-US')], ['Day of the year', dayOfYear(t) + ' of ' + (dayOfYear(new Date(t.getFullYear(), 11, 31)))], ['ISO week number', isoWeek(t)]);
+    if (unit === 'year') return { main: String(t.getFullYear()), sub: Math.abs(k) + ' year' + (Math.abs(k) === 1 ? '' : 's') + ' ago today was ' + longDate(t) + '.', rows: rows };
+    return { main: longDate(t), sub: (days < 0 ? 'That was ' : 'That is ') + Math.abs(days).toLocaleString('en-US') + ' day' + (Math.abs(days) === 1 ? '' : 's') + (days < 0 ? ' ago.' : ' from today.'), rows: rows };
+  }
+  function relCalc() {
+    function run() {
+      var n = Math.max(0, +$('rc-n').value || 0), u = $('rc-u').value, d = +$('rc-d').value, a = relAnswer(u, d * n, new Date());
+      $('rc-out').textContent = (u === 'year' ? a.main + ' (' + a.sub.replace(/^.*was /, '').replace(/\.$/, '') + ')' : a.main) ;
+    }
+    ['rc-n', 'rc-u', 'rc-d'].forEach(function (id) { on(id, 'input', run); on(id, 'change', run); }); run();
+    return run;
+  }
+  T['rel-time'] = function () {
+    var box = document.querySelector('[data-rel-unit]'), unit = box.getAttribute('data-rel-unit'), k = +box.getAttribute('data-rel-n') * +box.getAttribute('data-rel-dir');
+    var rc = relCalc();
+    function tick() {
+      var a = relAnswer(unit, k, new Date());
+      $('rt-ans').textContent = a.main; $('rt-sub').textContent = a.sub;
+      $('rt-details').innerHTML = a.rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('');
+    }
+    tick(); if (unit === 'minute' || unit === 'hour') setInterval(function () { tick(); rc(); }, 1000);
+  };
+  T['rel-hub'] = function () { relCalc(); };
+  function untilInfo(h, m, now) {
+    var t = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0), tomorrow = false;
+    if (t <= now) { t.setDate(t.getDate() + 1); tomorrow = true; }
+    var s = Math.round((t - now) / 1000);
+    return { s: s, t: t, tomorrow: tomorrow, hh: Math.floor(s / 3600), mm: Math.floor(s % 3600 / 60), ss: s % 60 };
+  }
+  function hms(i) { return (i.hh ? i.hh + ' h ' : '') + i.mm + ' min ' + i.ss + ' s'; }
+  T['until'] = function () {
+    var box = document.querySelector('[data-until-h]'), h = +box.getAttribute('data-until-h'), m = +box.getAttribute('data-until-m');
+    function tick() {
+      var now = new Date(), i = untilInfo(h, m, now);
+      $('ut-ans').textContent = hms(i);
+      $('ut-sub').textContent = (i.tomorrow ? 'Counting down to tomorrow, ' : 'Today, ') + longDate(i.t) + '. Current time: ' + clock(now, true) + '.';
+      $('ut-details').innerHTML = [['Total minutes', Math.floor(i.s / 60).toLocaleString('en-US')], ['Total seconds', i.s.toLocaleString('en-US')], ['Hours (decimal)', (i.s / 3600).toFixed(2)]]
+        .map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; }).join('');
+      var v = ($('uc-t').value || '').split(':');
+      if (v.length >= 2) { var j = untilInfo(+v[0], +v[1], now); $('uc-out').textContent = hms(j) + (j.tomorrow ? ' (tomorrow)' : ''); }
+    }
+    tick(); setInterval(tick, 1000); on('uc-t', 'input', tick);
+  };
+
   /* ---------- Age lookup pages (live values, so pages stay right after New Year) ---------- */
   function setAll(sel, v) { document.querySelectorAll(sel).forEach(function (el) { el.textContent = v; }); }
   T['age-year'] = function () {
