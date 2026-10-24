@@ -23,7 +23,7 @@ CONFIG = dict(
     CONTACT_EMAIL="contact@smarttoolsy.tech",  # create this inbox before applying to AdSense
     OWNER="SmartToolsy",                       # your name or business name for the About/Terms pages
     COUNTRY="the United States",               # governing-law country in Terms
-    ADSENSE_CLIENT="",                         # e.g. "ca-pub-1234567890123456" — paste after AdSense gives it to you
+    ADSENSE_CLIENT="ca-pub-4847723276522682",                         # e.g. "ca-pub-1234567890123456" — paste after AdSense gives it to you
     GA_ID="",                                  # optional Google Analytics 4 ID, e.g. "G-XXXXXXX"
     UPDATED=date.today().isoformat(),
 )
