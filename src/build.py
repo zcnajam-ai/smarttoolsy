@@ -22,7 +22,7 @@ CONFIG = dict(
     SITE_URL="https://www.smarttoolsy.tech",      # no trailing slash
     CONTACT_EMAIL="contact@smarttoolsy.tech",  # create this inbox before applying to AdSense
     OWNER="SmartToolsy",                       # your name or business name for the About/Terms pages
-    COUNTRY="Pakistan",                        # governing-law country in Terms
+    COUNTRY="the United States",               # governing-law country in Terms
     ADSENSE_CLIENT="",                         # e.g. "ca-pub-1234567890123456" — paste after AdSense gives it to you
     GA_ID="",                                  # optional Google Analytics 4 ID, e.g. "G-XXXXXXX"
     UPDATED=date.today().isoformat(),
@@ -274,7 +274,7 @@ def build_static_pages():
 <h2>How we keep tools accurate</h2>
 <p>Each calculator uses standard, published formulas, such as the World Health Organization BMI categories, the standard amortization formula for loans and exact international unit definitions. Every tool page explains its method so you can check the result yourself. We test tools against worked examples before publishing them and fix any issue reported to us.</p>
 <h2>Who runs {n}</h2>
-<p>{n} is an independent website run by {e(C['OWNER'])}, a small team of web developers and designers based in {e(C['COUNTRY'])}. We build and maintain the tools and write the guides ourselves.</p>
+<p>{n} is an independent website run by {e(C['OWNER'])}, a small team of web developers and designers. We build and maintain the tools and write the guides ourselves.</p>
 <h2>Suggest a tool</h2>
 <p>We add new tools based on what visitors ask for. If there is a tool you would find useful, or you have spotted a mistake, please <a href="/contact">get in touch</a>.</p>
 """, "about")
