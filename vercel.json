@@ -4,6 +4,9 @@
   "buildCommand": "echo prebuilt",
   "outputDirectory": "docs",
   "trailingSlash": true,
+  "functions": {
+    "api/seo-check.js": { "maxDuration": 30 }
+  },
   "headers": [
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
   ]

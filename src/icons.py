@@ -47,6 +47,9 @@ TOOL_ICON = {
     "password-generator": "key-variant",
     "qr-code-generator": "qrcode",
     "random-number-generator": "dice-5-outline",
+    # SEO and website
+    "seo-checker": "search-web",
+    "page-speed-test": "speedometer",
     # Developer
     "base64-encoder-decoder": "swap-horizontal",
     "unix-timestamp-converter": "clock-outline",
@@ -55,6 +58,7 @@ TOOL_ICON = {
 
 CAT_ICON = {
     "pdf": "file-pdf-box",
+    "seo": "web",
     "calc": "calculator-variant-outline",
     "home": "hammer-wrench",
     "text": "format-text",
