@@ -58,8 +58,21 @@ LOGO = """<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect wi
 FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg>"""
 
 
+OG_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "static", "og")
+
+
+def og_image(path):
+    """Share image for a page: its own if src/og.py made one, otherwise the site default."""
+    p = path.strip("/")
+    name = ("blog-" + p[5:] if p.startswith("blog/") else p) + ".jpg"
+    if p and "/" not in p.replace("blog/", "", 1) and os.path.exists(os.path.join(OG_DIR, name)):
+        return C["SITE_URL"] + "/og/" + name
+    return C["SITE_URL"] + "/og/default.jpg"
+
+
 def head(title, desc, path, extra_ld=None, noindex=False):
     url = C["SITE_URL"] + path
+    img = og_image(path)
     ads = ""
     if C["ADSENSE_CLIENT"]:
         ads = (f'<meta name="google-adsense-account" content="{e(C["ADSENSE_CLIENT"])}">\n'
@@ -85,7 +98,14 @@ def head(title, desc, path, extra_ld=None, noindex=False):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{img}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(title)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{img}">
 <meta name="theme-color" content="#2F5BEA">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">

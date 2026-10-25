@@ -63,3 +63,7 @@ After any change: `python3 src/build.py`, then commit and push (including `docs/
 ## Tool icons
 
 Every tool needs an icon. Add its slug to `TOOL_ICON` in `src/icons.py` and copy the matching SVG into `src/icons/` (the build stops with a message if one is missing). Icons are Material Design Icons by Pictogrammers; see `src/icons/LICENSE`. Each category has its own colour, set in `static/assets/app.css` under "Category colours".
+
+## Share images
+
+Every tool and guide has its own 1200 × 630 share image in `static/og/` (used for og:image and the X card). After adding a tool or guide, run `python3 src/og.py` to create the missing images (`--all` redraws every one), then build. Pages without their own image use `static/og/default.jpg`.
