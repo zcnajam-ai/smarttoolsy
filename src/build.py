@@ -171,8 +171,8 @@ def build_home():
             f'<span><span class="tool-name">{e(t["name"])}</span><span class="tool-desc">{e(t["short"])}</span></span></a></li>'
             for t in items)
         groups += f'<section class="tool-group" aria-labelledby="g-{k}"><h2 id="g-{k}"><span class="cat-ico" data-c="{k}">{cat_svg(k)}</span>{label} <span class="cat-count">{len(items)}</span></h2><ul class="tool-list">{lis}</ul></section>'
-    title = f"{C['SITE_NAME']} – Free Online Tools: Calculators, Converters & Generators"
-    desc = f"{len(TOOLS)} free online tools that run in your browser: word counter, QR code generator, image compressor, loan and BMI calculators, unit converter and more. No sign-up."
+    title = f"{C['SITE_NAME']} – Free Online Tools: PDF, SEO, Image & Calculators"
+    desc = f"{len(TOOLS)} free online tools: merge PDFs, check SEO, remove photo metadata, compress images, and mortgage, age and home project calculators. No sign-up."
     page = head(title, desc, "/", [org_ld()]) + f"""
 <body>
 {header('home')}
