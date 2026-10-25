@@ -763,4 +763,218 @@ body="""
 <li><strong>Is it safe to measure on the roof?</strong> Measuring from the ground or the attic avoids the risk. If you do go up, use proper fall protection, and never climb a wet or steep roof.</li>
 </ul>
 """),
+dict(
+slug="how-to-calculate-cubic-yards", date="2026-10-25",
+title="How to Calculate Cubic Yards of Dirt, Mulch and Topsoil",
+desc="A simple way to work out cubic yards for dirt, mulch, topsoil and fill, with worked examples for raised beds, garden beds, lawns and holes, plus how many bags make a yard.",
+tools=["cubic-yard-calculator", "gravel-calculator", "concrete-calculator"],
+body="""
+<p>Landscape yards sell dirt, mulch, topsoil and compost by the cubic yard, but nobody measures a garden in yards. You measure in feet and inches, so you need a quick way to turn those measurements into the number a supplier asks for. It takes one formula and about a minute.</p>
+
+<h2>What a cubic yard is</h2>
+<p>A cubic yard is a cube 3 feet long, 3 feet wide and 3 feet high. That’s 3 × 3 × 3 = <strong>27 cubic feet</strong>. Picture a box a little bigger than a washing machine. Every cubic yard calculation comes down to finding the cubic feet and dividing by 27.</p>
+
+<h2>The formula</h2>
+<div class="formula">Cubic yards = length (ft) × width (ft) × depth (ft) ÷ 27</div>
+<p>The step that trips people up is depth. Beds and lawns are measured in inches, so divide the inches by 12 first: 3 inches is 0.25 ft, 4 inches is 0.333 ft, 6 inches is 0.5 ft. If you multiply by 3 instead of 0.25, the answer comes out twelve times too big.</p>
+<p>The <a href="/cubic-yard-calculator">cubic yard calculator</a> takes length, width and depth in any units and does the conversion for you. The examples below show the math by hand.</p>
+
+<h2>Example 1: soil for a raised bed</h2>
+<p>An 8 × 4 ft raised bed, 12 inches deep:</p>
+<ul>
+<li>8 × 4 × 1 = 32 cubic feet</li>
+<li>32 ÷ 27 = <strong>1.19 cubic yards</strong></li>
+</ul>
+<p>Fresh, loose soil settles after watering, often by 10% to 20%. Order about 1.3 to 1.4 yards, or plan to top up after the first few weeks.</p>
+
+<h2>Example 2: mulch for a garden bed</h2>
+<p>A bed covering 200 square feet, mulched 3 inches deep:</p>
+<ul>
+<li>200 × 0.25 = 50 cubic feet</li>
+<li>50 ÷ 27 = <strong>1.85 cubic yards</strong></li>
+</ul>
+<p>Two to three inches of mulch is a common depth for keeping weeds down and holding moisture. Keep it pulled back a few inches from tree trunks and plant stems.</p>
+
+<h2>Example 3: topsoil for a new lawn</h2>
+<p>A 1,000 sq ft lawn area with 4 inches of new topsoil:</p>
+<ul>
+<li>1,000 × 0.333 = 333 cubic feet</li>
+<li>333 ÷ 27 = <strong>12.3 cubic yards</strong></li>
+</ul>
+<p>That’s a full truckload, which is why bulk delivery makes sense for lawns. Topdressing an existing lawn uses far less, since it’s spread only about a quarter to half an inch thick.</p>
+
+<h2>Example 4: filling a hole</h2>
+<p>A hole 3 feet long, 3 feet wide and 3 feet deep is exactly <strong>1 cubic yard</strong>, because it’s the same shape as the definition. If you’re filling a hole where a tree stump was removed, add a little extra and tamp the dirt down in layers so it doesn’t sink later.</p>
+
+<h2>Round and odd-shaped areas</h2>
+<ul>
+<li><strong>Circle:</strong> area = 3.14 × radius × radius. A round bed 10 feet across has a radius of 5 ft, so 3.14 × 5 × 5 = 78.5 sq ft. At 3 inches of mulch: 78.5 × 0.25 = 19.6 cu ft, or 0.73 cubic yards.</li>
+<li><strong>Triangle:</strong> area = base × height ÷ 2.</li>
+<li><strong>Irregular shapes:</strong> split them into rectangles, circles and triangles, work out each one, and add them together. Rounding up slightly covers the curves.</li>
+</ul>
+
+<h2>Bags or bulk?</h2>
+<p>Garden centers sell mulch and soil in bags measured in cubic feet. To see how many bags equal one cubic yard, divide 27 by the bag size:</p>
+<table>
+<thead><tr><th>Bag size</th><th>Bags per cubic yard</th></tr></thead>
+<tbody>
+<tr><td>0.75 cu ft</td><td>36</td></tr>
+<tr><td>1 cu ft</td><td>27</td></tr>
+<tr><td>1.5 cu ft</td><td>18</td></tr>
+<tr><td>2 cu ft</td><td>13.5</td></tr>
+<tr><td>3 cu ft</td><td>9</td></tr>
+</tbody>
+</table>
+<p>The mulch bed in Example 2 needs 25 bags of 2 cubic feet. For a job much over a cubic yard or two, bulk delivery is usually cheaper and saves a lot of lifting, though it often comes with a delivery fee and a minimum order.</p>
+
+<h2>Dirt vs gravel vs concrete</h2>
+<p>Dirt, mulch, topsoil and compost are sold by volume, so cubic yards are all you need. Gravel and stone are often sold by weight, so you’ll need to convert yards to tons; our guide on <a href="/blog/how-much-stone-do-i-need">how much stone you need</a> and the <a href="/gravel-calculator">gravel calculator</a> handle that. For concrete, the <a href="/concrete-calculator">concrete calculator</a> gives both cubic yards and the number of bags.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>How many square feet does a cubic yard cover?</strong> 324 sq ft at 1 inch deep, 162 sq ft at 2 inches, 108 sq ft at 3 inches and 81 sq ft at 4 inches.</li>
+<li><strong>How much does a cubic yard of dirt weigh?</strong> Usually around a ton or more, depending on the soil and how wet it is. Check that a pickup or trailer can carry it before you collect a load yourself.</li>
+<li><strong>Will a cubic yard fit in a pickup truck?</strong> Many full-size pickups can hold a cubic yard by volume, but a yard of wet soil can be heavier than the truck is rated to carry. Ask the supplier, and check your truck’s payload.</li>
+<li><strong>Should I round up?</strong> Yes. Suppliers usually sell in half or whole yards, and running short means a second delivery fee.</li>
+</ul>
+"""),
+dict(
+slug="how-to-convert-decimal-to-percent", date="2026-10-25",
+title="How to Convert a Decimal to a Percent (and a Percent to a Decimal)",
+desc="Convert decimals to percents and back in one step, turn fractions into percents, and work out what percentage one number is of another, with clear examples.",
+tools=["percentage-calculator", "discount-calculator"],
+body="""
+<p>Decimals and percents are two ways of writing the same thing. 0.25 and 25% both mean a quarter. Once you see that a percent is just “per hundred”, converting between them takes one step in either direction.</p>
+
+<h2>Decimal to percent: multiply by 100</h2>
+<p>To turn a decimal into a percent, multiply by 100 and add the % sign. In practice, that means moving the decimal point <strong>two places to the right</strong>.</p>
+<table>
+<thead><tr><th>Decimal</th><th>Move the point</th><th>Percent</th></tr></thead>
+<tbody>
+<tr><td>0.25</td><td>0.25 → 25.</td><td>25%</td></tr>
+<tr><td>0.6</td><td>0.60 → 60.</td><td>60%</td></tr>
+<tr><td>0.075</td><td>0.075 → 7.5</td><td>7.5%</td></tr>
+<tr><td>0.004</td><td>0.004 → 0.4</td><td>0.4%</td></tr>
+<tr><td>1.5</td><td>1.50 → 150.</td><td>150%</td></tr>
+</tbody>
+</table>
+<p>When there aren’t enough digits, add zeros: 0.6 becomes 0.60, which becomes 60%. A decimal bigger than 1 gives a percent over 100%, which is normal for things like growth: 1.5 times as many is 150% of the original.</p>
+
+<h2>Percent to decimal: divide by 100</h2>
+<p>Going the other way, divide by 100, which means moving the decimal point <strong>two places to the left</strong> and dropping the % sign.</p>
+<ul>
+<li>45% → 0.45</li>
+<li>8% → 0.08</li>
+<li>12.5% → 0.125</li>
+<li>0.5% → 0.005</li>
+<li>200% → 2</li>
+</ul>
+<p>You need this step whenever a percent goes into a formula. A 6.5% interest rate is 0.065 in a loan formula, and a 7% sales tax means multiplying a price by 0.07.</p>
+
+<h2>Fraction to percent</h2>
+<p>Divide the top number by the bottom number to get a decimal, then multiply by 100.</p>
+<ul>
+<li>3/8 = 3 ÷ 8 = 0.375 = 37.5%</li>
+<li>2/5 = 0.4 = 40%</li>
+<li>1/3 = 0.333… ≈ 33.3%</li>
+</ul>
+<p>A few are worth remembering because they come up all the time: 1/2 = 50%, 1/4 = 25%, 3/4 = 75%, 1/5 = 20%, 1/10 = 10%.</p>
+
+<h2>What percentage is X of Y?</h2>
+<p>This is the same idea in a different form. Divide the part by the whole, then multiply by 100.</p>
+<div class="formula">Percentage = (part ÷ whole) × 100</div>
+<ul>
+<li>18 correct answers out of 24: 18 ÷ 24 = 0.75, so <strong>75%</strong>.</li>
+<li>45 minutes out of an hour: 45 ÷ 60 = 0.75, so <strong>75%</strong>.</li>
+<li>$12 saved on a $80 jacket: 12 ÷ 80 = 0.15, so <strong>15% off</strong>.</li>
+</ul>
+<p>The order matters. The “whole” is the number you’re comparing against, and it always goes on the bottom. The <a href="/percentage-calculator">percentage calculator</a> handles this and the other common percent questions, including percent change between two numbers.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Moving the point the wrong way.</strong> A quick check: a percent number is always 100 times bigger than its decimal. If 0.08 turned into 0.0008%, the point went the wrong way.</li>
+<li><strong>Treating 0.5% as 50%.</strong> 0.5% is half of one percent, which is 0.005 as a decimal. This matters with interest rates and fees.</li>
+<li><strong>Mixing up percent and percentage points.</strong> If a rate goes from 4% to 6%, it rose 2 percentage points, but that’s a 50% increase in the rate itself.</li>
+<li><strong>Adding percents that apply one after another.</strong> 20% off and then another 10% off is 28% off in total, not 30%, because the second discount applies to the already-reduced price. The <a href="/discount-calculator">discount calculator</a> works out stacked discounts for you.</li>
+</ul>
+
+<h2>Quick reference</h2>
+<table>
+<thead><tr><th>Fraction</th><th>Decimal</th><th>Percent</th></tr></thead>
+<tbody>
+<tr><td>1/100</td><td>0.01</td><td>1%</td></tr>
+<tr><td>1/20</td><td>0.05</td><td>5%</td></tr>
+<tr><td>1/10</td><td>0.1</td><td>10%</td></tr>
+<tr><td>1/8</td><td>0.125</td><td>12.5%</td></tr>
+<tr><td>1/5</td><td>0.2</td><td>20%</td></tr>
+<tr><td>1/4</td><td>0.25</td><td>25%</td></tr>
+<tr><td>1/3</td><td>0.333…</td><td>33.3%</td></tr>
+<tr><td>1/2</td><td>0.5</td><td>50%</td></tr>
+<tr><td>2/3</td><td>0.666…</td><td>66.7%</td></tr>
+<tr><td>3/4</td><td>0.75</td><td>75%</td></tr>
+<tr><td>1</td><td>1</td><td>100%</td></tr>
+</tbody>
+</table>
+<p>For working out percentages without a calculator, see our <a href="/blog/percentage-tricks-mental-math">six mental math tricks for percentages</a>.</p>
+"""),
+dict(
+slug="how-to-calculate-chronological-age", date="2026-10-25",
+title="How to Calculate Chronological Age (Years, Months and Days)",
+desc="Step-by-step method for calculating chronological age for school testing, assessments and records, including how to borrow months and days, with worked examples.",
+tools=["age-calculator", "date-difference-calculator"],
+body="""
+<p>Chronological age is simply how old someone is, measured exactly from their date of birth to a given date. It sounds trivial, but in schools, speech therapy, psychology and pediatrics it has to be precise to the month and day, because test scores are compared with children of the same age. A mistake of one month can shift a score.</p>
+<p>Here is how to calculate it by hand, how to handle the borrowing step, and how to check your answer.</p>
+
+<h2>How it’s written</h2>
+<p>Chronological age (often shortened to CA) is written as years, months and days. Testing forms usually record it as years and months with a semicolon or hyphen: <strong>8;3</strong> or <strong>8-3</strong> means 8 years and 3 months. Don’t write it as a decimal: 8.3 years is not the same as 8 years 3 months.</p>
+
+<h2>The method</h2>
+<p>Write the test date on top and the date of birth underneath, as year, month and day. Then subtract each column, starting with the days.</p>
+<table>
+<thead><tr><th></th><th>Year</th><th>Month</th><th>Day</th></tr></thead>
+<tbody>
+<tr><td>Test date</td><td>2026</td><td>10</td><td>25</td></tr>
+<tr><td>Date of birth</td><td>2018</td><td>6</td><td>12</td></tr>
+<tr><td><strong>Chronological age</strong></td><td><strong>8</strong></td><td><strong>4</strong></td><td><strong>13</strong></td></tr>
+</tbody>
+</table>
+<p>25 − 12 = 13 days, 10 − 6 = 4 months, 2026 − 2018 = 8 years. The child is 8 years, 4 months and 13 days old, recorded as 8;4.</p>
+
+<h2>When you need to borrow</h2>
+<p>If the day or month on the bottom is bigger than the one on top, borrow from the next column, just like subtraction with numbers:</p>
+<ul>
+<li><strong>Days too small:</strong> take 1 from the months column and add the days of a month to the days column. Many test manuals tell you to add <strong>30 days</strong>.</li>
+<li><strong>Months too small:</strong> take 1 from the years column and add <strong>12 months</strong> to the months column.</li>
+</ul>
+<p>Example with both: test date October 5, 2026, birth date December 20, 2019.</p>
+<table>
+<thead><tr><th></th><th>Year</th><th>Month</th><th>Day</th></tr></thead>
+<tbody>
+<tr><td>Test date</td><td>2026</td><td>10</td><td>5</td></tr>
+<tr><td>After borrowing</td><td>2025</td><td>21</td><td>35</td></tr>
+<tr><td>Date of birth</td><td>2019</td><td>12</td><td>20</td></tr>
+<tr><td><strong>Chronological age</strong></td><td><strong>6</strong></td><td><strong>9</strong></td><td><strong>15</strong></td></tr>
+</tbody>
+</table>
+<p>The 5 days are smaller than 20, so borrow a month: 10 months becomes 9, and 5 days becomes 35. Then 9 months is smaller than 12, so borrow a year: 2026 becomes 2025, and 9 months becomes 21. Now subtract: 35 − 20 = 15 days, 21 − 12 = 9 months, 2025 − 2019 = 6 years. The age is 6 years, 9 months and 15 days, recorded as 6;9.</p>
+
+<h2>Should you round the days?</h2>
+<p>It depends on the test. Some manuals say to ignore the days and never round up; others say to round up to the next month when the days are 15 or more. In the example above, that rule would give 6;10 instead of 6;9. Always follow the instructions for the specific assessment you’re scoring, because the norm tables were built using that rule.</p>
+
+<h2>Checking your answer</h2>
+<p>Hand calculations are easy to slip on, especially when borrowing twice. Check with the <a href="/age-calculator">age calculator</a>: enter the date of birth, then set “Age on this date” to the test date. It gives years, months and days instantly.</p>
+<p>It counts real calendar months rather than a fixed 30 days, so when the birthday falls near the end of a month, its answer can differ from the 30-day method by a day or two. If the two disagree, use the method your test manual specifies.</p>
+<p>For the total number of days or weeks between two dates, for example to track time between assessments, use the <a href="/date-difference-calculator">date difference calculator</a>.</p>
+
+<h2>Adjusted age for premature babies</h2>
+<p>For babies born early, pediatricians and therapists often also use an adjusted (or corrected) age: the chronological age minus the number of weeks the baby was born early. A baby born 8 weeks early who is 6 months old has an adjusted age of about 4 months. Adjusted age is commonly used for development checks in the first two to three years; your child’s doctor or therapist will say which age to use.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Is chronological age the same as birthday age?</strong> Yes in meaning, but more precise. “Seven” on a birthday card could be anywhere from 7;0 to 7;11, while chronological age pins it down to the month and day.</li>
+<li><strong>What about leap years?</strong> Counting by calendar dates handles them automatically. A child born on February 29 still gains one year of age each year.</li>
+<li><strong>Why not just count total days and divide?</strong> Months have different lengths, so dividing days by 30 or 365 gives slightly wrong results. The column method, or a calendar-based calculator, avoids that.</li>
+</ul>
+"""),
 ]
