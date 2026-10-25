@@ -13,6 +13,7 @@ from tools_c import TOOLS_C
 from tools_d import TOOLS_D
 from tools_e import TOOLS_E
 from tools_f import TOOLS_F
+from tools_g import TOOLS_G
 from articles import ARTICLES
 import age_pages
 from icons import tool_svg, cat_svg, TOOL_ICON
@@ -42,7 +43,7 @@ def slashify(text):
     return SLASH_RE.sub(lambda m: m.group(1) + m.group(2) + '/"', text)
 
 
-TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E + TOOLS_F
+TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E + TOOLS_F + TOOLS_G
 _no_icon = [t["slug"] for t in TOOLS if t["slug"] not in TOOL_ICON]
 if _no_icon:
     sys.exit("Add an icon in src/icons.py for: " + ", ".join(_no_icon))
@@ -190,7 +191,7 @@ def build_home():
 <p class="empty" id="empty" hidden>No tool matches that yet. Try a shorter word, or <a href="/contact">suggest a tool</a> you would like us to build.</p>
 </div>
 <section class="why"><div class="wrap why-grid">
-<div><h3>Private by design</h3><p>Your files, text and numbers stay on your device. The tools run with JavaScript in your browser. The only exceptions are the SEO checker and speed test, which have to visit the public web page you enter.</p></div>
+<div><h3>Private by design</h3><p>Your files, text and numbers stay on your device. The tools run with JavaScript in your browser. The only exceptions are tools that read a live web page, like the SEO checker and speed test, which send that page’s address to a server.</p></div>
 <div><h3>No account, no limits</h3><p>Every tool is free to use as often as you like, with no sign-up, watermarks or daily caps.</p></div>
 <div><h3>Explained, not just answered</h3><p>Each tool page shows the formula or method behind the result, so you can check the numbers and learn how they work.</p></div>
 </div></section>
@@ -321,7 +322,7 @@ def build_static_pages():
 <p>This Privacy Policy explains what information {n} (“we”, “us”) collects when you visit {e(C['SITE_URL'])} (the “Site”), how it is used, and the choices you have.</p>
 <h2>Information you enter into tools</h2>
 <p>Our tools run in your web browser. Text, numbers, files and images you enter into a tool are processed on your device and are not sent to or stored on our servers. When you close or reload the page, that input is gone. A few preferences, such as light or dark theme, may be saved in your browser’s local storage so the Site remembers them; you can clear this at any time through your browser settings.</p>
-<p>Two tools work differently because they have to visit another website. The <a href="/seo-checker">SEO Checker</a> sends the web address you enter to our server, which downloads that public page, its robots.txt and sitemap, and returns the results; we don’t save the reports, although our hosting provider may keep standard request logs for a short time. The <a href="/page-speed-test">Page Speed Test</a> sends the address from your browser to Google PageSpeed Insights, and Google’s privacy policy applies to that request. Only enter addresses of public pages.</p>
+<p>Tools that read a live web page work differently because they have to visit another website. The <a href="/seo-checker">SEO Checker</a>, and the “load from page” buttons in the <a href="/serp-preview-tool">SERP Preview Tool</a> and <a href="/keyword-density-checker">Keyword Density Checker</a>, send the web address you enter to our server, which downloads that public page, its robots.txt and sitemap, and returns the results; we don’t save the reports, although our hosting provider may keep standard request logs for a short time. The <a href="/page-speed-test">Page Speed Test</a> sends the address from your browser to Google PageSpeed Insights, and Google’s privacy policy applies to that request. Only enter addresses of public pages.</p>
 <h2>Information collected automatically</h2>
 <p>Like most websites, our hosting provider automatically records basic technical information when you request a page, such as your IP address, browser type, device type, the page requested and the date and time. This is used to deliver the Site, keep it secure and understand overall traffic. We may use privacy-friendly analytics or Google Analytics to see which pages are popular; this data is aggregated and we do not use it to identify you.</p>
 <h2>Cookies and advertising</h2>

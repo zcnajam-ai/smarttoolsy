@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)</title>
+<meta name="description" content="Which AI bots crawl your site, how to block them in robots.txt, what blocking does and doesn’t do, and why you might allow AI search bots.">
+<link rel="canonical" href="https://www.smarttoolsy.tech/blog/how-to-block-ai-crawlers-robots-txt/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartToolsy">
+<meta property="og:title" content="How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)">
+<meta property="og:description" content="Which AI bots crawl your site, how to block them in robots.txt, what blocking does and doesn’t do, and why you might allow AI search bots.">
+<meta property="og:url" content="https://www.smarttoolsy.tech/blog/how-to-block-ai-crawlers-robots-txt/">
+<meta property="og:image" content="https://www.smarttoolsy.tech/og/blog-how-to-block-ai-crawlers-robots-txt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)">
+<meta name="twitter:description" content="Which AI bots crawl your site, how to block them in robots.txt, what blocking does and doesn’t do, and why you might allow AI search bots.">
+<meta name="twitter:image" content="https://www.smarttoolsy.tech/og/blog-how-to-block-ai-crawlers-robots-txt.jpg">
+<meta name="theme-color" content="#2F5BEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<link rel="stylesheet" href="/assets/app.css">
+<meta name="google-adsense-account" content="ca-pub-4847723276522682">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4847723276522682" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smarttoolsy.tech/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.smarttoolsy.tech/blog"}, {"@type": "ListItem", "position": 3, "name": "How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)", "item": "https://www.smarttoolsy.tech/blog/how-to-block-ai-crawlers-robots-txt"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)", "description": "Which AI bots crawl your site, how to block them in robots.txt, what blocking does and doesn’t do, and why you might allow AI search bots.", "datePublished": "2026-10-25", "dateModified": "2026-10-25", "author": {"@type": "Organization", "name": "SmartToolsy"}, "publisher": {"@type": "Organization", "name": "SmartToolsy"}, "mainEntityOfPage": "https://www.smarttoolsy.tech/blog/how-to-block-ai-crawlers-robots-txt"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg><span>SmartToolsy</span></a>
+<nav class="nav" aria-label="Main"><a href="/">All tools</a><a href="/blog/" aria-current="page">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Guides</a></nav>
+<div class="layout" style="margin-top:12px">
+<article class="article" style="margin-top:0">
+<h1>How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)</h1>
+<p class="updated" style="color:var(--muted)">Published 2026-10-25</p>
+
+<p>AI companies send crawlers across the web to collect text for training their models and to fetch pages when people ask AI assistants questions. If you’d rather your content wasn’t used that way, robots.txt is the standard way to say so. Here’s how to do it, and the trade-offs to think about first.</p>
+
+<h2>Two kinds of AI crawlers</h2>
+<ul>
+<li><strong>Training crawlers</strong> collect pages to build and improve AI models. Blocking them asks the company not to use your content for training. You lose little or no traffic.</li>
+<li><strong>Search and assistant crawlers</strong> fetch pages to answer questions in AI search tools, often with a link back to the source. Blocking them can keep your site out of those answers and cost you visitors.</li>
+</ul>
+<p>Many publishers block training crawlers but allow search crawlers.</p>
+
+<h2>Common AI crawler names</h2>
+<table>
+<thead><tr><th>User-agent</th><th>Company</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GPTBot</td><td>OpenAI</td><td>Model training</td></tr>
+<tr><td>OAI-SearchBot</td><td>OpenAI</td><td>ChatGPT search results</td></tr>
+<tr><td>ChatGPT-User</td><td>OpenAI</td><td>Pages fetched when a user asks ChatGPT</td></tr>
+<tr><td>ClaudeBot</td><td>Anthropic</td><td>Model training</td></tr>
+<tr><td>Google-Extended</td><td>Google</td><td>Use in Gemini models (not Google Search)</td></tr>
+<tr><td>Applebot-Extended</td><td>Apple</td><td>Use in Apple’s AI models</td></tr>
+<tr><td>CCBot</td><td>Common Crawl</td><td>Open web archive widely used for AI training</td></tr>
+<tr><td>PerplexityBot</td><td>Perplexity</td><td>Perplexity search index</td></tr>
+<tr><td>meta-externalagent</td><td>Meta</td><td>AI training and products</td></tr>
+<tr><td>Bytespider</td><td>ByteDance</td><td>AI training</td></tr>
+<tr><td>Amazonbot</td><td>Amazon</td><td>Alexa and AI services</td></tr>
+</tbody>
+</table>
+<p>Companies add and rename crawlers from time to time, so check each company’s documentation for the current list.</p>
+
+<h2>The robots.txt rules</h2>
+<p>To block one crawler from the whole site, give it its own group:</p>
+<pre class="formula">User-agent: GPTBot
+Disallow: /</pre>
+<p>To block several training crawlers while keeping normal search engines welcome, your file might look like this:</p>
+<pre class="formula">User-agent: *
+Disallow:
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://example.com/sitemap.xml</pre>
+<p>The <a href="/robots-txt-generator/">robots.txt generator</a> builds this for you with one checkbox, plus a second option for AI search crawlers.</p>
+
+<h2>What blocking does and doesn’t do</h2>
+<ul>
+<li><strong>It’s a request, not a lock.</strong> Major AI companies say their crawlers respect robots.txt, but nothing technically forces a crawler to obey. Determined scrapers ignore it.</li>
+<li><strong>It isn’t retroactive.</strong> Content already collected isn’t removed from existing models.</li>
+<li><strong>Blocking Google-Extended doesn’t affect Google Search.</strong> According to Google, regular search crawling and ranking are handled by Googlebot, which you shouldn’t block.</li>
+<li><strong>Don’t block Googlebot or Bingbot</strong> unless you want to disappear from search engines.</li>
+</ul>
+
+<h2>Should you block AI crawlers?</h2>
+<p>It depends on your site. Publishers whose income depends on original writing, artists and photographers often block training crawlers. Businesses that want to be recommended by AI assistants usually allow search crawlers, since being cited in an AI answer can send visitors. A tools site or a local business gets little from blocking and may lose visibility.</p>
+
+<h2>After you change robots.txt</h2>
+<ol>
+<li>Upload the file to the root of your site so it opens at <code>yourdomain.com/robots.txt</code>.</li>
+<li>Open that address in a browser to confirm it’s live.</li>
+<li>Run your homepage through the <a href="/seo-checker/">SEO checker</a> to make sure robots.txt doesn’t accidentally block all crawlers and that your sitemap is listed.</li>
+</ol>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Can I block AI from some pages only?</strong> Yes. Replace <code>Disallow: /</code> with specific folders, such as <code>Disallow: /blog/</code>.</li>
+<li><strong>Is there a meta tag instead of robots.txt?</strong> Some sites use <code>noai</code> meta tags, but they aren’t an official standard and support varies. robots.txt is the widely recognised method.</li>
+<li><strong>How do I know if AI bots visit my site?</strong> Check your server or CDN logs for the user-agent names in the table above.</li>
+</ul>
+
+</article>
+<aside class="side" aria-label="Tools in this guide"><h2>Try the tools</h2><ul><li><a class="side-tool" href="/robots-txt-generator/"><span class="tool-ico tool-ico-sm" data-c="seo"><svg class="ico-svg" focusable="false" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg></span>Robots.txt Generator</a></li><li><a class="side-tool" href="/seo-checker/"><span class="tool-ico tool-ico-sm" data-c="seo"><svg class="ico-svg" focusable="false" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.5 14 5 5-1.5 1.5-5-5v-.79l-.27-.28A6.47 6.47 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3 6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.57 4.23l.28.27zm-6-9.5-.55.03c-.24.52-.61 1.4-.88 2.47h2.86c-.27-1.07-.64-1.95-.88-2.47-.18-.03-.36-.03-.55-.03M13.83 7a4.94 4.94 0 0 0-2.68-2.22c.24.53.55 1.3.78 2.22zM5.17 7h1.9c.23-.92.54-1.69.78-2.22A4.94 4.94 0 0 0 5.17 7M4.5 9.5c0 .5.08 1.03.23 1.5h2.14l-.12-1.5.12-1.5H4.73c-.15.47-.23 1-.23 1.5m9.77 1.5c.15-.47.23-1 .23-1.5s-.08-1.03-.23-1.5h-2.14a9.5 9.5 0 0 1 0 3zm-6.4-3-.12 1.5.12 1.5h3.26a9.5 9.5 0 0 0 0-3zm1.63 6.5c.18 0 .36 0 .53-.03.25-.52.63-1.4.9-2.47H8.07c.27 1.07.65 1.95.9 2.47zm4.33-2.5h-1.9c-.23.92-.54 1.69-.78 2.22A4.94 4.94 0 0 0 13.83 12m-8.66 0a4.94 4.94 0 0 0 2.68 2.22c-.24-.53-.55-1.3-.78-2.22z"/></svg></span>SEO Checker</a></li></ul></aside>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap foot-grid">
+<p style="margin:0">© 2026 SmartToolsy. Free online tools that run in your browser.</p>
+<nav class="foot-links" aria-label="Site information">
+<a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap.xml">Sitemap</a>
+</nav></div></footer>
+<script src="/assets/site.js"></script>
+</body></html>

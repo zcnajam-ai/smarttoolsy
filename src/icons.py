@@ -40,6 +40,7 @@ TOOL_ICON = {
     "slug-generator": "link-variant",
     # Image
     "image-compressor": "image-size-select-large",
+    "image-metadata-remover": "map-marker-off",
     # Converters
     "unit-converter": "ruler",
     "color-converter": "palette-outline",
@@ -50,6 +51,10 @@ TOOL_ICON = {
     # SEO and website
     "seo-checker": "search-web",
     "page-speed-test": "speedometer",
+    "meta-tag-generator": "code-tags",
+    "serp-preview-tool": "card-search-outline",
+    "robots-txt-generator": "robot-outline",
+    "keyword-density-checker": "chart-bar",
     # Developer
     "base64-encoder-decoder": "swap-horizontal",
     "unix-timestamp-converter": "clock-outline",

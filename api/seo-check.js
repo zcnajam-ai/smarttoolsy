@@ -118,7 +118,7 @@ function topCounts(list, n) {
   return [...f.entries()].filter((e) => e[1] > 1).sort((a, b) => b[1] - a[1]).slice(0, n);
 }
 
-function analyzeHtml(html, pageUrl) {
+function analyzeHtml(html, pageUrl, withText) {
   const base = new URL(pageUrl);
   const headEnd = html.search(/<\/head>/i);
   const headHtml = headEnd > 0 ? html.slice(0, headEnd) : html.slice(0, 20000);
@@ -213,6 +213,7 @@ function analyzeHtml(html, pageUrl) {
     links: { internal, external, nofollow, empty: emptyAnchors },
     wordCount: words.length,
     textSample: text.slice(0, 300),
+    fullText: withText ? text.slice(0, 200000) : undefined,
     keywords: topCounts(content, 12),
     phrases: topCounts(bigrams, 6),
     jsonLd: [...new Set(jsonLd)],
@@ -310,7 +311,7 @@ module.exports = async function handler(req, res) {
     headers: pick(page.headers, ['server', 'x-powered-by', 'strict-transport-security', 'cache-control', 'x-robots-tag', 'content-encoding', 'x-frame-options', 'content-security-policy', 'x-content-type-options', 'referrer-policy']),
     https: final.protocol === 'https:',
     isHtml,
-    html: isHtml ? analyzeHtml(page.text, final.href) : null,
+    html: isHtml ? analyzeHtml(page.text, final.href, req.query && req.query.text === '1') : null,
     robots,
     sitemap,
     notFoundStatus: notFoundR.error ? null : notFoundR.status,

@@ -977,4 +977,330 @@ body="""
 <li><strong>Why not just count total days and divide?</strong> Months have different lengths, so dividing days by 30 or 365 gives slightly wrong results. The column method, or a calendar-based calculator, avoids that.</li>
 </ul>
 """),
+dict(
+slug="how-to-remove-metadata-from-photos", date="2026-10-25",
+title="How to Remove Metadata from Photos (iPhone, Android, Windows, Mac)",
+desc="Photos can reveal where you live and what phone you use. Here’s how to check and remove location and EXIF metadata on any device before you share.",
+tools=["image-metadata-remover", "image-compressor"],
+body="""
+<p>Open the details of almost any photo taken on a phone and you’ll find more than you expected: the exact GPS coordinates where it was taken, the date and time to the second, the phone model, and sometimes the owner’s name. This hidden information is called metadata, and it travels with the file whenever you email it, send it as a document, or upload it somewhere that doesn’t strip it.</p>
+<p>Here’s how to see what your photos reveal and remove it on every common device.</p>
+
+<h2>The quickest way on any device</h2>
+<ol>
+<li>Open the <a href="/image-metadata-remover">Image Metadata Remover</a> in your browser.</li>
+<li>Choose one or more photos. The report shows what each one contains, with GPS location and serial numbers highlighted.</li>
+<li>Download the clean copies.</li>
+</ol>
+<p>The photos are processed on your own device and never uploaded. Only the hidden data is removed, so the picture keeps its full quality, and portrait photos still display the right way up.</p>
+
+<h2>On iPhone</h2>
+<ul>
+<li><strong>Remove location when sharing:</strong> in Photos, select the picture, tap Share, tap <strong>Options</strong> at the top, and turn off <strong>Location</strong>. This applies to that share only.</li>
+<li><strong>Remove location from the photo itself:</strong> open the photo, swipe up to see its details, tap <strong>Adjust</strong> next to the location, and choose <strong>No Location</strong>.</li>
+<li><strong>Stop recording location:</strong> go to Settings → Privacy &amp; Security → Location Services → Camera and choose <strong>Never</strong>.</li>
+</ul>
+<p>These options handle location, but not the camera model, date or other fields. For a fully clean file, use the browser tool above in Safari. iPhones save photos as HEIC by default; set Settings → Camera → Formats → <strong>Most Compatible</strong> to save JPGs instead, which every tool can clean.</p>
+
+<h2>On Android</h2>
+<ul>
+<li><strong>Stop recording location:</strong> open your Camera app’s settings and turn off the option usually called <strong>Location tags</strong> or <strong>Save location</strong>. The name varies by phone maker.</li>
+<li><strong>In Google Photos:</strong> look in Settings → Sharing for an option to remove geo location from items you share by link.</li>
+<li><strong>For a fully clean copy:</strong> open the <a href="/image-metadata-remover">metadata remover</a> in Chrome and pick the photos from your gallery.</li>
+</ul>
+
+<h2>On Windows</h2>
+<ol>
+<li>Right-click the photo in File Explorer and choose <strong>Properties</strong>.</li>
+<li>Open the <strong>Details</strong> tab and click <strong>Remove Properties and Personal Information</strong> at the bottom.</li>
+<li>Choose <strong>Create a copy with all possible properties removed</strong>, or pick individual fields to remove.</li>
+</ol>
+<p>This works well for JPG files. It can’t touch every type of metadata, such as some XMP blocks added by editing apps, so check the result if privacy really matters.</p>
+
+<h2>On a Mac</h2>
+<ul>
+<li><strong>Preview:</strong> open the photo, choose Tools → Show Inspector, click the <strong>(i)</strong> tab, open <strong>GPS</strong>, and click <strong>Remove Location Info</strong>. This removes location only.</li>
+<li><strong>Photos app:</strong> when exporting (File → Export), untick the option to include location information.</li>
+</ul>
+
+<h2>What photo metadata can reveal</h2>
+<table>
+<thead><tr><th>Field</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>GPS location</td><td>Can pinpoint your home, workplace or children’s school to within a few meters.</td></tr>
+<tr><td>Date and time</td><td>Shows when you were at a place, or when you were away from home.</td></tr>
+<tr><td>Camera model and serial number</td><td>Can link different photos back to the same device.</td></tr>
+<tr><td>Owner or artist name</td><td>Some cameras and editing apps write your name into every file.</td></tr>
+<tr><td>Editing history and software</td><td>Reveals which apps touched the image and sometimes the original file name.</td></tr>
+<tr><td>AI prompts</td><td>Images from Stable Diffusion and similar tools often store the full prompt and settings.</td></tr>
+</tbody>
+</table>
+
+<h2>Don’t social networks remove it anyway?</h2>
+<p>Many large platforms strip location and most EXIF data when you upload a photo, but you can’t count on it everywhere. Email attachments, files shared as documents in messaging apps, cloud-storage links, forum uploads and marketplace listings frequently keep the original file, metadata included. Cleaning photos yourself before sharing is the only way to be sure.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Does removing metadata change the photo?</strong> Not with a lossless tool. The <a href="/image-metadata-remover">metadata remover</a> copies the image data unchanged. Screenshots and re-saving in an editor also drop metadata, but they re-compress the image.</li>
+<li><strong>Should businesses remove metadata from website images?</strong> It’s good practice. It removes staff names and locations, and slightly reduces file size. For bigger savings, also run images through the <a href="/image-compressor">image compressor</a>.</li>
+<li><strong>Can metadata be recovered after removal?</strong> Not from the clean copy. It’s gone from that file, though your original still has it.</li>
+</ul>
+"""),
+dict(
+slug="what-are-meta-tags", date="2026-10-25",
+title="What Are Meta Tags? The Ones That Matter for SEO (With Examples)",
+desc="A plain-English guide to meta tags: what they are, which ones affect Google rankings and clicks, which to ignore, and copy-ready examples.",
+tools=["meta-tag-generator", "serp-preview-tool", "seo-checker"],
+body="""
+<p>Meta tags are snippets of HTML in the <code>&lt;head&gt;</code> section of a web page. Visitors never see them on the page, but search engines, browsers and social networks read them to understand the page and decide how to show it. A handful of them shape how your site appears in Google and how your links look when they’re shared. Most of the rest are optional or obsolete.</p>
+
+<h2>The meta tags that matter</h2>
+<h3>1. Title tag</h3>
+<pre class="formula">&lt;title&gt;Free Mortgage Calculator – Monthly Payment with Taxes&lt;/title&gt;</pre>
+<p>Technically not a meta tag, but the most important tag in the head. It’s the blue headline in search results, the text in the browser tab, and a strong signal of what the page is about. Keep it unique for every page, around 50–60 characters, with the main topic near the start.</p>
+
+<h3>2. Meta description</h3>
+<pre class="formula">&lt;meta name="description" content="Work out your monthly mortgage payment with taxes, insurance and PMI. Free, no sign-up."&gt;</pre>
+<p>The short summary under the title in search results. Google says it doesn’t use descriptions as a ranking factor, but a specific, useful description persuades more people to click. Aim for about 120–160 characters. Test yours in the <a href="/serp-preview-tool">SERP preview tool</a>.</p>
+
+<h3>3. Viewport</h3>
+<pre class="formula">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</pre>
+<p>Tells phones to fit the page to the screen. Without it, mobile visitors see a tiny desktop layout. Google indexes the mobile version of your pages, so this one is essential.</p>
+
+<h3>4. Robots</h3>
+<pre class="formula">&lt;meta name="robots" content="noindex, follow"&gt;</pre>
+<p>Only needed when you want to change the default. <code>noindex</code> keeps a page out of search results (useful for thank-you pages, internal search results and thin pages); <code>nofollow</code> asks search engines not to follow the page’s links. Pages without a robots tag are indexed and followed normally.</p>
+
+<h3>5. Canonical link</h3>
+<pre class="formula">&lt;link rel="canonical" href="https://example.com/mortgage-calculator/"&gt;</pre>
+<p>Points to the preferred URL when the same content is available at several addresses, such as with tracking parameters or both www and non-www. It helps search engines combine signals onto one page.</p>
+
+<h3>6. Charset</h3>
+<pre class="formula">&lt;meta charset="utf-8"&gt;</pre>
+<p>Tells the browser how to read the characters on the page, so symbols, accents and emoji display properly. Put it first in the head.</p>
+
+<h3>7. Open Graph tags</h3>
+<pre class="formula">&lt;meta property="og:title" content="Free Mortgage Calculator"&gt;
+&lt;meta property="og:description" content="Monthly payment with taxes, insurance and PMI."&gt;
+&lt;meta property="og:image" content="https://example.com/share.jpg"&gt;</pre>
+<p>Control the preview card when a link is shared on Facebook, LinkedIn, WhatsApp, Slack and most messaging apps. They don’t affect Google rankings, but a good image and headline make shared links far more clickable.</p>
+
+<h3>8. X (Twitter) card</h3>
+<pre class="formula">&lt;meta name="twitter:card" content="summary_large_image"&gt;</pre>
+<p>Tells X to show a large image preview. X falls back to your Open Graph tags for the title, description and image.</p>
+
+<h2>Meta tags you can ignore</h2>
+<ul>
+<li><strong>Meta keywords:</strong> Google has ignored it for well over a decade, and it hands your keyword list to competitors.</li>
+<li><strong>Revisit-after, rating, distribution, author</strong> and similar: not used by Google for ranking.</li>
+<li><strong>Language meta tags:</strong> declare the language with <code>&lt;html lang="en"&gt;</code> instead, and use hreflang links for translated versions.</li>
+</ul>
+
+<h2>How to add meta tags</h2>
+<ul>
+<li><strong>Hand-coded sites:</strong> paste the tags inside <code>&lt;head&gt;</code>. The <a href="/meta-tag-generator">meta tag generator</a> writes them for you with live previews.</li>
+<li><strong>WordPress:</strong> an SEO plugin such as Yoast SEO, Rank Math or All in One SEO adds title, description, canonical and Open Graph fields to every post.</li>
+<li><strong>Shopify, Wix and Squarespace:</strong> use the “SEO” or “Search engine listing” section in each page’s settings.</li>
+</ul>
+
+<h2>How to check a page’s meta tags</h2>
+<p>Right-click the page and choose “View page source”, then look between <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code>. Or run the page through the <a href="/seo-checker">SEO checker</a>, which reads the title, description, robots, canonical, Open Graph and X tags and flags anything missing or too long.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Do meta tags improve rankings?</strong> The title tag helps search engines understand the page. The description, Open Graph and X tags mainly improve clicks. Robots and canonical tags prevent problems rather than boost rankings.</li>
+<li><strong>Why doesn’t Google show my meta description?</strong> Google picks its own snippet when it thinks page text answers the search better. That’s normal; a good description is still used for many queries.</li>
+<li><strong>How many meta tags should a page have?</strong> There’s no target number. The eight above cover almost every site.</li>
+</ul>
+"""),
+dict(
+slug="title-tag-and-meta-description-length", date="2026-10-25",
+title="How Long Should a Title Tag Be? Title and Meta Description Length in 2026",
+desc="The real limits Google uses for title tags and meta descriptions, why pixels matter more than characters, and how to write ones that don’t get cut off.",
+tools=["serp-preview-tool", "meta-tag-generator"],
+body="""
+<p>Write a title that’s too long and Google cuts it off with “…”, often right before the words that matter. Write one that’s too short and you waste space that could persuade someone to click. Here are the lengths that work, and why the real limit is measured in pixels rather than characters.</p>
+
+<h2>The short answer</h2>
+<table>
+<thead><tr><th></th><th>Aim for</th><th>Google shows up to about</th></tr></thead>
+<tbody>
+<tr><td>Title tag</td><td>50–60 characters</td><td>600 pixels on desktop</td></tr>
+<tr><td>Meta description (desktop)</td><td>120–160 characters</td><td>920 pixels</td></tr>
+<tr><td>Meta description (mobile)</td><td>Key message in the first 120 characters</td><td>About 680 pixels</td></tr>
+</tbody>
+</table>
+<p>These are guides, not hard rules. Google doesn’t publish official limits and adjusts its layout from time to time. Test your own text in the <a href="/serp-preview-tool">SERP preview tool</a>, which measures it in pixels.</p>
+
+<h2>Why pixels matter more than characters</h2>
+<p>Search results have a fixed width, so Google truncates text when it runs out of room. Letters have different widths: a capital W takes up several times the space of a lowercase i. A 55-character title in narrow letters fits easily; a 50-character title full of capitals and wide letters may not.</p>
+<p>Compare:</p>
+<ul>
+<li><em>“Illinois little-league fields list”</em>: narrow letters, fits comfortably.</li>
+<li><em>“WOW! MEGA HOME MAKEOVER WORKBOOK”</em>: fewer characters, but capitals make it far wider.</li>
+</ul>
+<p>Avoid writing titles in all capitals. Besides looking shouty, they get cut off much sooner.</p>
+
+<h2>How to write a title tag that fits</h2>
+<ol>
+<li><strong>Start with the topic.</strong> Put the main keyword in the first few words, where it’s never truncated.</li>
+<li><strong>Add the benefit or detail that earns the click:</strong> “free”, a year, a number, or the specific result.</li>
+<li><strong>Put your brand at the end, if at all.</strong> “ – SmartToolsy” is the first thing to be cut, which is fine.</li>
+<li><strong>Use separators sparingly.</strong> One dash or pipe is enough.</li>
+<li><strong>Make every title unique</strong>, so Google can tell your pages apart.</li>
+</ol>
+<p>Example: <em>“Roofing Calculator – Roof Area, Squares & Shingle Bundles”</em> puts the keyword first and then answers what the tool gives you.</p>
+
+<h2>How to write a meta description that fits</h2>
+<ul>
+<li>Say what the page gives the reader, in one or two plain sentences.</li>
+<li>Include the main keyword naturally; Google bolds words that match the search.</li>
+<li>Put the most important point in the first 120 characters so it survives on mobile.</li>
+<li>End with a reason to act, such as “Free, no sign-up” or “With worked examples”.</li>
+</ul>
+
+<h2>Why Google sometimes ignores your title and description</h2>
+<p>Google rewrites titles when they’re too long, stuffed with keywords, the same across many pages, or don’t match what the page is about. It often uses the page’s main heading (H1) instead, so keeping your title and H1 closely aligned reduces rewrites. Descriptions are replaced with page text even more often, whenever another passage matches the search better. You can’t prevent this completely, but clear, accurate tags are used far more often than vague or spammy ones.</p>
+
+<h2>Checking your pages</h2>
+<p>Use the <a href="/serp-preview-tool">SERP preview tool</a> to test new titles and to load the current title and description of any live page. When you’re happy, the <a href="/meta-tag-generator">meta tag generator</a> produces the HTML. To find pages with missing or overlong tags, run them through the <a href="/seo-checker">SEO checker</a>.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Is a longer title bad for SEO?</strong> Not in itself. Google still reads the whole title; it just can’t display all of it. The risk is losing important words or getting your title rewritten.</li>
+<li><strong>How short is too short?</strong> Titles under about 30 characters often leave out useful detail. Use the space to describe the page fully.</li>
+<li><strong>Do the limits differ on mobile?</strong> Mobile titles can wrap onto two lines, so they’re slightly more forgiving, but descriptions are shorter. Writing for desktop and front-loading the key words covers both.</li>
+</ul>
+"""),
+dict(
+slug="how-to-block-ai-crawlers-robots-txt", date="2026-10-25",
+title="How to Block AI Crawlers with robots.txt (GPTBot, ClaudeBot and More)",
+desc="Which AI bots crawl your site, how to block them in robots.txt, what blocking does and doesn’t do, and why you might allow AI search bots.",
+tools=["robots-txt-generator", "seo-checker"],
+body="""
+<p>AI companies send crawlers across the web to collect text for training their models and to fetch pages when people ask AI assistants questions. If you’d rather your content wasn’t used that way, robots.txt is the standard way to say so. Here’s how to do it, and the trade-offs to think about first.</p>
+
+<h2>Two kinds of AI crawlers</h2>
+<ul>
+<li><strong>Training crawlers</strong> collect pages to build and improve AI models. Blocking them asks the company not to use your content for training. You lose little or no traffic.</li>
+<li><strong>Search and assistant crawlers</strong> fetch pages to answer questions in AI search tools, often with a link back to the source. Blocking them can keep your site out of those answers and cost you visitors.</li>
+</ul>
+<p>Many publishers block training crawlers but allow search crawlers.</p>
+
+<h2>Common AI crawler names</h2>
+<table>
+<thead><tr><th>User-agent</th><th>Company</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GPTBot</td><td>OpenAI</td><td>Model training</td></tr>
+<tr><td>OAI-SearchBot</td><td>OpenAI</td><td>ChatGPT search results</td></tr>
+<tr><td>ChatGPT-User</td><td>OpenAI</td><td>Pages fetched when a user asks ChatGPT</td></tr>
+<tr><td>ClaudeBot</td><td>Anthropic</td><td>Model training</td></tr>
+<tr><td>Google-Extended</td><td>Google</td><td>Use in Gemini models (not Google Search)</td></tr>
+<tr><td>Applebot-Extended</td><td>Apple</td><td>Use in Apple’s AI models</td></tr>
+<tr><td>CCBot</td><td>Common Crawl</td><td>Open web archive widely used for AI training</td></tr>
+<tr><td>PerplexityBot</td><td>Perplexity</td><td>Perplexity search index</td></tr>
+<tr><td>meta-externalagent</td><td>Meta</td><td>AI training and products</td></tr>
+<tr><td>Bytespider</td><td>ByteDance</td><td>AI training</td></tr>
+<tr><td>Amazonbot</td><td>Amazon</td><td>Alexa and AI services</td></tr>
+</tbody>
+</table>
+<p>Companies add and rename crawlers from time to time, so check each company’s documentation for the current list.</p>
+
+<h2>The robots.txt rules</h2>
+<p>To block one crawler from the whole site, give it its own group:</p>
+<pre class="formula">User-agent: GPTBot
+Disallow: /</pre>
+<p>To block several training crawlers while keeping normal search engines welcome, your file might look like this:</p>
+<pre class="formula">User-agent: *
+Disallow:
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://example.com/sitemap.xml</pre>
+<p>The <a href="/robots-txt-generator">robots.txt generator</a> builds this for you with one checkbox, plus a second option for AI search crawlers.</p>
+
+<h2>What blocking does and doesn’t do</h2>
+<ul>
+<li><strong>It’s a request, not a lock.</strong> Major AI companies say their crawlers respect robots.txt, but nothing technically forces a crawler to obey. Determined scrapers ignore it.</li>
+<li><strong>It isn’t retroactive.</strong> Content already collected isn’t removed from existing models.</li>
+<li><strong>Blocking Google-Extended doesn’t affect Google Search.</strong> According to Google, regular search crawling and ranking are handled by Googlebot, which you shouldn’t block.</li>
+<li><strong>Don’t block Googlebot or Bingbot</strong> unless you want to disappear from search engines.</li>
+</ul>
+
+<h2>Should you block AI crawlers?</h2>
+<p>It depends on your site. Publishers whose income depends on original writing, artists and photographers often block training crawlers. Businesses that want to be recommended by AI assistants usually allow search crawlers, since being cited in an AI answer can send visitors. A tools site or a local business gets little from blocking and may lose visibility.</p>
+
+<h2>After you change robots.txt</h2>
+<ol>
+<li>Upload the file to the root of your site so it opens at <code>yourdomain.com/robots.txt</code>.</li>
+<li>Open that address in a browser to confirm it’s live.</li>
+<li>Run your homepage through the <a href="/seo-checker">SEO checker</a> to make sure robots.txt doesn’t accidentally block all crawlers and that your sitemap is listed.</li>
+</ol>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Can I block AI from some pages only?</strong> Yes. Replace <code>Disallow: /</code> with specific folders, such as <code>Disallow: /blog/</code>.</li>
+<li><strong>Is there a meta tag instead of robots.txt?</strong> Some sites use <code>noai</code> meta tags, but they aren’t an official standard and support varies. robots.txt is the widely recognised method.</li>
+<li><strong>How do I know if AI bots visit my site?</strong> Check your server or CDN logs for the user-agent names in the table above.</li>
+</ul>
+"""),
+dict(
+slug="good-keyword-density-for-seo", date="2026-10-25",
+title="What Is a Good Keyword Density for SEO? (And What Matters More)",
+desc="Is there an ideal keyword density? What Google actually looks for, how to calculate density, how to spot keyword stuffing, and how to cover a topic properly.",
+tools=["keyword-density-checker", "word-counter", "seo-checker"],
+body="""
+<p>Keyword density is the share of words on a page taken up by a particular keyword. It was once a popular SEO target, with advice like “use your keyword 2–3% of the time”. Search engines have moved on a long way since then. Here’s what the number means today, how to use it, and what actually helps a page rank.</p>
+
+<h2>How keyword density is calculated</h2>
+<div class="formula">Keyword density = (number of times the keyword appears × words in the keyword) ÷ total words × 100</div>
+<p>If “gravel driveway” appears 5 times in a 1,000-word article: 5 × 2 ÷ 1,000 × 100 = 1%. The <a href="/keyword-density-checker">keyword density checker</a> works this out for every word and phrase on a page at once.</p>
+
+<h2>Is there an ideal keyword density?</h2>
+<p>No. Google has said for years that it doesn’t use a target keyword density, and pages don’t rank better for hitting any particular percentage. Modern search engines understand language well enough to recognise synonyms, related terms and the overall topic of a page. A page that uses a phrase naturally a few times and covers the subject thoroughly will beat one that repeats the phrase to reach a number.</p>
+<p>In practice, most well-written pages end up with their main keyword somewhere around 0.5–2%, simply because that’s how often it comes up when you write naturally about a topic. That’s a result of good writing, not a goal to aim for.</p>
+
+<h2>Keyword stuffing hurts</h2>
+<p>Repeating a keyword far more than natural writing would is called keyword stuffing. Google’s spam policies name it explicitly, and it makes text unpleasant to read. Signs to watch for:</p>
+<ul>
+<li>One word or phrase stands far above everything else in the density table.</li>
+<li>Sentences sound awkward because the exact phrase is forced in: “Our cheap plumber Dallas service is the best cheap plumber Dallas has.”</li>
+<li>Lists of keywords or place names with no real purpose.</li>
+</ul>
+<p>Fix it by replacing some mentions with pronouns, synonyms and more specific terms.</p>
+
+<h2>What matters more than density</h2>
+<ol>
+<li><strong>Put the topic in the right places.</strong> The main keyword belongs in the title tag, the H1, the first paragraph and at least one subheading. These placements matter far more than how many times it appears in total.</li>
+<li><strong>Cover related subtopics.</strong> A guide to gravel driveways should also mention base layers, depth, compaction, crushed stone sizes and cost. Those related terms show you’ve covered the subject.</li>
+<li><strong>Answer the questions people ask.</strong> Look at the “People also ask” box in Google for your keyword and answer those questions clearly.</li>
+<li><strong>Match the search intent.</strong> Someone searching “gravel calculator” wants a calculator, not an essay. Someone searching “how much gravel do I need” wants an explanation with examples.</li>
+<li><strong>Write enough to be useful.</strong> There’s no minimum word count, but thin pages rarely answer questions fully. Check yours with the <a href="/word-counter">word counter</a>.</li>
+</ol>
+
+<h2>How to use a keyword density checker well</h2>
+<ul>
+<li><strong>Confirm your main topic leads.</strong> If your target phrase doesn’t appear among the top terms, the page may not be clearly about it.</li>
+<li><strong>Spot accidental repetition.</strong> Writers often overuse a word without noticing.</li>
+<li><strong>Compare with pages that rank.</strong> Load a competitor’s page to see which related terms they use that you don’t.</li>
+</ul>
+<p>For a complete on-page review, including title length, headings, links and structured data, run the page through the <a href="/seo-checker">SEO checker</a>.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>What’s the best keyword density?</strong> There isn’t one. Write naturally, place the keyword in the title, H1 and opening, and cover the topic thoroughly.</li>
+<li><strong>Does keyword density matter for Bing?</strong> Bing also warns against keyword stuffing and focuses on relevance and quality, so the same advice applies.</li>
+<li><strong>Should I include the keyword in every paragraph?</strong> No. Use it where it fits; elsewhere, natural variations read better and help just as much.</li>
+</ul>
+"""),
 ]
