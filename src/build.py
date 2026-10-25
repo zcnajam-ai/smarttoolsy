@@ -417,7 +417,7 @@ def build_misc():
     with open(os.path.join(DIST, "404.html"), "w", encoding="utf-8") as f:
         f.write(slashify(page))
     urls = ["/"] + ["/" + t["slug"] for t in TOOLS] + ["/blog"] + ["/blog/" + a["slug"] for a in ARTICLES] + \
-           [p["path"] for p in PROG] + ["/about", "/contact", "/privacy-policy", "/terms", "/disclaimer"]
+           [p["path"] for p in PROG if p["path"].count("/") == 1] + ["/about", "/contact", "/privacy-policy", "/terms", "/disclaimer"]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
         f"  <url><loc>{C['SITE_URL']}{u if u == '/' else u + '/'}</loc><lastmod>{C['UPDATED']}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     open(os.path.join(DIST, "sitemap.xml"), "w").write(sm)
@@ -443,7 +443,7 @@ def main():
     for p in PROG:
         build_prog(p)
     urls = build_misc()
-    print(f"Built {len(urls)} pages into {DIST}")
+    print(f"Built site into {DIST} ({len(urls)} URLs in sitemap)")
 
 
 if __name__ == "__main__":
