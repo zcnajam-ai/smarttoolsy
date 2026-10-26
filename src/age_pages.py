@@ -10,8 +10,8 @@ and refreshed in the browser by tools.js, so they stay correct after New Year.
 """
 from datetime import date
 
-YEARS = range(1940, 2021)
-AGES = range(10, 81)
+YEARS = range(1925, 2025)
+AGES = range(5, 101)
 ZODIAC = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"]
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -150,7 +150,7 @@ def born_in_page(y, now):
 """
     return dict(
         path=f"/how-old-am-i/born-in-{y}",
-        title=f"How Old Am I If I Was Born in {y}? ({now} Age Calculator)",
+        title=f"How Old Am I If I Was Born in {y}? ({y}-{now} Age)",
         desc=f"Born in {y}? You are {a_before} or {a_after} in {now}, depending on whether your birthday has passed. See your exact age, generation, zodiac and retirement age.",
         h1=f"How old am I if I was born in {y}?",
         lede=f"Your age in {now}, plus the facts and milestones for the {y} birth year.",
@@ -210,7 +210,7 @@ def if_im_page(n, now):
 """
     return dict(
         path=f"/what-year-was-i-born/if-im-{n}",
-        title=f"What Year Was I Born If I'm {n}? ({now})",
+        title=f"What Year Was I Born If I'm {n}? ({y_before} or {y_after})",
         desc=f"If you are {n} in {now}, you were born in {y_after} (birthday already passed) or {y_before} (birthday still to come). See generation, zodiac and milestones.",
         h1=f"What year was I born if I’m {n}?",
         lede=f"Your birth year from your age in {now}, with the facts that go with it.",
@@ -227,7 +227,7 @@ def hub_born(now):
     blocks = "".join(f"<h2>{d}s</h2><p class='yr-grid'>" + "".join(
         f'<a href="/how-old-am-i/born-in-{y}">{y}<small>{now - y - 1}–{now - y}</small></a>' for y in ys) + "</p>" for d, ys in sorted(by_decade.items(), reverse=True))
     return dict(path="/how-old-am-i", title=f"How Old Am I? Age by Birth Year Chart ({now})",
-                desc=f"Find how old you are in {now} from your birth year. Pick your year from 1940 to 2020 to see your age, generation and milestones.",
+                desc=f"Find how old you are in {now} from your birth year. Pick your year from {YEARS[0]} to {YEARS[-1]} to see your age, generation and milestones.",
                 h1="How old am I? Age by birth year", lede=f"Pick your birth year to see your age in {now}.",
                 crumbs=[("Home", "/"), ("Age by birth year", "/how-old-am-i")], tool="", related=[("Age calculator", "/age-calculator"), ("What year was I born?", "/what-year-was-i-born")],
                 body=f"<article class='article' style='margin-top:0'><p>Each year shows the two possible ages in {now}: the lower one before your birthday and the higher one after it. For an exact answer in years, months and days, use the <a href='/age-calculator'>age calculator</a>.</p>{blocks}</article>")
@@ -236,7 +236,7 @@ def hub_born(now):
 def hub_ifim(now):
     links = "".join(f'<a href="/what-year-was-i-born/if-im-{n}">{n}<small>{now - n - 1} or {now - n}</small></a>' for n in AGES)
     return dict(path="/what-year-was-i-born", title=f"What Year Was I Born? Birth Year by Age Chart ({now})",
-                desc=f"Find your birth year from your age in {now}. Choose an age from 10 to 80 to see the two possible birth years.",
+                desc=f"Find your birth year from your age in {now}. Choose an age from {AGES[0]} to {AGES[-1]} to see the two possible birth years.",
                 h1="What year was I born? Birth year by age", lede=f"Pick your age to see your birth year.",
                 crumbs=[("Home", "/"), ("Birth year by age", "/what-year-was-i-born")], tool="", related=[("Age calculator", "/age-calculator"), ("How old am I?", "/how-old-am-i")],
                 body=f"<article class='article' style='margin-top:0'><p>Your birth year is the current year minus your age, or one year earlier if your birthday hasn’t happened yet this year.</p><p class='yr-grid'>{links}</p></article>")
