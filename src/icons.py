@@ -27,6 +27,10 @@ TOOL_ICON = {
     "date-difference-calculator": "calendar-range",
     "mortgage-calculator": "home-percent-outline",
     "amortization-calculator": "table-large",
+    "gpa-calculator": "school-outline",
+    "time-card-calculator": "briefcase-clock-outline",
+    "tip-calculator": "hand-coin-outline",
+    "salary-to-hourly": "cash-clock",
     # Home & construction
     "gravel-calculator": "dump-truck",
     "cubic-yard-calculator": "cube-outline",
@@ -38,12 +42,18 @@ TOOL_ICON = {
     "lorem-ipsum-generator": "text-long",
     "text-cleaner": "broom",
     "slug-generator": "link-variant",
+    "character-counter": "alphabetical-variant",
     # Image
     "image-compressor": "image-size-select-large",
     "image-metadata-remover": "map-marker-off",
+    "background-remover": "image-filter-center-focus-weak",
+    "image-resizer": "resize",
+    "image-cropper": "crop",
     # Converters
     "unit-converter": "ruler",
     "color-converter": "palette-outline",
+    "png-to-jpg": "file-png-box",
+    "webp-to-jpg": "image-sync-outline",
     # Generators
     "password-generator": "key-variant",
     "qr-code-generator": "qrcode",

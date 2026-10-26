@@ -165,7 +165,7 @@ input[type="color"] { padding: 3px; border: 1px solid var(--line); border-radius
 .field { margin-bottom: 14px; }
 .field label, .lbl { display: block; font-weight: 700; margin-bottom: 6px; font-size: .97rem; }
 .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
-input[type="text"], input[type="url"], input[type="number"], input[type="date"], input[type="month"], input[type="datetime-local"], input[type="search"], select, textarea {
+input[type="text"], input[type="url"], input[type="time"], input[type="number"], input[type="date"], input[type="month"], input[type="datetime-local"], input[type="search"], select, textarea {
   width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
   border-radius: var(--radius-sm); padding: 10px 12px;
 }
@@ -405,3 +405,37 @@ textarea[rows="3"] { min-height: 84px; } textarea[rows="4"] { min-height: 110px;
 .mr-tbl td { padding: 4px 0; overflow-wrap: anywhere; }
 .mr-risk th, .mr-risk td { color: var(--bad); }
 .mr-item .btn { text-decoration: none; display: inline-block; }
+
+/* ---------- batch 2 tools ---------- */
+.bg-opts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 6px 0 12px; }
+.bg-opts label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.bg-opts input[type="color"] { width: 34px; height: 26px; padding: 0; border: 1px solid var(--line); border-radius: 4px; }
+.bg-prev { display: block; max-width: 100%; max-height: 520px; margin: 4px 0 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.checker { background-color: #fff; background-image: linear-gradient(45deg, #d9dee8 25%, transparent 25%), linear-gradient(-45deg, #d9dee8 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d9dee8 75%), linear-gradient(-45deg, transparent 75%, #d9dee8 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0; }
+.cr-stage { position: relative; display: inline-block; max-width: 100%; margin: 12px 0; touch-action: none; user-select: none; line-height: 0; }
+.cr-stage img { max-width: 100%; max-height: 560px; display: block; }
+.cr-box { position: absolute; border: 2px solid #fff; outline: 1px solid rgba(0,0,0,.5); box-shadow: 0 0 0 9999px rgba(10,15,30,.55); cursor: move; touch-action: none; }
+.cr-box span { position: absolute; width: 18px; height: 18px; background: #fff; border: 2px solid var(--primary); border-radius: 50%; }
+.cr-box span[data-h="nw"] { left: -10px; top: -10px; cursor: nwse-resize; } .cr-box span[data-h="ne"] { right: -10px; top: -10px; cursor: nesw-resize; }
+.cr-box span[data-h="sw"] { left: -10px; bottom: -10px; cursor: nesw-resize; } .cr-box span[data-h="se"] { right: -10px; bottom: -10px; cursor: nwse-resize; }
+.cr-stage { overflow: hidden; }
+.cv-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+.cv-item { display: flex; align-items: center; gap: 12px; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg); }
+.cv-item img { width: 56px; height: 56px; object-fit: cover; border-radius: 6px; flex: none; background: #fff; }
+.cv-item div { flex: 1; min-width: 0; }
+.cv-item b { display: block; overflow-wrap: anywhere; } .cv-item span { color: var(--muted); font-size: .9rem; }
+.cv-item .btn { text-decoration: none; flex: none; }
+.cc-limits { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.cc-limits li { display: grid; grid-template-columns: minmax(130px, 34%) 1fr; gap: 10px; align-items: center; font-size: .93rem; }
+.cc-limits .meter { margin: 0; }
+.meter.m-good i { background: var(--good); }
+.table-wrap { overflow-x: auto; }
+.gpa-tbl, .tc-tbl { width: 100%; border-collapse: collapse; min-width: 480px; }
+.gpa-tbl th, .tc-tbl th, .gpa-tbl td, .tc-tbl td { padding: 5px 4px; text-align: left; border-bottom: 1px solid var(--line); font-size: .93rem; }
+.gpa-tbl input, .gpa-tbl select, .tc-tbl input { width: 100%; padding: 7px 8px; }
+.gpa-tbl td:nth-child(3) { width: 80px; } .gpa-tbl td:last-child { width: 40px; }
+.tc-day { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sh-tbl { width: 100%; max-width: 420px; border-collapse: collapse; margin-top: 8px; }
+.sh-tbl th, .sh-tbl td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+.sh-tbl td { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.row4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }

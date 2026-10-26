@@ -1303,4 +1303,512 @@ body="""
 <li><strong>Should I include the keyword in every paragraph?</strong> No. Use it where it fits; elsewhere, natural variations read better and help just as much.</li>
 </ul>
 """),
+dict(
+slug="how-to-remove-background-from-image", date="2026-10-27",
+title="How to Remove the Background from an Image (Free, No Photoshop)",
+desc="Free ways to remove a photo’s background on any device, from a one-click browser tool to the built-in options on iPhone, Mac and Windows, plus tips for clean edges.",
+tools=["background-remover", "image-cropper", "image-resizer"],
+body="""
+<p>Cutting a person or product out of a photo used to mean careful work with Photoshop’s pen tool. Today, AI does it in seconds, and several free options are already on your phone or computer. Here’s how to remove a background on each device, and how to get clean, natural-looking edges.</p>
+
+<h2>The quickest way on any device</h2>
+<ol>
+<li>Open the <a href="/background-remover">Background Remover</a>.</li>
+<li>Choose a photo, or paste one with Ctrl+V.</li>
+<li>Pick Transparent, White or any color, and download.</li>
+</ol>
+<p>The AI runs in your browser, so the photo isn’t uploaded. That matters for pictures of people, IDs or products that aren’t public yet.</p>
+
+<h2>On iPhone and iPad</h2>
+<p>On recent versions of iOS, open a photo in the Photos app and touch and hold the subject. When it lifts away with a glowing outline, tap <strong>Copy</strong> or <strong>Share</strong>. You can paste the cut-out into Messages, Notes or another app. It works best with people, pets and clear objects.</p>
+
+<h2>On a Mac</h2>
+<p>Recent versions of macOS can lift subjects too. In Photos or Preview, right-click the image and choose <strong>Copy Subject</strong>. In Finder, right-click an image file and look for <strong>Quick Actions → Remove Background</strong>, which saves a new transparent PNG next to the original.</p>
+
+<h2>On Windows</h2>
+<p>The Paint app in Windows 11 has a <strong>Remove background</strong> button in the Image section of the toolbar. Open the photo in Paint, click it, and save the result as a PNG to keep the transparency.</p>
+
+<h2>On Android</h2>
+<p>Some phones include a cut-out feature in their gallery or editing app, often by touching and holding the subject, but it varies by brand. The <a href="/background-remover">browser tool</a> works the same on every Android phone in Chrome.</p>
+
+<h2>Tips for clean edges</h2>
+<ul>
+<li><strong>Start with contrast.</strong> A subject that stands out from the background in color or brightness gives the cleanest cut.</li>
+<li><strong>Use the sharpest, largest photo you have.</strong> Blur and low resolution create fuzzy edges.</li>
+<li><strong>Watch hair and fur.</strong> Fine strands are the hardest part for any tool. A plain background behind the subject when you take the photo helps a lot.</li>
+<li><strong>Pick the right file type.</strong> Save cut-outs as PNG to keep transparency. JPG fills transparent areas with a solid color.</li>
+<li><strong>Finish the layout.</strong> Crop to the shape you need with the <a href="/image-cropper">image cropper</a> and set the exact size with the <a href="/image-resizer">image resizer</a>.</li>
+</ul>
+
+<h2>Product photos on a white background</h2>
+<p>Many marketplaces ask for main product images on a pure white background. Remove the background, choose White, and download as JPG. Leave a little space around the product and keep the same framing across your listings so they look consistent.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Is it legal to remove the background from any image?</strong> Editing doesn’t change who owns a photo. Use your own images, or ones you have permission to edit.</li>
+<li><strong>Why are there faint halos around my subject?</strong> Pixels at the edge mix the subject and the old background. Placing the cut-out on a background of similar brightness hides them, or you can erase them in an editor.</li>
+<li><strong>Can I make a transparent background in JPG?</strong> No. JPG doesn’t support transparency; use PNG or WebP.</li>
+</ul>
+"""),
+dict(
+slug="how-to-resize-an-image", date="2026-10-27",
+title="How to Resize an Image Without Losing Quality (Any Device)",
+desc="Resize photos to exact pixels or a file size like 100 KB on Windows, Mac, iPhone and Android, without stretching or blurring them.",
+tools=["image-resizer", "image-compressor", "image-cropper"],
+body="""
+<p>Websites, forms and social networks all want images at particular sizes. Resizing is simple once you know two rules: keep the proportions locked, and make images smaller, not bigger. Here’s how to do it on every device.</p>
+
+<h2>The quickest way on any device</h2>
+<ol>
+<li>Open the <a href="/image-resizer">Image Resizer</a> and choose your image.</li>
+<li>Type the new width; the height adjusts automatically.</li>
+<li>If there’s a file size limit, type it in KB.</li>
+<li>Download the result.</li>
+</ol>
+
+<h2>On Windows</h2>
+<ul>
+<li><strong>Photos app:</strong> open the image, open the “…” menu and choose <strong>Resize image</strong>, then pick a preset or enter custom dimensions.</li>
+<li><strong>Paint:</strong> press Ctrl+W (Resize), choose Pixels, keep “Maintain aspect ratio” ticked, and save as a new file.</li>
+</ul>
+
+<h2>On a Mac</h2>
+<p>Open the image in Preview, choose <strong>Tools → Adjust Size</strong>, make sure “Scale proportionally” is ticked, enter the width, and save. Use File → Export to save a copy in a different format or quality.</p>
+
+<h2>On iPhone and Android</h2>
+<p>Phones don’t have a simple resize option in their photo apps. Use the <a href="/image-resizer">image resizer</a> in Safari or Chrome, or on iPhone, build a short Shortcuts automation with the “Resize Image” action if you do it often.</p>
+
+<h2>How to avoid losing quality</h2>
+<ul>
+<li><strong>Keep proportions locked.</strong> Changing width and height independently stretches the picture.</li>
+<li><strong>Shrink, don’t enlarge.</strong> Making an image smaller keeps it sharp. Making it bigger can’t create detail, so it turns soft.</li>
+<li><strong>Resize from the original</strong>, not from a copy that’s already been shrunk and compressed several times.</li>
+<li><strong>Choose the right format.</strong> JPG or WebP for photos, PNG for screenshots, logos and graphics with text.</li>
+<li><strong>Need a different shape?</strong> Crop first with the <a href="/image-cropper">image cropper</a>, then resize.</li>
+</ul>
+
+<h2>Resizing to a file size (KB or MB)</h2>
+<p>File size depends on both dimensions and compression. To get under a limit like 100 KB, first reduce the width and height to what’s actually needed, then lower the JPG quality. The resizer does the quality step automatically when you enter a maximum size. For files that are already the right dimensions, the <a href="/image-compressor">image compressor</a> shrinks them without resizing.</p>
+
+<h2>Common sizes</h2>
+<table>
+<thead><tr><th>Use</th><th>Size in pixels</th></tr></thead>
+<tbody>
+<tr><td>Instagram square post</td><td>1080 × 1080</td></tr>
+<tr><td>Instagram portrait post</td><td>1080 × 1350</td></tr>
+<tr><td>Link preview (Open Graph)</td><td>1200 × 630</td></tr>
+<tr><td>YouTube thumbnail</td><td>1280 × 720</td></tr>
+<tr><td>Blog content image</td><td>1200–1600 wide</td></tr>
+<tr><td>2 × 2 inch photo at 300 DPI</td><td>600 × 600</td></tr>
+</tbody>
+</table>
+<p>Platforms adjust their recommendations from time to time, so check the current guidance when it really matters.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>What’s the difference between resizing and compressing?</strong> Resizing changes the number of pixels; compressing keeps the pixels but stores them more efficiently. Both make files smaller.</li>
+<li><strong>What does DPI mean for resizing?</strong> DPI only matters for printing. On screens, only the pixel dimensions count. For print, multiply inches by 300 to get the pixels you need.</li>
+</ul>
+"""),
+dict(
+slug="how-to-crop-a-picture", date="2026-10-27",
+title="How to Crop a Picture on iPhone, Android, Windows and Mac",
+desc="Step-by-step ways to crop a photo on any device, how to crop to a square or circle, and which aspect ratio to use for Instagram, YouTube and stories.",
+tools=["image-cropper", "image-resizer"],
+body="""
+<p>Cropping removes the parts of a photo you don’t want and changes its shape: a square for a profile picture, a tall 9:16 frame for a story, or a wide 16:9 frame for a thumbnail. Every device can do it, and the steps only take a few seconds.</p>
+
+<h2>The quickest way on any device</h2>
+<ol>
+<li>Open the <a href="/image-cropper">Image Cropper</a> and choose a picture.</li>
+<li>Pick a shape such as 1:1, 4:5 or 16:9, or leave it on Free.</li>
+<li>Drag the frame and its corners, then click “Crop and download”.</li>
+</ol>
+<p>Tick “Circle crop” for a round profile picture with transparent corners.</p>
+
+<h2>On iPhone</h2>
+<p>Open the photo in Photos, tap <strong>Edit</strong>, then the crop icon. Drag the corners, or tap the aspect-ratio button at the top to choose Square, 16:9, 4:5 and other shapes. Tap <strong>Done</strong>. You can undo it later with Edit → Revert.</p>
+
+<h2>On Android</h2>
+<p>In Google Photos, open the photo, tap <strong>Edit</strong>, then <strong>Crop</strong>. Drag the corners or choose an aspect ratio, then tap <strong>Save copy</strong> to keep the original. Other gallery apps have a similar Edit → Crop option.</p>
+
+<h2>On Windows</h2>
+<p>Open the image in the Photos app, click <strong>Edit image</strong> (or press Ctrl+E), and use the crop handles or the aspect-ratio menu. Save a copy so the original stays untouched. In Paint, drag a selection and click <strong>Crop</strong>.</p>
+
+<h2>On a Mac</h2>
+<p>In Preview, drag a selection over the area you want and choose <strong>Tools → Crop</strong> (Command+K). In Photos, click Edit, then Crop, where you can also choose an aspect ratio.</p>
+
+<h2>Which shape to choose</h2>
+<table>
+<thead><tr><th>Ratio</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>1:1 (square)</td><td>Profile pictures, product photos, square posts</td></tr>
+<tr><td>4:5</td><td>Portrait posts in Instagram feeds</td></tr>
+<tr><td>9:16</td><td>Stories, Reels, TikTok and Shorts</td></tr>
+<tr><td>16:9</td><td>YouTube thumbnails, slides, desktop wallpapers</td></tr>
+<tr><td>3:2</td><td>Standard prints such as 4 × 6 inches</td></tr>
+</tbody>
+</table>
+
+<h2>Tips for a better crop</h2>
+<ul>
+<li><strong>Use the rule of thirds.</strong> Place the subject’s eyes or the main object about a third of the way in, rather than dead center.</li>
+<li><strong>Leave breathing room</strong> in the direction a person is looking or moving.</li>
+<li><strong>Don’t crop at joints</strong> such as wrists, elbows or knees; it looks awkward.</li>
+<li><strong>Crop before resizing.</strong> Get the shape right first, then set the exact size with the <a href="/image-resizer">image resizer</a>.</li>
+</ul>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Does cropping reduce quality?</strong> It removes pixels outside the frame, so a heavily cropped photo has fewer pixels and may look soft when shown large.</li>
+<li><strong>How do I crop a photo into a circle?</strong> Choose a square crop, tick “Circle crop” in the <a href="/image-cropper">image cropper</a>, and download the PNG.</li>
+</ul>
+"""),
+dict(
+slug="png-vs-jpg", date="2026-10-27",
+title="PNG vs JPG: Which Image Format Should You Use?",
+desc="The real differences between PNG and JPG: compression, transparency, file size and quality, with a simple rule for choosing the right one every time.",
+tools=["png-to-jpg", "webp-to-jpg", "image-compressor"],
+body="""
+<p>PNG and JPG are the two most common image formats, and choosing the wrong one gives you either huge files or blurry graphics. The rule is simple once you know how each one works.</p>
+
+<h2>The short answer</h2>
+<ul>
+<li><strong>Use JPG for photos:</strong> pictures from a camera or phone, with lots of colors and soft gradients.</li>
+<li><strong>Use PNG for graphics:</strong> logos, icons, screenshots, charts, text, and anything that needs a transparent background.</li>
+</ul>
+
+<h2>How they compress images</h2>
+<p><strong>JPG is lossy.</strong> It throws away detail the eye is unlikely to notice, which makes photos dramatically smaller. At high quality settings the loss is hard to see, but every time a JPG is edited and saved again, a little more detail is lost. Sharp edges, like text, can pick up faint smudges called artifacts.</p>
+<p><strong>PNG is lossless.</strong> It keeps every pixel exactly, so text and lines stay crisp. That makes PNG files much larger for photos, often several times the size of a good JPG.</p>
+
+<h2>Side by side</h2>
+<table>
+<thead><tr><th></th><th>JPG</th><th>PNG</th></tr></thead>
+<tbody>
+<tr><td>Compression</td><td>Lossy</td><td>Lossless</td></tr>
+<tr><td>Best for</td><td>Photos</td><td>Graphics, screenshots, text</td></tr>
+<tr><td>Transparency</td><td>No</td><td>Yes</td></tr>
+<tr><td>File size for photos</td><td>Small</td><td>Large</td></tr>
+<tr><td>Quality after repeated saves</td><td>Gets worse</td><td>Stays the same</td></tr>
+<tr><td>Support</td><td>Everywhere</td><td>Everywhere</td></tr>
+</tbody>
+</table>
+
+<h2>When to convert</h2>
+<ul>
+<li><strong>A photo saved as PNG</strong> is usually far bigger than it needs to be. Convert it with the <a href="/png-to-jpg">PNG to JPG converter</a> to cut the size.</li>
+<li><strong>A logo or screenshot saved as JPG</strong> may look fuzzy around text. Converting to PNG won’t fix lost detail, so go back to the original file if you can.</li>
+<li><strong>Need transparency?</strong> Stay with PNG, or use WebP.</li>
+</ul>
+
+<h2>What about WebP?</h2>
+<p>WebP is a newer format that can do both jobs: lossy compression like JPG and lossless compression with transparency like PNG, usually with smaller files. All current browsers support it, which makes it a strong choice for websites. Some older apps and upload forms still don’t accept it; the <a href="/webp-to-jpg">WebP converter</a> turns WebP files into JPG or PNG when you need to. See <a href="/blog/what-is-a-webp-file">what a WebP file is</a> for more.</p>
+
+<h2>For websites</h2>
+<p>Image size has a big effect on page speed. Use JPG or WebP for photos, PNG or SVG for logos and icons, resize images to the width they’re displayed at, and compress them with the <a href="/image-compressor">image compressor</a>.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Is JPEG the same as JPG?</strong> Yes. They’re the same format; .jpg is just a shorter file extension.</li>
+<li><strong>Which is better for printing?</strong> Either works if the resolution is high enough. Use maximum-quality JPG for photos and PNG for graphics with text.</li>
+<li><strong>Which is better for screenshots?</strong> PNG, because it keeps text sharp.</li>
+</ul>
+"""),
+dict(
+slug="what-is-a-webp-file", date="2026-10-27",
+title="What Is a WebP File? How to Open It and Convert It to JPG",
+desc="What WebP images are, why websites use them, how to open them on Windows, Mac and phones, and how to convert WebP to JPG or PNG for free.",
+tools=["webp-to-jpg", "png-to-jpg"],
+body="""
+<p>You save an image from a website and it arrives as a .webp file, which an app or upload form then refuses to open. WebP is a modern image format that’s great for websites but still unfamiliar to some software. Here’s what it is and how to deal with it.</p>
+
+<h2>What WebP is</h2>
+<p>WebP is an image format created by Google and released in 2010. It can compress photos like JPG (lossy) or keep every pixel like PNG (lossless), and it supports transparency and animation too. Its main advantage is size: WebP images are typically noticeably smaller than JPG or PNG files of similar quality, so pages load faster. That’s why many websites now serve images as WebP.</p>
+
+<h2>How to open a WebP file</h2>
+<ul>
+<li><strong>Any web browser:</strong> Chrome, Edge, Firefox and Safari all open WebP. Drag the file into a browser window.</li>
+<li><strong>Windows:</strong> the Photos app opens WebP images on current versions of Windows.</li>
+<li><strong>Mac:</strong> Preview and Photos open WebP on recent versions of macOS.</li>
+<li><strong>iPhone and Android:</strong> current versions show WebP images in Photos and most gallery apps.</li>
+</ul>
+<p>The trouble usually comes later: older editing programs, some printers, and many upload forms only accept JPG or PNG.</p>
+
+<h2>How to convert WebP to JPG or PNG</h2>
+<ol>
+<li>Open the <a href="/webp-to-jpg">WebP to JPG converter</a>.</li>
+<li>Choose one or more WebP files.</li>
+<li>Pick JPG for photos, or PNG to keep transparency.</li>
+<li>Download the files individually or as a ZIP.</li>
+</ol>
+<p>The conversion happens in your browser, so the images aren’t uploaded. On a Mac, you can also open the file in Preview and use File → Export to save it as JPG or PNG.</p>
+
+<h2>Should you use WebP on your own website?</h2>
+<p>Usually, yes. All current major browsers support it, and smaller images help pages load faster, which improves the experience for visitors and is part of Google’s page experience signals. Many content management systems and image CDNs now create WebP versions automatically. Keep JPG or PNG copies for places that need them, such as email newsletters or downloads.</p>
+
+<h2>WebP vs JPG vs PNG</h2>
+<ul>
+<li><strong>Photos on websites:</strong> WebP, or JPG if you need maximum compatibility.</li>
+<li><strong>Graphics with transparency on websites:</strong> WebP or PNG.</li>
+<li><strong>Sending to people, printing, uploading to forms:</strong> JPG or PNG.</li>
+</ul>
+<p>Our guide to <a href="/blog/png-vs-jpg">PNG vs JPG</a> explains the older two formats in more detail, and the <a href="/png-to-jpg">PNG to JPG converter</a> handles PNG files.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Why does Chrome save images as WebP?</strong> It saves whatever format the website sent, and many sites send WebP because it’s smaller.</li>
+<li><strong>Is WebP lower quality than JPG?</strong> Not necessarily. At similar file sizes, WebP often looks as good or better. Converting WebP to JPG won’t improve quality, though.</li>
+<li><strong>Can WebP be animated?</strong> Yes. Animated WebP files are an alternative to GIFs, usually much smaller.</li>
+</ul>
+"""),
+dict(
+slug="social-media-character-limits", date="2026-10-27",
+title="Character Limits for X, Instagram, LinkedIn, YouTube and More (2026)",
+desc="A quick reference of character limits for social posts, captions, bios, titles, text messages and Google snippets, plus how characters are counted.",
+tools=["character-counter", "word-counter", "serp-preview-tool"],
+body="""
+<p>Every platform caps how much you can write, and the limits are rarely shown until you hit them. Here’s a reference for the most common ones. Check your text against all of them at once with the <a href="/character-counter">character counter</a>.</p>
+
+<h2>Social media posts and captions</h2>
+<table>
+<thead><tr><th>Platform</th><th>Limit</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>X (Twitter) post</td><td>280 characters</td><td>Paid subscribers can post much longer text</td></tr>
+<tr><td>Instagram caption</td><td>2,200 characters</td><td>Only the first line or two show before “more”</td></tr>
+<tr><td>Facebook post</td><td>63,206 characters</td><td>Short posts usually get more engagement</td></tr>
+<tr><td>LinkedIn post</td><td>3,000 characters</td><td>Text is cut after a few lines with “see more”</td></tr>
+<tr><td>Pinterest pin description</td><td>500 characters</td><td>Pin titles allow 100</td></tr>
+<tr><td>YouTube title</td><td>100 characters</td><td>Around 60–70 show in most layouts</td></tr>
+<tr><td>YouTube description</td><td>5,000 characters</td><td>The first lines appear above “more”</td></tr>
+</tbody>
+</table>
+<p>Platforms change their limits from time to time, so if a number matters for a campaign, check the platform’s help pages.</p>
+
+<h2>Text messages (SMS)</h2>
+<p>A single SMS holds <strong>160 characters</strong> of standard text. Longer messages are split into parts of 153 characters each and joined on the recipient’s phone. If the message contains any emoji or characters outside the basic SMS alphabet, the whole message switches to a different encoding that holds only <strong>70 characters</strong> per message (67 per part). That’s why a single emoji can double what a long text costs to send through some services.</p>
+
+<h2>Google search snippets</h2>
+<ul>
+<li><strong>Title tag:</strong> about 50–60 characters, or 600 pixels wide, before Google cuts it off.</li>
+<li><strong>Meta description:</strong> about 120–160 characters on desktop, less on mobile.</li>
+</ul>
+<p>Since Google measures pixels rather than characters, the <a href="/serp-preview-tool">SERP preview tool</a> gives a more exact answer. Our guide to <a href="/blog/title-tag-and-meta-description-length">title and meta description length</a> explains the details.</p>
+
+<h2>How characters are counted</h2>
+<ul>
+<li><strong>Spaces count</strong> as characters on almost every platform.</li>
+<li><strong>Line breaks count</strong> too, usually as one character each.</li>
+<li><strong>Emoji</strong> may count as one or two characters depending on the platform; X, for example, counts most emoji as two.</li>
+<li><strong>Links</strong> on X are shortened and counted as 23 characters, whatever their length.</li>
+</ul>
+
+<h2>Writing within the limit</h2>
+<ul>
+<li>Put the key message in the first line, which is often all people see before tapping “more”.</li>
+<li>Cut filler words like “just”, “really” and “in order to”.</li>
+<li>Use numerals instead of words for numbers.</li>
+<li>Check the total in the <a href="/character-counter">character counter</a>, and the word count and reading time in the <a href="/word-counter">word counter</a>.</li>
+</ul>
+"""),
+dict(
+slug="how-to-calculate-gpa", date="2026-10-27",
+title="How to Calculate Your GPA (Weighted and Unweighted, With Examples)",
+desc="Step-by-step GPA calculation on the 4.0 scale with worked examples, how weighted GPA works for Honors and AP classes, and how to figure cumulative GPA.",
+tools=["gpa-calculator", "percentage-calculator"],
+body="""
+<p>Your grade point average turns a semester of letter grades into one number. Colleges, scholarships and employers use it, so it helps to know exactly how it’s worked out. Here’s the method, with examples you can follow by hand, or let the <a href="/gpa-calculator">GPA calculator</a> do it for you.</p>
+
+<h2>Step 1: convert each grade to points</h2>
+<p>Most US schools use a 4.0 scale:</p>
+<table>
+<thead><tr><th>Grade</th><th>Points</th><th>Grade</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>A / A+</td><td>4.0</td><td>C+</td><td>2.3</td></tr>
+<tr><td>A-</td><td>3.7</td><td>C</td><td>2.0</td></tr>
+<tr><td>B+</td><td>3.3</td><td>C-</td><td>1.7</td></tr>
+<tr><td>B</td><td>3.0</td><td>D</td><td>1.0</td></tr>
+<tr><td>B-</td><td>2.7</td><td>F</td><td>0.0</td></tr>
+</tbody>
+</table>
+<p>Some schools count A+ as 4.3, and a few don’t use plus and minus grades at all. Your transcript or student handbook will say.</p>
+
+<h2>Step 2: multiply by credits</h2>
+<p>Classes with more credits (or hours) count more. Multiply each class’s grade points by its credits to get “quality points”.</p>
+
+<h2>Step 3: divide by total credits</h2>
+<div class="formula">GPA = total quality points ÷ total credits</div>
+
+<h2>Worked example</h2>
+<table>
+<thead><tr><th>Class</th><th>Grade</th><th>Credits</th><th>Quality points</th></tr></thead>
+<tbody>
+<tr><td>English</td><td>A (4.0)</td><td>3</td><td>12.0</td></tr>
+<tr><td>Algebra II</td><td>B+ (3.3)</td><td>3</td><td>9.9</td></tr>
+<tr><td>Biology</td><td>A- (3.7)</td><td>4</td><td>14.8</td></tr>
+<tr><td>History</td><td>B (3.0)</td><td>3</td><td>9.0</td></tr>
+<tr><td><strong>Total</strong></td><td></td><td><strong>13</strong></td><td><strong>45.7</strong></td></tr>
+</tbody>
+</table>
+<p>45.7 ÷ 13 = <strong>3.52 GPA</strong>.</p>
+
+<h2>Weighted GPA</h2>
+<p>A weighted GPA rewards harder classes. A common system adds <strong>0.5 points for Honors</strong> and <strong>1.0 for AP or IB</strong>, so an A in AP Biology counts as 5.0. In the example above, if Biology were AP and Algebra II Honors, the quality points would rise to 45.7 + 4.0 + 1.5 = 51.2, and the weighted GPA to 51.2 ÷ 13 = <strong>3.94</strong>. Schools vary in how much weight they add and which classes qualify.</p>
+
+<h2>Cumulative GPA</h2>
+<p>To combine terms, don’t average the GPAs. Add up all quality points and all credits across every term, then divide. A student with a 3.40 over 30 credits who earns 3.52 over 13 more credits has (3.40 × 30 + 45.7) ÷ 43 = <strong>3.43</strong> overall. Enter your previous GPA and credits in the <a href="/gpa-calculator">GPA calculator</a> to see this instantly.</p>
+
+<h2>Converting a percentage to a GPA</h2>
+<p>If your school gives percentages, a common conversion is 93–100% = A, 90–92% = A-, 87–89% = B+, 83–86% = B, and so on down in roughly three-point steps. Check your school’s scale, since cut-offs differ. The <a href="/percentage-calculator">percentage calculator</a> helps turn points earned into a percentage first.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Do colleges use weighted or unweighted GPA?</strong> Many recalculate GPAs using their own method, often unweighted core classes, so it’s useful to know both.</li>
+<li><strong>Can a GPA be higher than 4.0?</strong> Yes, if it’s weighted. Unweighted GPAs top out at 4.0 (or 4.3 where A+ counts extra).</li>
+<li><strong>Do failed classes count?</strong> Yes. An F adds credits with zero points, pulling the average down, unless your school replaces it when you retake the class.</li>
+</ul>
+"""),
+dict(
+slug="how-to-calculate-hours-worked", date="2026-10-27",
+title="How to Calculate Hours Worked (and Convert Minutes to Decimal)",
+desc="How to add up hours worked from start and end times, subtract breaks, handle overnight shifts, convert minutes to decimal hours for payroll, and work out overtime.",
+tools=["time-card-calculator", "salary-to-hourly"],
+body="""
+<p>Adding up a week of start and end times sounds easy until you hit a 7:45 start, a 30-minute lunch and a shift that ends after midnight. Here’s a reliable method, plus the minutes-to-decimal conversion every payroll system needs. The <a href="/time-card-calculator">time card calculator</a> does all of it automatically.</p>
+
+<h2>Step 1: convert times to 24-hour format</h2>
+<p>Afternoon and evening times are easier to subtract in 24-hour format: add 12 to any PM hour except 12 PM. So 5:30 PM becomes 17:30, and 9:15 PM becomes 21:15.</p>
+
+<h2>Step 2: subtract start from end</h2>
+<p>For an 8:45 to 17:30 shift: 17:30 − 8:45. Borrow an hour when the minutes don’t work: 17:30 is the same as 16:90, and 16:90 − 8:45 = <strong>8 hours 45 minutes</strong>.</p>
+
+<h2>Step 3: subtract unpaid breaks</h2>
+<p>Take off unpaid meal breaks: 8:45 − 0:30 = <strong>8 hours 15 minutes</strong>. Under US federal rules, short rest breaks (typically 5 to 20 minutes) count as paid working time, while meal breaks of 30 minutes or more when you’re fully off duty usually don’t.</p>
+
+<h2>Overnight shifts</h2>
+<p>If the end time is earlier than the start, the shift crossed midnight. Add 24 hours to the end time: 22:00 to 6:30 becomes 30:30 − 22:00 = <strong>8 hours 30 minutes</strong>.</p>
+
+<h2>Step 4: convert minutes to decimal hours</h2>
+<p>Payroll multiplies hours by a pay rate, so minutes must become fractions of an hour. Divide the minutes by 60: 15 minutes is 0.25 hours, so 8 hours 15 minutes is 8.25 hours, not 8.15.</p>
+<table>
+<thead><tr><th>Minutes</th><th>Decimal</th><th>Minutes</th><th>Decimal</th></tr></thead>
+<tbody>
+<tr><td>5</td><td>0.08</td><td>35</td><td>0.58</td></tr>
+<tr><td>10</td><td>0.17</td><td>40</td><td>0.67</td></tr>
+<tr><td>15</td><td>0.25</td><td>45</td><td>0.75</td></tr>
+<tr><td>20</td><td>0.33</td><td>50</td><td>0.83</td></tr>
+<tr><td>25</td><td>0.42</td><td>55</td><td>0.92</td></tr>
+<tr><td>30</td><td>0.50</td><td>60</td><td>1.00</td></tr>
+</tbody>
+</table>
+
+<h2>Step 5: total the week and work out overtime</h2>
+<p>Add the decimal hours for each day. Under the federal Fair Labor Standards Act, non-exempt employees earn at least 1.5 times their regular rate for hours over 40 in a workweek. Some states have stricter rules, including daily overtime. For 44.5 hours at $20 an hour: 40 × $20 = $800, plus 4.5 × $30 = $135, for <strong>$935</strong> gross pay.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Writing 7:30 as 7.30.</strong> Thirty minutes is 0.50 hours, so 7:30 is 7.5.</li>
+<li><strong>Forgetting the overnight rule</strong> and getting a negative number.</li>
+<li><strong>Subtracting paid breaks.</strong> Only unpaid time comes off.</li>
+<li><strong>Rounding each day differently.</strong> Use the same rounding rule every day, or none at all.</li>
+</ul>
+<p>To see what an hourly wage adds up to over a year, use the <a href="/salary-to-hourly">salary to hourly calculator</a>.</p>
+"""),
+dict(
+slug="how-much-to-tip", date="2026-10-27",
+title="How Much to Tip in the US: Restaurants, Delivery, Rideshare and More",
+desc="A practical guide to US tipping: typical percentages for restaurants, bars, delivery, rideshare, salons and hotels, plus how to calculate a tip quickly.",
+tools=["tip-calculator", "percentage-calculator"],
+body="""
+<p>Tipping in the United States can feel confusing, especially with tip screens now appearing at almost every counter. Customs vary by region and by how much service you receive, but the ranges below are widely used. To work out the numbers, use the <a href="/tip-calculator">tip calculator</a>.</p>
+
+<h2>Typical tips by service</h2>
+<table>
+<thead><tr><th>Service</th><th>Common tip</th></tr></thead>
+<tbody>
+<tr><td>Sit-down restaurant</td><td>15–20% of the bill; more for excellent service</td></tr>
+<tr><td>Bartender</td><td>$1–2 per drink, or 15–20% of the tab</td></tr>
+<tr><td>Food delivery</td><td>15–20%, with a few dollars as a minimum on small orders</td></tr>
+<tr><td>Taxi or rideshare</td><td>15–20% of the fare</td></tr>
+<tr><td>Hair salon or barber</td><td>15–20%</td></tr>
+<tr><td>Hotel housekeeping</td><td>A few dollars per night, left daily</td></tr>
+<tr><td>Valet parking</td><td>A few dollars when your car is returned</td></tr>
+<tr><td>Counter service or coffee</td><td>Optional; many people tip a dollar or round up</td></tr>
+</tbody>
+</table>
+<p>In many US states, restaurant servers are paid a lower base wage on the expectation that tips make up much of their income, which is why table-service tips are treated as standard rather than optional.</p>
+
+<h2>How to calculate a tip in your head</h2>
+<ul>
+<li><strong>10%:</strong> move the decimal point one place left. $48.60 → $4.86.</li>
+<li><strong>20%:</strong> double the 10% figure. $4.86 × 2 = $9.72, or about $10.</li>
+<li><strong>15%:</strong> take 10% and add half of it. $4.86 + $2.43 = $7.29.</li>
+<li><strong>18%:</strong> take 20% and subtract a tenth of 20%. $9.72 − $0.97 ≈ $8.75.</li>
+</ul>
+<p>Our guide to <a href="/blog/percentage-tricks-mental-math">percentages in your head</a> has more shortcuts.</p>
+
+<h2>Before or after tax?</h2>
+<p>Etiquette guides traditionally recommend tipping on the pre-tax amount, but many people tip on the total for simplicity, and the difference is small. The <a href="/tip-calculator">tip calculator</a> can do it either way.</p>
+
+<h2>Splitting the bill</h2>
+<p>Add the tip to the total first, then divide by the number of people. Rounding each share up to the nearest dollar makes paying easier and usually adds a little extra for the server.</p>
+
+<h2>When a tip is already included</h2>
+<p>Check the bill for a “service charge” or “gratuity”, which some restaurants add automatically, often for larger groups. If it’s there, an extra tip is optional. A service charge isn’t always passed to staff in the same way as a tip, so ask if you’re unsure.</p>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Do you tip on takeout?</strong> It’s optional. Many people leave around 10% or round up, especially for large or complicated orders.</li>
+<li><strong>What if the service was bad?</strong> Speak to a manager about the problem. Many people still leave a reduced tip rather than none, since tips are part of servers’ pay.</li>
+</ul>
+"""),
+dict(
+slug="salary-to-hourly-wage-table", date="2026-10-27",
+title="$60,000 a Year Is How Much an Hour? Salary to Hourly Table",
+desc="Hourly, weekly and monthly pay for common salaries from $30,000 to $150,000, how to convert any salary yourself, and why take-home pay is lower.",
+tools=["salary-to-hourly", "time-card-calculator", "percentage-calculator"],
+body="""
+<p>A salary of $60,000 a year works out to about <strong>$28.85 an hour</strong>, based on a standard 40-hour week for 52 weeks (2,080 hours). The table below shows the same conversion for other common salaries, and the <a href="/salary-to-hourly">salary to hourly calculator</a> handles any amount and schedule.</p>
+
+<h2>Salary to hourly table</h2>
+<p>Based on 40 hours a week, 52 weeks a year, before taxes.</p>
+<table>
+<thead><tr><th>Yearly</th><th>Hourly</th><th>Weekly</th><th>Every 2 weeks</th><th>Monthly</th></tr></thead>
+<tbody>
+<tr><td>$30,000</td><td>$14.42</td><td>$577</td><td>$1,154</td><td>$2,500</td></tr>
+<tr><td>$35,000</td><td>$16.83</td><td>$673</td><td>$1,346</td><td>$2,917</td></tr>
+<tr><td>$40,000</td><td>$19.23</td><td>$769</td><td>$1,538</td><td>$3,333</td></tr>
+<tr><td>$45,000</td><td>$21.63</td><td>$865</td><td>$1,731</td><td>$3,750</td></tr>
+<tr><td>$50,000</td><td>$24.04</td><td>$962</td><td>$1,923</td><td>$4,167</td></tr>
+<tr><td>$55,000</td><td>$26.44</td><td>$1,058</td><td>$2,115</td><td>$4,583</td></tr>
+<tr><td>$60,000</td><td>$28.85</td><td>$1,154</td><td>$2,308</td><td>$5,000</td></tr>
+<tr><td>$65,000</td><td>$31.25</td><td>$1,250</td><td>$2,500</td><td>$5,417</td></tr>
+<tr><td>$70,000</td><td>$33.65</td><td>$1,346</td><td>$2,692</td><td>$5,833</td></tr>
+<tr><td>$75,000</td><td>$36.06</td><td>$1,442</td><td>$2,885</td><td>$6,250</td></tr>
+<tr><td>$80,000</td><td>$38.46</td><td>$1,538</td><td>$3,077</td><td>$6,667</td></tr>
+<tr><td>$90,000</td><td>$43.27</td><td>$1,731</td><td>$3,462</td><td>$7,500</td></tr>
+<tr><td>$100,000</td><td>$48.08</td><td>$1,923</td><td>$3,846</td><td>$8,333</td></tr>
+<tr><td>$120,000</td><td>$57.69</td><td>$2,308</td><td>$4,615</td><td>$10,000</td></tr>
+<tr><td>$150,000</td><td>$72.12</td><td>$2,885</td><td>$5,769</td><td>$12,500</td></tr>
+</tbody>
+</table>
+
+<h2>How to convert any salary</h2>
+<div class="formula">Hourly = yearly salary ÷ (hours per week × weeks per year)</div>
+<p>For the standard 2,080 hours, a quick estimate is to halve the salary and drop the last three zeros: $60,000 → $30 an hour (the exact figure is $28.85). Going the other way, double the hourly rate and add three zeros: $25 an hour → about $50,000 a year (exactly $52,000).</p>
+
+<h2>Different schedules</h2>
+<p>If you work 37.5 hours a week, $60,000 is $30.77 an hour. If an hourly job comes with two unpaid weeks off, use 50 weeks: $28.85 × 40 × 50 = $57,700 a year. Enter your own hours and weeks in the <a href="/salary-to-hourly">calculator</a>.</p>
+
+<h2>Why your paycheck is smaller</h2>
+<p>All of these figures are gross pay. Take-home pay is reduced by federal income tax, Social Security (6.2%) and Medicare (1.45%), any state and local income tax, and deductions such as health insurance and retirement contributions. Depending on your state and choices, take-home pay is often somewhere around 70–80% of gross for a single filer at these incomes, but it varies widely, so use a paycheck calculator for your state for a precise figure.</p>
+
+<h2>Comparing a salaried and an hourly job</h2>
+<ul>
+<li><strong>Overtime:</strong> hourly, non-exempt workers earn 1.5× for hours over 40 a week; many salaried roles don’t.</li>
+<li><strong>Benefits:</strong> health insurance, retirement matching and paid time off can be worth thousands of dollars a year.</li>
+<li><strong>Actual hours:</strong> a $70,000 salary that regularly requires 50-hour weeks works out to about $26.92 an hour.</li>
+</ul>
+<p>To track the hours you actually work, use the <a href="/time-card-calculator">time card calculator</a>.</p>
+"""),
 ]

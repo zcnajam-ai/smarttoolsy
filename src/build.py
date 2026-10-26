@@ -14,6 +14,7 @@ from tools_d import TOOLS_D
 from tools_e import TOOLS_E
 from tools_f import TOOLS_F
 from tools_g import TOOLS_G
+from tools_h import TOOLS_H
 from articles import ARTICLES
 import age_pages
 from icons import tool_svg, cat_svg, TOOL_ICON
@@ -43,7 +44,7 @@ def slashify(text):
     return SLASH_RE.sub(lambda m: m.group(1) + m.group(2) + '/"', text)
 
 
-TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E + TOOLS_F + TOOLS_G
+TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E + TOOLS_F + TOOLS_G + TOOLS_H
 _no_icon = [t["slug"] for t in TOOLS if t["slug"] not in TOOL_ICON]
 if _no_icon:
     sys.exit("Add an icon in src/icons.py for: " + ", ".join(_no_icon))
