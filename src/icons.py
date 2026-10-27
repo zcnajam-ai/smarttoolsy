@@ -31,11 +31,13 @@ TOOL_ICON = {
     "time-card-calculator": "briefcase-clock-outline",
     "tip-calculator": "hand-coin-outline",
     "salary-to-hourly": "cash-clock",
+    "christmas-budget-calculator": "gift-outline",
     # Home & construction
     "gravel-calculator": "dump-truck",
     "cubic-yard-calculator": "cube-outline",
     "concrete-calculator": "wheel-barrow",
     "roofing-calculator": "home-outline",
+    "turkey-calculator": "food-turkey",
     # Text
     "word-counter": "counter",
     "case-converter": "format-letter-case",

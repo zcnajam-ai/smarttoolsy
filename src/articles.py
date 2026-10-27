@@ -1811,4 +1811,110 @@ body="""
 </ul>
 <p>To track the hours you actually work, use the <a href="/time-card-calculator">time card calculator</a>.</p>
 """),
+    {
+        "slug": "how-long-to-cook-a-turkey",
+        "date": "2026-10-27",
+        "title": "How Long to Cook a Turkey: Times by Weight, Thawing and a Thanksgiving Timeline",
+        "desc": "Turkey cooking times by weight at 325°F (stuffed and unstuffed), how long to thaw it, how big a turkey to buy and a simple Thanksgiving day timeline.",
+        "tools": ["turkey-calculator"],
+        "body": """
+<p>The turkey is the one dish that can push Thanksgiving dinner back by an hour. The good news is that the timing is predictable once you know the weight. This guide uses the USDA's roasting chart; to get times for your exact turkey and dinner time, use the <a href="/turkey-calculator">turkey calculator</a>.</p>
+
+<h2>Turkey cooking time by weight (325°F)</h2>
+<table>
+<thead><tr><th>Turkey weight</th><th>Unstuffed</th><th>Stuffed</th></tr></thead>
+<tbody>
+<tr><td>4–8 lb (breast)</td><td>1½–3¼ hours</td><td>2½–3½ hours (6–8 lb)</td></tr>
+<tr><td>8–12 lb</td><td>2¾–3 hours</td><td>3–3½ hours</td></tr>
+<tr><td>12–14 lb</td><td>3–3¾ hours</td><td>3½–4 hours</td></tr>
+<tr><td>14–18 lb</td><td>3¾–4¼ hours</td><td>4–4¼ hours</td></tr>
+<tr><td>18–20 lb</td><td>4¼–4½ hours</td><td>4¼–4¾ hours</td></tr>
+<tr><td>20–24 lb</td><td>4½–5 hours</td><td>4¾–5¼ hours</td></tr>
+</tbody>
+</table>
+<p>Times are for a fully thawed turkey in a 325°F oven. A turkey cooked from frozen takes about 50% longer. The turkey is done when a food thermometer reads <strong>165°F</strong> in the thickest part of the breast, the innermost part of the thigh and the wing. Do not rely on the pop-up timer alone.</p>
+
+<h2>How big a turkey do you need?</h2>
+<p>Plan on about 1 pound of whole turkey per person, or 1½ pounds if you want leftovers. Count children as half a portion.</p>
+<ul>
+<li>6 people: an 8 to 10 lb turkey</li>
+<li>8 people: 12 to 14 lb with leftovers</li>
+<li>12 people: 18 to 20 lb with leftovers</li>
+<li>20 or more: two medium turkeys cook more evenly than one huge one</li>
+</ul>
+
+<h2>How long to thaw a turkey</h2>
+<p>Thawing is where most plans go wrong, because a large frozen turkey needs days, not hours.</p>
+<table>
+<thead><tr><th>Weight</th><th>In the refrigerator</th><th>In cold water</th></tr></thead>
+<tbody>
+<tr><td>4–12 lb</td><td>1–3 days</td><td>2–6 hours</td></tr>
+<tr><td>12–16 lb</td><td>3–4 days</td><td>6–8 hours</td></tr>
+<tr><td>16–20 lb</td><td>4–5 days</td><td>8–10 hours</td></tr>
+<tr><td>20–24 lb</td><td>5–6 days</td><td>10–12 hours</td></tr>
+</tbody>
+</table>
+<p>For a Thursday dinner, a 16 lb turkey should go into the fridge by Sunday. For a cold-water thaw, keep the turkey in its wrapper, cover it completely, change the water every 30 minutes and cook it as soon as it is thawed. Never thaw a turkey on the counter.</p>
+
+<h2>A simple Thanksgiving day timeline</h2>
+<p>Here is an example for a 14 lb unstuffed turkey with dinner at 4:00 PM:</p>
+<ul>
+<li><strong>11:25 AM:</strong> preheat the oven to 325°F.</li>
+<li><strong>11:55 AM:</strong> turkey goes in.</li>
+<li><strong>2:25 PM:</strong> start checking the temperature.</li>
+<li><strong>3:40 PM at the latest:</strong> out of the oven at 165°F, covered loosely with foil.</li>
+<li><strong>3:40–4:00 PM:</strong> let it rest about 20 minutes while you make the gravy, then carve.</li>
+</ul>
+<p>The resting time is not wasted: the juices settle back into the meat, and the oven is free for the sides.</p>
+
+<h2>Tips for a juicy turkey</h2>
+<ul>
+<li>Pat the skin dry and season it the night before for crisper skin.</li>
+<li>Roast breast-side up on a rack in a shallow pan.</li>
+<li>If the breast browns too fast, cover it with a loose tent of foil.</li>
+<li>Cooking the stuffing in a separate dish is quicker and easier to get to a safe 165°F.</li>
+</ul>
+<p>Counting down? See exactly <a href="/days-until/thanksgiving">how many days until Thanksgiving</a>.</p>
+""",
+    },
+    {
+        "slug": "how-to-make-a-christmas-budget",
+        "date": "2026-10-27",
+        "title": "How to Make a Christmas Budget (and Stick to It)",
+        "desc": "A step-by-step way to plan Christmas spending: set a total, budget each gift, count food, travel and decorations, and save a set amount from each paycheck.",
+        "tools": ["christmas-budget-calculator"],
+        "body": """
+<p>Holiday spending sneaks up on people because it arrives in small pieces: one more gift, a second trip to the grocery store, a last-minute shipping fee. A budget made in October or November turns that into a plan you can pay for without a January credit card shock. You can do every step below in the <a href="/christmas-budget-calculator">Christmas budget calculator</a>.</p>
+
+<h2>1. Decide your total first</h2>
+<p>Start from what you can afford, not from what you spent last year. Look at what you have saved and how many paychecks are left before December 25. Whatever you set aside from those paychecks, plus your savings, is your real budget.</p>
+
+<h2>2. Give every person a number</h2>
+<p>List everyone you buy for and put a dollar amount next to each name. A specific limit, such as $40 for a sibling or $20 for a teacher, is much easier to shop to than a vague total. Group smaller gifts together: one line for coworkers or neighbors is enough.</p>
+
+<h2>3. Count the things that aren't gifts</h2>
+<p>Gifts are often only half of holiday spending. Add a line for each of these:</p>
+<ul>
+<li><strong>Food and drinks:</strong> the big dinner, baking and parties.</li>
+<li><strong>Travel:</strong> flights, gas and hotel nights to see family.</li>
+<li><strong>Decorations:</strong> the tree, lights and replacements for anything broken.</li>
+<li><strong>Cards, wrapping and shipping:</strong> small items that add up quickly, especially express postage in December.</li>
+</ul>
+
+<h2>4. Save a set amount each payday</h2>
+<p>Take what you still need (planned spending minus what you have saved) and divide it by your paychecks before Christmas. For example, if you plan $900, have $200 saved and get paid every two weeks with four paydays left, that is $175 from each paycheck.</p>
+
+<h2>5. Track as you shop</h2>
+<p>Update the amounts as you buy. If one gift costs more than planned, take the difference from another line straight away so the total does not drift.</p>
+
+<h2>Easy ways to spend less</h2>
+<ul>
+<li>Suggest a Secret Santa for big families or office groups, so everyone buys one gift.</li>
+<li>Agree on a spending limit with friends, or swap experiences and homemade gifts.</li>
+<li>Use Black Friday and Cyber Monday for gifts already on your list, not extra purchases.</li>
+<li>Shop early to avoid paying for fast shipping.</li>
+</ul>
+<p>Keep an eye on the calendar with our <a href="/days-until/christmas">days until Christmas</a> countdown.</p>
+""",
+    },
 ]

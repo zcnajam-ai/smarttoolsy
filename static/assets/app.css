@@ -441,3 +441,11 @@ textarea[rows="3"] { min-height: 84px; } textarea[rows="4"] { min-height: 110px;
 .row4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .breakdown th { text-align: left; padding: 6px 0; border-bottom: 2px solid var(--line); font-size: .9rem; color: var(--muted); }
 .breakdown th:last-child { text-align: right; }
+.mini-h { font-size: 1.05rem; margin: 18px 0 8px; }
+.mini-h:first-child { margin-top: 0; }
+.tk-plan { max-width: 560px; }
+.tk-plan td { white-space: nowrap; }
+.cb-tbl { min-width: 0; }
+.cb-tbl td:nth-child(2) { width: 140px; } .cb-tbl td:last-child { width: 40px; }
+.cb-tbl input { width: 100%; padding: 7px 8px; }
+.stat b.neg { color: var(--bad, #c92a2a); }
