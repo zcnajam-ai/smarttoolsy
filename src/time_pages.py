@@ -153,7 +153,7 @@ def rel_conv(unit, n):
 def until_times():
     out = []
     for h in range(24):
-        for m in (0, 15, 30, 45):
+        for m in range(0, 60, 5):
             out.append((h, m))
     return out
 
@@ -210,12 +210,15 @@ def until_page(h, m):
 def hub_page(hub, today):
     name, lede = HUBS[hub]
     if hub == "/how-long-until":
+        order = list(range(5, 24)) + list(range(0, 5))
         groups = {"Morning": [], "Afternoon": [], "Evening and night": []}
-        for h, m in until_times():
+        for h in order:
             g = "Morning" if 5 <= h < 12 else "Afternoon" if 12 <= h < 17 else "Evening and night"
-            groups[g].append(f'<a href="/how-long-until/{tslug(h, m)}">{tlabel(h, m)}</a>')
-        blocks = "".join(f"<h2>{g}</h2><p class='yr-grid'>{''.join(v)}</p>" for g, v in groups.items())
-        intro = "<p>Pick a time to see a live countdown. If the time has passed today, the countdown runs to the same time tomorrow.</p>"
+            links = "".join(f'<a href="/how-long-until/{tslug(h, m)}">{tlabel(h, m)}</a>' for m in range(0, 60, 5))
+            groups[g].append(f"<h3>{tlabel(h, 0).replace(':00', '')}</h3><p class='yr-grid'>{links}</p>")
+        blocks = "".join(f"<h2>{g}</h2>{''.join(v)}" for g, v in groups.items())
+        intro = ("<p>Pick a time to see a live countdown. If the time has passed today, the countdown runs to the same time tomorrow.</p>"
+                 "<p>Counting down to a date instead? See <a href=\"/days-until\">days until Christmas, Thanksgiving and other holidays</a>.</p>")
         calc = ""
     else:
         fams = [f for f in FAMILIES if f[1] == hub]

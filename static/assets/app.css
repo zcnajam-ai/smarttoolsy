@@ -439,3 +439,5 @@ textarea[rows="3"] { min-height: 84px; } textarea[rows="4"] { min-height: 110px;
 .sh-tbl th, .sh-tbl td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; }
 .sh-tbl td { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
 .row4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.breakdown th { text-align: left; padding: 6px 0; border-bottom: 2px solid var(--line); font-size: .9rem; color: var(--muted); }
+.breakdown th:last-child { text-align: right; }

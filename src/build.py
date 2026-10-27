@@ -19,6 +19,7 @@ from articles import ARTICLES
 import age_pages
 from icons import tool_svg, cat_svg, TOOL_ICON
 import time_pages
+import holiday_pages
 
 # ------------------------------------------------------------------ CONFIG
 CONFIG = dict(
@@ -53,7 +54,7 @@ CATS = [("pdf", "PDF tools"), ("seo", "SEO & website tools"), ("calc", "Calculat
         ("convert", "Converters"), ("generate", "Generators"), ("dev", "Developer tools")]
 CAT_NAME = dict(CATS)
 C = CONFIG
-PROG = age_pages.all_pages() + time_pages.all_pages()
+PROG = age_pages.all_pages() + time_pages.all_pages() + holiday_pages.all_pages()
 e = html.escape
 
 LOGO = """<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2F5BEA"/><path d="M9 21.5c1.4 1.3 3.3 2 5.4 2 3 0 5-1.5 5-3.8 0-2.2-1.6-3.1-4.4-3.8-2.2-.5-3-1-3-2 0-1 .9-1.6 2.4-1.6 1.4 0 2.6.5 3.6 1.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="23.5" cy="9" r="3" fill="#F2B33D"/></svg>"""
@@ -201,7 +202,7 @@ def build_home():
 </div></section>
 <section class="wrap" style="padding:40px 16px 0">
 <h2 style="margin-top:0">Popular lookups</h2>
-<p class="lookups"><a href="/how-old-am-i">How old am I? (by birth year)</a><a href="/what-year-was-i-born">What year was I born? (by age)</a><a href="/date-from-today">Days from today</a><a href="/date-ago">Days ago</a><a href="/time-ago">Hours ago</a><a href="/time-from-now">Time from now</a><a href="/how-long-until">How long until…</a><a href="/years-ago">Years ago</a>{''.join(f'<a href="/how-old-am-i/born-in-{y}">Born in {y}</a>' for y in (1980, 1990, 2000, 2005, 2010))}</p>
+<p class="lookups"><a href="/how-old-am-i">How old am I? (by birth year)</a><a href="/what-year-was-i-born">What year was I born? (by age)</a><a href="/date-from-today">Days from today</a><a href="/date-ago">Days ago</a><a href="/time-ago">Hours ago</a><a href="/time-from-now">Time from now</a><a href="/how-long-until">How long until…</a><a href="/days-until">Days until…</a><a href="/days-until/christmas">Days until Christmas</a><a href="/days-until/thanksgiving">Days until Thanksgiving</a><a href="/years-ago">Years ago</a>{''.join(f'<a href="/how-old-am-i/born-in-{y}">Born in {y}</a>' for y in (1980, 1990, 2000, 2005, 2010))}</p>
 </section>
 <section class="wrap" style="padding:32px 16px 56px">
 <h2 style="margin-top:0">Latest guides</h2>

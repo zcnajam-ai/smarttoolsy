@@ -1083,6 +1083,59 @@
     tick(); setInterval(tick, 1000); on('uc-t', 'input', tick);
   };
 
+  /* ---------- Days until a holiday / any date ---------- */
+  function easterDate(y) {
+    var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25),
+      g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4,
+      l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), x = h + l - 7 * m + 114;
+    return new Date(y, Math.floor(x / 31) - 1, x % 31 + 1);
+  }
+  function holOn(r, off, y) {
+    var d;
+    if (r[0] === 'fixed') d = new Date(y, r[1] - 1, r[2]);
+    else if (r[0] === 'easter') d = easterDate(y);
+    else if (r[3] === -1) { d = new Date(y, r[1], 0); while (d.getDay() !== r[2]) d.setDate(d.getDate() - 1); }
+    else { d = new Date(y, r[1] - 1, 1); while (d.getDay() !== r[2]) d.setDate(d.getDate() + 1); d.setDate(d.getDate() + 7 * (r[3] - 1)); }
+    d.setDate(d.getDate() + off); return d;
+  }
+  function untilDate(t, now) { // t = local midnight of the target day
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()), days = calDays(today, t), s = Math.max(0, Math.round((t - now) / 1000));
+    return { days: days, s: s, dd: Math.floor(s / 86400), hh: Math.floor(s % 86400 / 3600), mm: Math.floor(s % 3600 / 60), ss: s % 60 };
+  }
+  function untilRows(t, u, now) {
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return [['Date', longDate(t)], ['Weeks and days', plural(Math.floor(u.days / 7), 'week') + ', ' + plural(u.days % 7, 'day')],
+      ['Weekdays (Mon–Fri)', bizDays(today, t).toLocaleString('en-US')], ['Total hours', Math.floor(u.s / 3600).toLocaleString('en-US')]];
+  }
+  function rowsHtml(rows) { return rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + esc(String(r[1])) + '</td></tr>'; }).join(''); }
+  T['days-until'] = function () {
+    var box = document.querySelector('[data-hol]');
+    if (box) {
+      var cfg = JSON.parse(box.getAttribute('data-hol')), name = box.getAttribute('data-hol-name');
+      var tick = function () {
+        var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate()), t = holOn(cfg.r, cfg.o, now.getFullYear());
+        if (t < today) t = holOn(cfg.r, cfg.o, now.getFullYear() + 1);
+        var u = untilDate(t, now), isToday = u.days === 0;
+        $('du-ans').textContent = isToday ? "It's " + name + ' today!' : plural(u.days, 'day');
+        $('du-sub').textContent = (isToday ? 'Today, ' : name.charAt(0).toUpperCase() + name.slice(1) + ' ' + t.getFullYear() + ' is on ') + longDate(t) + '.';
+        $('du-clock').textContent = isToday ? 'Happy ' + name + '!' : u.dd + ' d ' + u.hh + ' h ' + u.mm + ' min ' + u.ss + ' s';
+        $('du-details').innerHTML = rowsHtml(untilRows(t, u, now));
+      };
+      tick(); setInterval(tick, 1000);
+    }
+    if ($('du-d')) {
+      var run = function () {
+        var v = ($('du-d').value || '').split('-');
+        if (v.length !== 3) { $('du-out').textContent = ''; $('du-out-details').innerHTML = ''; return; }
+        var now = new Date(), t = new Date(+v[0], +v[1] - 1, +v[2]), u = untilDate(t, now);
+        if (u.days < 0) { $('du-out').textContent = 'That date was ' + plural(-u.days, 'day') + ' ago.'; $('du-out-details').innerHTML = ''; return; }
+        $('du-out').textContent = u.days === 0 ? "That's today!" : plural(u.days, 'day') + ' to go';
+        $('du-out-details').innerHTML = rowsHtml(untilRows(t, u, now));
+      };
+      on('du-d', 'input', run); on('du-d', 'change', run);
+    }
+  };
+
   /* ---------- Age lookup pages (live values, so pages stay right after New Year) ---------- */
   function setAll(sel, v) { document.querySelectorAll(sel).forEach(function (el) { el.textContent = v; }); }
   T['age-year'] = function () {
