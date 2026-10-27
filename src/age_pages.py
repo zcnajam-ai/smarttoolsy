@@ -150,8 +150,8 @@ def born_in_page(y, now):
 """
     return dict(
         path=f"/how-old-am-i/born-in-{y}",
-        title=f"How Old Am I If I Was Born in {y}? ({y}-{now} Age)",
-        desc=f"Born in {y}? You are {a_before} or {a_after} in {now}, depending on whether your birthday has passed. See your exact age, generation, zodiac and retirement age.",
+        title=f"How Old Am I If Born in {y}? {a_after} in {now} (or {a_before}) – {y}-{now}" if a_after > 0 else f"How Old Am I If I Was Born in {y}? ({y}-{now} Age)",
+        desc=f"Born in {y}? You are {a_after} in {now} if your birthday has passed, or {a_before} if it is still to come. See your exact age, generation, zodiac and retirement age.",
         h1=f"How old am I if I was born in {y}?",
         lede=f"Your age in {now}, plus the facts and milestones for the {y} birth year.",
         crumbs=[("Home", "/"), ("Age by birth year", "/how-old-am-i"), (str(y), f"/how-old-am-i/born-in-{y}")],
@@ -210,7 +210,7 @@ def if_im_page(n, now):
 """
     return dict(
         path=f"/what-year-was-i-born/if-im-{n}",
-        title=f"What Year Was I Born If I'm {n}? ({y_before} or {y_after})",
+        title=f"What Year Was I Born If I'm {n} in {now}? {y_after} or {y_before}",
         desc=f"If you are {n} in {now}, you were born in {y_after} (birthday already passed) or {y_before} (birthday still to come). See generation, zodiac and milestones.",
         h1=f"What year was I born if I’m {n}?",
         lede=f"Your birth year from your age in {now}, with the facts that go with it.",

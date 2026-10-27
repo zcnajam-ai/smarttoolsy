@@ -1,0 +1,37 @@
+name: Daily rebuild
+# Rebuilds the static site every day so date-based text (holiday years,
+# "as of" day counts, age tables) stays current, then pushes docs/ so
+# Vercel deploys it. Also submits any new URLs to IndexNow.
+on:
+  schedule:
+    - cron: "17 6 * * *"   # 06:17 UTC, about 1-2 AM in the US
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build site
+        run: python3 src/build.py
+      - name: Commit and push if anything changed
+        id: push
+        run: |
+          git add docs
+          if git diff --cached --quiet; then
+            echo "No changes."; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git config user.name "smarttoolsy-bot"
+          git config user.email "contact@smarttoolsy.tech"
+          git commit -qm "Daily rebuild $(date -u +%F)"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Submit new URLs to IndexNow
+        if: steps.push.outputs.changed == 'true'
+        run: python3 scripts/indexnow.py HEAD~1
