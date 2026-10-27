@@ -210,9 +210,9 @@ def if_im_page(n, now):
 """
     return dict(
         path=f"/what-year-was-i-born/if-im-{n}",
-        title=f"What Year Was I Born If I'm {n} in {now}? {y_after} or {y_before}",
-        desc=f"If you are {n} in {now}, you were born in {y_after} (birthday already passed) or {y_before} (birthday still to come). See generation, zodiac and milestones.",
-        h1=f"What year was I born if I’m {n}?",
+        title=f"If I'm {n}, What Year Was I Born? {y_after} or {y_before} ({now})",
+        desc=f"If you're {n} in {now}, you were born in {y_after} if you've had your birthday this year, or {y_before} if not. Pick one to see your exact birth year, generation, zodiac and milestones.",
+        h1=f"If I’m {n}, what year was I born?",
         lede=f"Your birth year from your age in {now}, with the facts that go with it.",
         crumbs=[("Home", "/"), ("Birth year by age", "/what-year-was-i-born"), (f"Age {n}", f"/what-year-was-i-born/if-im-{n}")],
         tool="age-n", body=body,

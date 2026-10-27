@@ -195,13 +195,13 @@ def until_page(h, m):
 <article class="article">
 <h2>How the countdown works</h2>
 <p>The countdown uses the clock on your device and updates every second. If {L} has already passed today, it counts down to {L} tomorrow. {L} is {h24} in 24-hour (military) time{', which is noon' if (h, m) == (12, 0) else ', which is midnight' if (h, m) == (0, 0) else ''}.</p>
-<p>Handy for timing the end of a work shift, a class, a meeting, a cooking timer or a store opening. Keep the page open and the timer keeps running.</p>
+<p>Whether you want to know how long till {L} or just need a countdown to {L} for the end of a shift, a class, a meeting, a cooking timer or a store opening, keep the page open and the timer keeps running.</p>
 <h2>Other times</h2>
 <ul>{near_links}</ul>
 <p><a href="/how-long-until">All times of day</a> · <a href="/time-from-now">Time from now</a></p>
 </article>
 """
-    return dict(path=path, title=f"How Long Until {L}? – Live Countdown Timer", desc=f"Live countdown showing exactly how many hours, minutes and seconds until {L}, in your time zone. Counts to tomorrow if {L} has passed.",
+    return dict(path=path, title=f"How Long Until {L} Today? – Live Countdown Timer", desc=f"How long until {L} today? See exactly how many hours, minutes and seconds are left, counting down live in your time zone. Rolls over to tomorrow once {L} has passed.",
                 h1=f"How long until {L}?", lede="Live countdown in your own time zone.",
                 crumbs=[("Home", "/"), ("How long until", "/how-long-until"), (L, path)], tool="until", body=body,
                 related=[(f"Until {tlabel(*t)}", f"/how-long-until/{tslug(*t)}") for t in near[2:6]] + [("Time from now", "/time-from-now"), ("Time ago", "/time-ago")])

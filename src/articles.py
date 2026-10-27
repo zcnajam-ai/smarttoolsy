@@ -1115,11 +1115,11 @@ body="""
 """),
 dict(
 slug="title-tag-and-meta-description-length", date="2026-10-25",
-title="How Long Should a Title Tag Be? Title and Meta Description Length in 2026",
-desc="The real limits Google uses for title tags and meta descriptions, why pixels matter more than characters, and how to write ones that don’t get cut off.",
+title="Meta Title Length and Meta Description Length: 2026 Guide",
+desc="What is the ideal meta title length and meta description length? The limits Google uses in characters and pixels, and how to write titles that don’t get cut off.",
 tools=["serp-preview-tool", "meta-tag-generator"],
 body="""
-<p>Write a title that’s too long and Google cuts it off with “…”, often right before the words that matter. Write one that’s too short and you waste space that could persuade someone to click. Here are the lengths that work, and why the real limit is measured in pixels rather than characters.</p>
+<p>How long should a meta title be? Write a title that’s too long and Google cuts it off with “…”, often right before the words that matter. Write one that’s too short and you waste space that could persuade someone to click. Here are the lengths that work, and why the real limit is measured in pixels rather than characters.</p>
 
 <h2>The short answer</h2>
 <table>
