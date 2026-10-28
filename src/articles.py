@@ -1917,4 +1917,67 @@ body="""
 <p>Keep an eye on the calendar with our <a href="/days-until/christmas">days until Christmas</a> countdown.</p>
 """,
     },
+    {
+        "slug": "when-does-daylight-saving-time-end",
+        "date": "2026-10-29",
+        "title": "When Does Daylight Saving Time End in 2026? Clocks Fall Back November 1",
+        "desc": "Daylight saving time ends Sunday, November 1, 2026, at 2:00 a.m. Here is when to set your clocks back, which states don't change, how it affects sleep and pay, and what's next for the Sunshine Protection Act.",
+        "tools": ["time-card-calculator", "date-difference-calculator"],
+        "body": """
+<p><strong>Daylight saving time ends on Sunday, November 1, 2026, at 2:00 a.m. local time.</strong> At that moment clocks go back one hour to 1:00 a.m., so you get an extra hour of sleep on Saturday night. Phones, computers and most smart devices change by themselves; ovens, car clocks and wall clocks usually need to be changed by hand.</p>
+<p>See exactly how long is left with our live <a href="/days-until/daylight-saving-time-ends">countdown to the end of daylight saving time</a>.</p>
+
+<h2>The 2026 and 2027 clock change dates</h2>
+<table>
+<thead><tr><th>Change</th><th>Date</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td>Daylight saving time ends</td><td>Sunday, November 1, 2026</td><td>2:00 a.m. becomes 1:00 a.m. (fall back)</td></tr>
+<tr><td>Daylight saving time starts</td><td>Sunday, March 14, 2027</td><td>2:00 a.m. becomes 3:00 a.m. (spring forward)</td></tr>
+<tr><td>Daylight saving time ends</td><td>Sunday, November 7, 2027</td><td>2:00 a.m. becomes 1:00 a.m.</td></tr>
+</tbody>
+</table>
+<p>The rule is set by federal law: daylight saving time starts on the <strong>second Sunday of March</strong> and ends on the <strong>first Sunday of November</strong>. The easy way to remember the direction is "spring forward, fall back."</p>
+
+<h2>Do I set my clock forward or back?</h2>
+<p><strong>Back.</strong> In November you set clocks back one hour. If you go to bed at 11:00 p.m. on Saturday and your alarm is set for 7:00 a.m., you will get nine hours of sleep instead of eight. Sunrise and sunset both move an hour earlier on the clock, so mornings are brighter and evenings get dark sooner.</p>
+<p>Devices that set themselves: smartphones, computers, smartwatches, cable boxes and most newer cars connected to a phone. Devices to check by hand: microwaves, ovens, older car clocks, wall clocks, thermostats with schedules, and alarm clocks without Wi-Fi.</p>
+
+<h2>Which states don't change their clocks?</h2>
+<ul>
+<li><strong>Hawaii</strong> stays on standard time all year.</li>
+<li><strong>Arizona</strong> stays on standard time, except the <strong>Navajo Nation</strong>, which does observe daylight saving time.</li>
+<li><strong>U.S. territories</strong> do not change: Puerto Rico, the U.S. Virgin Islands, Guam, the Northern Mariana Islands and American Samoa.</li>
+</ul>
+<p>Everyone else in the United States changes clocks on November 1. If you work with people in Arizona or Hawaii, the time difference to them shrinks by an hour until March.</p>
+
+<h2>Is daylight saving time ending for good?</h2>
+<p>Not yet. The <strong>Sunshine Protection Act</strong>, which would make daylight saving time permanent and end the twice-a-year switch, passed the U.S. House of Representatives on July 14, 2026, by 308 to 117. The Senate received it the next day and sent it to the Commerce, Science and Transportation Committee. It has not passed the Senate or been signed into law, so <strong>the clocks still fall back on November 1, 2026</strong>.</p>
+<p>Many states have passed laws saying they would switch to permanent daylight time, but those only take effect if Congress allows it.</p>
+
+<h2>How the time change affects work and pay</h2>
+<p>If you work overnight on Saturday, November 1, your shift is one hour longer than usual: a shift from 10:00 p.m. to 6:00 a.m. lasts <strong>nine hours</strong>, not eight, because 1:00 a.m. to 2:00 a.m. happens twice. Hourly workers are generally paid for all hours actually worked, so check that your timesheet counts the extra hour. Our <a href="/time-card-calculator">time card calculator</a> makes it easy to add up hours and minutes for the week; just add the extra hour to the overnight shift.</p>
+<p>In March it works the other way: an overnight shift is one hour shorter.</p>
+
+<h2>Tips to adjust your sleep</h2>
+<ul>
+<li>The fall change is the easy one, but early risers often wake up an hour early for a few days. Go to bed 15 to 20 minutes later each night from Thursday.</li>
+<li>Get outside in the morning light on Sunday and Monday; it helps reset your body clock.</li>
+<li>Dark evenings arrive suddenly. Plan walks or exercise earlier in the day, and check that car headlights and porch lights work.</li>
+<li>For kids and pets, shift meals and bedtime by 15 minutes a day so the change is gradual.</li>
+</ul>
+
+<h2>A good reminder for home safety</h2>
+<p>Fire departments suggest using the clock change as a reminder to test smoke and carbon monoxide alarms and replace batteries if needed. It is also a good time to check the batteries in thermostats and wireless doorbells.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+<details><summary>What time does daylight saving time end in 2026?</summary><p>At 2:00 a.m. local time on Sunday, November 1, 2026. Clocks go back to 1:00 a.m.</p></details>
+<details><summary>Do we gain or lose an hour in November?</summary><p>You gain an hour. Saturday night is 25 hours long because the hour from 1:00 to 2:00 a.m. happens twice.</p></details>
+<details><summary>When does daylight saving time start again?</summary><p>On Sunday, March 14, 2027, at 2:00 a.m., when clocks move forward to 3:00 a.m.</p></details>
+<details><summary>Will my phone change the time automatically?</summary><p>Yes, as long as automatic date and time is turned on in your phone's settings.</p></details>
+<details><summary>Is the Sunshine Protection Act law?</summary><p>No. It passed the House in July 2026 but has not passed the Senate, so the clock changes continue for now.</p></details>
+</div>
+<p>Counting down to something else? See our <a href="/days-until">holiday countdowns</a>, including <a href="/days-until/thanksgiving">days until Thanksgiving</a>.</p>
+""",
+    },
 ]

@@ -31,6 +31,10 @@ HOLIDAYS = [
      "New Year's Eve is December 31, the last day of the year. The countdown to midnight is celebrated with fireworks, parties and the ball drop in Times Square, New York."),
     ("new-years", "New Year's Day", ("fixed", 1, 1), 0,
      "New Year's Day is January 1, the first day of the new year and a federal holiday in the United States. It is a popular day to start resolutions."),
+    ("daylight-saving-time-ends", "Daylight Saving Time ends", ("nth", 11, 0, 1), 0,
+     "In the United States, daylight saving time ends on the first Sunday of November at 2:00 a.m. local time, when clocks fall back one hour to 1:00 a.m. Most of Arizona, Hawaii and the U.S. territories stay on standard time all year."),
+    ("daylight-saving-time-starts", "Daylight Saving Time starts", ("nth", 3, 0, 2), 0,
+     "In the United States, daylight saving time starts on the second Sunday of March at 2:00 a.m. local time, when clocks spring forward one hour to 3:00 a.m. You lose an hour of sleep that night, but evenings stay light longer."),
     ("halloween", "Halloween", ("fixed", 10, 31), 0,
      "Halloween is October 31 every year. Kids go trick-or-treating in costumes, houses are decorated with pumpkins, and many towns hold parties and haunted houses."),
     ("veterans-day", "Veterans Day", ("fixed", 11, 11), 0,
@@ -114,7 +118,7 @@ def holiday_page(hol, today):
     path = f"{HUB}/{slug}"
     nd = next_on(rule, off, today)
     days = (nd - today).days
-    Name = name[0].upper() + name[1:]
+    Name = name.title() if slug.startswith("daylight") else name[0].upper() + name[1:]
     rule_txt = RULE_TEXT[rule[0]](rule)
     if off:
         rule_txt = f"{pl(off, 'day')} after Thanksgiving, which is {rule_txt}"
@@ -145,7 +149,7 @@ def holiday_page(hol, today):
 <p>The countdown runs on your device's clock, so it is correct in your own time zone and updates every second. It counts to midnight at the start of {name}. Once the day has passed, it automatically switches to next year's date.</p>
 <h2>Frequently asked questions</h2>
 <div class="faq">
-<details><summary>What day is {name} {nd.year}?</summary><p>{Name} {nd.year} is on {fmt(nd)}.</p></details>
+<details><summary>{"When does " + name.replace(" ends", " end").replace(" starts", " start") + " in " + str(nd.year) if slug.startswith("daylight") else "What day is " + name + " " + str(nd.year)}?</summary><p>{(name + " on " + fmt(nd) + ", at 2:00 a.m. local time.") if slug.startswith("daylight") else (Name + " " + str(nd.year) + " is on " + fmt(nd) + ".")}</p></details>
 <details><summary>How many weeks until {name}?</summary><p>Divide the number of days by 7. The live box above shows the exact weeks and days left, along with the number of weekdays (Monday to Friday) if you are counting working or school days.</p></details>
 <details><summary>Is {name} the same date every year?</summary><p>{'Yes. ' if rule[0] == 'fixed' and not off else 'No. '}{Name} is on {rule_txt}.</p></details>
 </div>
