@@ -32,6 +32,8 @@ TOOL_ICON = {
     "tip-calculator": "hand-coin-outline",
     "salary-to-hourly": "cash-clock",
     "christmas-budget-calculator": "gift-outline",
+    "paycheck-calculator": "cash-check",
+    "sleep-calculator": "bed-clock",
     # Home & construction
     "gravel-calculator": "dump-truck",
     "cubic-yard-calculator": "cube-outline",
@@ -56,6 +58,7 @@ TOOL_ICON = {
     "color-converter": "palette-outline",
     "png-to-jpg": "file-png-box",
     "webp-to-jpg": "image-sync-outline",
+    "time-zone-converter": "web-clock",
     # Generators
     "password-generator": "key-variant",
     "qr-code-generator": "qrcode",

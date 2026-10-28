@@ -1761,6 +1761,7 @@ body="""
 <li><strong>Do you tip on takeout?</strong> It’s optional. Many people leave around 10% or round up, especially for large or complicated orders.</li>
 <li><strong>What if the service was bad?</strong> Speak to a manager about the problem. Many people still leave a reduced tip rather than none, since tips are part of servers’ pay.</li>
 </ul>
+<p>Thanking the people who help you all year? Our <a href="/blog/how-much-to-tip-for-the-holidays">holiday tipping guide</a> covers nannies, house cleaners, mail carriers, doormen and more.</p>
 """),
 dict(
 slug="salary-to-hourly-wage-table", date="2026-10-27",
@@ -1897,6 +1898,7 @@ body="""
 <ul>
 <li><strong>Food and drinks:</strong> the big dinner, baking and parties.</li>
 <li><strong>Travel:</strong> flights, gas and hotel nights to see family.</li>
+<li><strong>Holiday tips:</strong> year-end thank-yous for a sitter, house cleaner or building staff. See <a href="/blog/how-much-to-tip-for-the-holidays">how much to tip for the holidays</a>.</li>
 <li><strong>Decorations:</strong> the tree, lights and replacements for anything broken.</li>
 <li><strong>Cards, wrapping and shipping:</strong> small items that add up quickly, especially express postage in December.</li>
 </ul>
@@ -1977,7 +1979,10 @@ body="""
 <details><summary>Will my phone change the time automatically?</summary><p>Yes, as long as automatic date and time is turned on in your phone's settings.</p></details>
 <details><summary>Is the Sunshine Protection Act law?</summary><p>No. It passed the House in July 2026 but has not passed the Senate, so the clock changes continue for now.</p></details>
 </div>
-<p>Counting down to something else? See our <a href="/days-until">holiday countdowns</a>, including <a href="/days-until/thanksgiving">days until Thanksgiving</a>.</p>
+<p>Counting down to something else? See our <a href="/days-until">holiday countdowns</a>, including <a href="/days-until/thanksgiving">days until Thanksgiving</a>. Calling family or colleagues abroad? The <a href="/time-zone-converter">time zone converter</a> applies each country’s clock change automatically.</p>
 """,
     },
 ]
+
+from articles_new import NEW_ARTICLES
+ARTICLES += NEW_ARTICLES

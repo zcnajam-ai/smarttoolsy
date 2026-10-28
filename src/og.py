@@ -17,12 +17,13 @@ from tools_f import TOOLS_F
 from tools_g import TOOLS_G
 from tools_h import TOOLS_H
 from tools_i import TOOLS_I
+from tools_j import TOOLS_J
 from articles import ARTICLES
 from icons import tool_svg, cat_svg
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "static", "og")
-TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E + TOOLS_F + TOOLS_G + TOOLS_H + TOOLS_I
+TOOLS = TOOLS_A + TOOLS_B + TOOLS_C + TOOLS_D + TOOLS_E + TOOLS_F + TOOLS_G + TOOLS_H + TOOLS_I + TOOLS_J
 BY = {t["slug"]: t for t in TOOLS}
 COLOR = {"pdf": "#DC3545", "seo": "#0B7A5A", "calc": "#2F5BEA", "home": "#D9480F", "text": "#7048E8",
          "image": "#0F9D58", "convert": "#0C8599", "generate": "#C2255C", "dev": "#495A78"}

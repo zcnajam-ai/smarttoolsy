@@ -416,7 +416,7 @@ content="""
 <tr><td>Hair salon or barber</td><td>15–20%</td></tr>
 </tbody>
 </table>
-<p>Our guide on <a href="/blog/how-much-to-tip">how much to tip</a> covers more situations, including counter service and hotels.</p>
+<p>Our guide on <a href="/blog/how-much-to-tip">how much to tip</a> covers more situations, including counter service and hotels. At the end of the year, see <a href="/blog/how-much-to-tip-for-the-holidays">how much to tip for the holidays</a> for nannies, house cleaners, mail carriers and building staff.</p>
 <h2>Frequently asked questions</h2>
 <div class="faq">
 <details><summary>Should I tip on the total before or after tax?</summary><p>Either is acceptable. Etiquette guides traditionally suggest tipping on the pre-tax amount, but many people tip on the total for simplicity. Tick “Tip on the amount before tax” and enter the tax to calculate it the traditional way.</p></details>
@@ -460,7 +460,7 @@ content="""
 <p>A handy shortcut: roughly halve the annual salary and drop the thousands. $60,000 a year is about $30 an hour; $40,000 is about $20.</p>
 <h2>Things the simple conversion leaves out</h2>
 <ul>
-<li><strong>Taxes:</strong> all figures are gross. Federal and state income tax, Social Security and Medicare reduce take-home pay.</li>
+<li><strong>Taxes:</strong> all figures are gross. Federal and state income tax, Social Security and Medicare reduce take-home pay; the <a href="/paycheck-calculator">paycheck calculator</a> shows what you actually take home.</li>
 <li><strong>Unpaid time off:</strong> if you’re paid hourly and take two unpaid weeks, use 50 weeks.</li>
 <li><strong>Overtime and benefits:</strong> salaried roles may include health insurance and retirement contributions worth thousands a year; hourly roles may pay overtime.</li>
 </ul>

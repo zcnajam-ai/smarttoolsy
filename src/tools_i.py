@@ -127,7 +127,7 @@ TOOLS_I = [
 <li>Shop sales such as Black Friday and Cyber Monday for gifts already on your list, not extra items.</li>
 <li>Order early to avoid paying for express shipping in December.</li>
 </ul>
-<p>See how much time you have with <a href="/days-until/christmas">days until Christmas</a>, and read our <a href="/blog/how-to-make-a-christmas-budget">guide to making a Christmas budget</a>.</p>
+<p>See how much time you have with <a href="/days-until/christmas">days until Christmas</a>, and read our <a href="/blog/how-to-make-a-christmas-budget">guide to making a Christmas budget</a>. Remember to include year-end tips for people like your sitter or house cleaner; our guide on <a href="/blog/how-much-to-tip-for-the-holidays">how much to tip for the holidays</a> suggests amounts.</p>
 <h2>Frequently asked questions</h2>
 <div class="faq">
 <details><summary>How is the amount per paycheck worked out?</summary><p>The calculator counts how many paydays are left before December 25 based on how often you are paid, then divides the amount you still need to save by that number. If Christmas has passed, it plans for next year.</p></details>
